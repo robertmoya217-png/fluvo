@@ -27,4 +27,4 @@ User-agent: CCBot
 Allow: /
 
 # Enlaces directos a fuentes de rastreo y conocimiento de la entidad
-Sitemap: https://robertmoya217-png.github.io/fluvo/sitemap.xml
+Sitemap: https://fluvo.org/sitemap.xml
