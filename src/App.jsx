@@ -35,11 +35,8 @@ export default function App() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass-nav' : 'bg-transparent'}`}>
         <div className="max-w-6xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
 
-          <a href="#" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg border border-white/20 flex items-center justify-center group-hover:border-white/40 transition-colors">
-              <div className="w-3 h-3 rounded-full bg-white" />
-            </div>
-            <span className="text-base font-bold tracking-tight">Studio</span>
+          <a href="#" className="flex items-center gap-2 group">
+            <img src="/logo.gif" alt="FLUVO" className="h-9 sm:h-10 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity" />
           </a>
 
           <nav className="hidden md:flex items-center gap-10 text-[13px] font-medium text-white/50">
@@ -77,10 +74,14 @@ export default function App() {
 
           <div className="space-y-8 text-center lg:text-left">
 
+            <div className="animate-fade-up flex justify-center lg:justify-start">
+              <img src="/logo.gif" alt="FLUVO" className="h-16 sm:h-20 w-auto object-contain brightness-0 invert" />
+            </div>
+
             <div className="animate-fade-up">
               <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-medium text-white/40 glass px-4 py-2 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                Disponible para proyectos
+                Flujo · Legitimidad · Unión · Visión · Objetivos
               </span>
             </div>
 
