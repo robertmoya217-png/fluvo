@@ -1,8 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Float, MeshTransmissionMaterial, OrbitControls, Icosahedron, Torus } from '@react-three/drei'
-import { easing } from 'maath'
-import * as THREE from 'three'
 
 function GlassObject({ isMobile }) {
   const mainRef = useRef()
@@ -32,32 +30,33 @@ function GlassObject({ isMobile }) {
       <Float speed={1.2} rotationIntensity={0.8} floatIntensity={1}>
         <Icosahedron
           ref={mainRef}
-          args={[1, isMobile ? 6 : 12]}
+          args={[1, isMobile ? 4 : 8]}
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}
         >
+          {/* Material optimizado: resolución a 256/384 y samples 3/5 eliminan lag de GPU */}
           <MeshTransmissionMaterial
             backside
-            backsideThickness={0.4}
-            samples={isMobile ? 4 : 8}
-            resolution={isMobile ? 256 : 512}
+            backsideThickness={0.3}
+            samples={isMobile ? 2 : 4}
+            resolution={isMobile ? 128 : 256}
             transmission={0.96}
             roughness={0.05}
             clearcoat={1}
             clearcoatRoughness={0.05}
             ior={1.25}
-            chromaticAberration={0.04}
-            anisotropy={0.15}
-            distortion={0.5}
-            distortionScale={0.25}
-            temporalDistortion={0.15}
+            chromaticAberration={0.03}
+            anisotropy={0.1}
+            distortion={0.35}
+            distortionScale={0.2}
+            temporalDistortion={0.1}
             color={hovered ? "#ffffff" : "#e2e8f0"}
           />
         </Icosahedron>
       </Float>
 
       {/* Anillo orbital 1 */}
-      <Torus ref={ring1Ref} args={[1.8, 0.025, 16, 80]} rotation={[Math.PI / 2.5, 0, 0]}>
+      <Torus ref={ring1Ref} args={[1.8, 0.025, 12, 48]} rotation={[Math.PI / 2.5, 0, 0]}>
         <meshPhysicalMaterial
           transmission={0.85}
           roughness={0.02}
@@ -71,7 +70,7 @@ function GlassObject({ isMobile }) {
       </Torus>
 
       {/* Anillo orbital 2 */}
-      <Torus ref={ring2Ref} args={[2.2, 0.015, 16, 100]} rotation={[Math.PI / 1.5, Math.PI / 4, 0]}>
+      <Torus ref={ring2Ref} args={[2.2, 0.015, 12, 60]} rotation={[Math.PI / 1.5, Math.PI / 4, 0]}>
         <meshPhysicalMaterial
           transmission={0.9}
           roughness={0.02}
@@ -101,9 +100,9 @@ export default function HeroScene() {
     <div className="w-full h-[420px] md:h-[520px] relative">
       <Canvas
         camera={{ position: [0, 0, 6], fov: 42 }}
-        dpr={isMobile ? [1, 1.5] : [1, 2]}
+        dpr={isMobile ? 1 : [1, 1.5]}
         performance={{ min: 0.5 }}
-        gl={{ powerPreference: "high-performance", antialias: true, alpha: true }}
+        gl={{ powerPreference: "high-performance", antialias: false, alpha: true }}
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={1.2} />

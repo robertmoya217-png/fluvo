@@ -1,35 +1,38 @@
-import React, { useRef, useMemo, useEffect, useState } from 'react'
+import React, { useRef, useMemo, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { easing } from 'maath'
 
-// Hook compartido: captura posición del cursor O del dedo en móvil
+// Hook de puntero con throttling para evitar cálculos innecesarios por evento
 function usePointer(ref) {
   useEffect(() => {
-    const onMouse = (e) => {
-      ref.current.x = (e.clientX / window.innerWidth) * 2 - 1
-      ref.current.y = -(e.clientY / window.innerHeight) * 2 + 1
-    }
-    const onTouch = (e) => {
-      if (e.touches.length > 0) {
-        const t = e.touches[0]
-        ref.current.x = (t.clientX / window.innerWidth) * 2 - 1
-        ref.current.y = -(t.clientY / window.innerHeight) * 2 + 1
+    let ticking = false
+    const onPointerMove = (e) => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const clientX = e.touches ? e.touches[0].clientX : e.clientX
+          const clientY = e.touches ? e.touches[0].clientY : e.clientY
+          ref.current.x = (clientX / window.innerWidth) * 2 - 1
+          ref.current.y = -(clientY / window.innerHeight) * 2 + 1
+          ticking = false
+        })
+        ticking = true
       }
     }
-    window.addEventListener('mousemove', onMouse, { passive: true })
-    window.addEventListener('touchmove', onTouch, { passive: true })
-    window.addEventListener('touchstart', onTouch, { passive: true })
+
+    window.addEventListener('mousemove', onPointerMove, { passive: true })
+    window.addEventListener('touchmove', onPointerMove, { passive: true })
+    window.addEventListener('touchstart', onPointerMove, { passive: true })
     return () => {
-      window.removeEventListener('mousemove', onMouse)
-      window.removeEventListener('touchmove', onTouch)
-      window.removeEventListener('touchstart', onTouch)
+      window.removeEventListener('mousemove', onPointerMove)
+      window.removeEventListener('touchmove', onPointerMove)
+      window.removeEventListener('touchstart', onPointerMove)
     }
   }, [ref])
 }
 
-// Partículas interactivas — misma densidad en móvil y desktop
-function InteractiveParticles({ count = 800 }) {
+// Partículas interactivas optimizadas
+function InteractiveParticles({ count = 500 }) {
   const meshRef = useRef()
   const mouseRef = useRef(new THREE.Vector2(0, 0))
   const smoothMouse = useRef(new THREE.Vector2(0, 0))
@@ -67,12 +70,21 @@ function InteractiveParticles({ count = 800 }) {
 
       const dx = ox - mx
       const dy = oy - my
-      const dist = Math.sqrt(dx * dx + dy * dy)
-      const influence = Math.max(0, 1 - dist / 3.5)
-      const repulsion = influence * influence * 1.8
+      const distSq = dx * dx + dy * dy
 
-      posArray[i3] = ox + (dx / (dist + 0.001)) * repulsion + Math.sin(t * 0.3 + i * 0.01) * 0.02
-      posArray[i3 + 1] = oy + (dy / (dist + 0.001)) * repulsion + Math.cos(t * 0.25 + i * 0.015) * 0.02
+      // Optimización: Si está fuera del radio de influencia (3.5^2 = 12.25), cálculo mínimo
+      if (distSq < 12.25) {
+        const dist = Math.sqrt(distSq)
+        const influence = 1 - dist / 3.5
+        const repulsion = influence * influence * 1.8
+        const invDist = 1 / (dist + 0.001)
+
+        posArray[i3] = ox + (dx * invDist) * repulsion + Math.sin(t * 0.3 + i * 0.01) * 0.02
+        posArray[i3 + 1] = oy + (dy * invDist) * repulsion + Math.cos(t * 0.25 + i * 0.015) * 0.02
+      } else {
+        posArray[i3] = ox + Math.sin(t * 0.3 + i * 0.01) * 0.02
+        posArray[i3 + 1] = oy + Math.cos(t * 0.25 + i * 0.015) * 0.02
+      }
       posArray[i3 + 2] = oz + Math.sin(t * 0.15 + i * 0.02) * 0.08
     }
 
@@ -108,7 +120,7 @@ function InteractiveParticles({ count = 800 }) {
   )
 }
 
-// Rejilla de líneas — misma densidad en móvil y desktop
+// Rejilla de líneas optimizada (10x10 para mantener estética limpia sin saturar GPU)
 function ConnectionLines() {
   const lineRef = useRef()
   const mouseRef = useRef(new THREE.Vector2(0, 0))
@@ -117,8 +129,8 @@ function ConnectionLines() {
 
   usePointer(mouseRef)
 
-  const gridSize = 14
-  const spacing = 1.4
+  const gridSize = 10
+  const spacing = 1.8
 
   const points = useMemo(() => {
     const pts = []
@@ -158,14 +170,17 @@ function ConnectionLines() {
     const posArray = lineRef.current.geometry.attributes.position.array
     const mx = smoothMouse.current.x * viewport.width * 0.5
     const my = smoothMouse.current.y * viewport.height * 0.5
+    const totalPoints = posArray.length / 3
 
-    for (let i = 0; i < posArray.length / 3; i++) {
+    for (let i = 0; i < totalPoints; i++) {
       const px = posArray[i * 3]
       const py = posArray[i * 3 + 1]
       const dx = px - mx
       const dy = py - my
-      const dist = Math.sqrt(dx * dx + dy * dy)
-      const glow = Math.max(0.03, Math.min(0.35, 1 - dist / 5))
+      const distSq = dx * dx + dy * dy
+
+      // Optimización: Distancia al cuadrado evita raíces innecesarias (5^2 = 25)
+      const glow = distSq < 25 ? Math.max(0.03, Math.min(0.35, 1 - Math.sqrt(distSq) / 5)) : 0.03
       colArray[i * 3] = glow
       colArray[i * 3 + 1] = glow
       colArray[i * 3 + 2] = glow
@@ -187,11 +202,17 @@ function ConnectionLines() {
 
 export default function InteractiveBackground() {
   return (
-    <div className="fixed inset-0 z-0" style={{ touchAction: 'pan-y' }}>
+    <div className="fixed inset-0 z-0 pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 50 }}
-        dpr={[1, 1.5]}
-        gl={{ powerPreference: 'high-performance', antialias: false, alpha: true }}
+        dpr={1} // Forzar DPR a 1 para eliminar cuello de botella en pantallas Retina 4K/móviles
+        gl={{ 
+          powerPreference: 'high-performance', 
+          antialias: false, 
+          alpha: true,
+          stencil: false,
+          depth: false // Fondo no requiere depth testing
+        }}
         style={{ background: 'transparent' }}
       >
         <ConnectionLines />
