@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import InteractiveBackground from './components/InteractiveBackground'
 import HeroScene from './components/HeroScene'
+import fluvoLogo from './assets/logo.gif'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -36,7 +37,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
 
           <a href="#" className="flex items-center gap-2 group">
-            <img src="/logo.gif" alt="FLUVO" className="h-9 sm:h-10 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity" />
+            <img src={fluvoLogo} alt="FLUVO" className="h-9 sm:h-10 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity" />
           </a>
 
           <nav className="hidden md:flex items-center gap-10 text-[13px] font-medium text-white/50">
@@ -75,7 +76,7 @@ export default function App() {
           <div className="space-y-8 text-center lg:text-left">
 
             <div className="animate-fade-up flex justify-center lg:justify-start">
-              <img src="/logo.gif" alt="FLUVO" className="h-16 sm:h-20 w-auto object-contain brightness-0 invert" />
+              <img src={fluvoLogo} alt="FLUVO" className="h-14 sm:h-18 w-auto object-contain brightness-0 invert" />
             </div>
 
             <div className="animate-fade-up">
@@ -311,10 +312,8 @@ export default function App() {
       <footer className="relative z-10 border-t border-white/5 py-10">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md border border-white/15 flex items-center justify-center">
-              <div className="w-2 h-2 rounded-full bg-white/80" />
-            </div>
-            <span className="text-sm font-semibold text-white/60">Studio</span>
+            <img src={fluvoLogo} alt="FLUVO" className="h-6 w-auto object-contain brightness-0 invert opacity-70" />
+            <span className="text-sm font-semibold text-white/60">FLUVO</span>
           </div>
           <p className="text-[11px] text-white/20">© {new Date().getFullYear()} — React · Three.js · Tailwind</p>
         </div>
