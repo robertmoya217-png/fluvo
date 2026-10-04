@@ -208,9 +208,14 @@ export default function App() {
         </div>
       </section>
 
-      {/* ─────────── MÉTRICAS ─────────── */}
+      {/* ─────────── MÉTRICAS DE RENDIMIENTO ─────────── */}
       <section className="relative z-10 py-16 sm:py-24">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-xs uppercase tracking-[0.25em] text-white/40 font-semibold">
+              Métricas de Rendimiento y Velocidad Web
+            </h2>
+          </div>
           <div className="glass-elevated rounded-3xl p-8 sm:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { value: '99', label: 'Lighthouse Móvil' },
@@ -234,7 +239,7 @@ export default function App() {
           <div className="max-w-2xl mb-14">
             <span className="text-[11px] uppercase tracking-[0.2em] font-medium text-white/30 mb-3 block">Casos de Éxito</span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.1]">
-              Proyectos <span className="text-white/30">destacados.</span>
+              Portafolio de Sitios Web 3D y <span className="text-white/30">Proyectos Destacados.</span>
             </h2>
           </div>
 
@@ -262,9 +267,9 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
 
           <div className="max-w-2xl mb-16">
-            <span className="text-[11px] uppercase tracking-[0.2em] font-medium text-white/30 mb-4 block">Servicios</span>
+            <span className="text-[11px] uppercase tracking-[0.2em] font-medium text-white/30 mb-4 block">Servicios Web</span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.1]">
-              Lo que <span className="text-white/30">construimos.</span>
+              Servicios de Desarrollo Web 3D y <span className="text-white/30">Diseño Digital.</span>
             </h2>
           </div>
 
@@ -367,7 +372,7 @@ export default function App() {
             <div className="space-y-10 text-center">
               <div>
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08]">
-                  ¿Listo para crear algo <span className="text-white/30">extraordinario?</span>
+                  Cotizar Proyecto: ¿Listo para crear tu <span className="text-white/30">Sitio Web?</span>
                 </h2>
                 <p className="text-base text-white/35 max-w-lg mx-auto leading-relaxed mt-4">
                   Completa el formulario y te enviaremos una propuesta técnica sin costo.
