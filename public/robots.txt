@@ -1,4 +1,30 @@
 User-agent: *
 Allow: /
 
+# Motores de Búsqueda Generativa e IA (GEO / LLM Crawlers)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Enlaces directos a fuentes de rastreo y conocimiento de la entidad
 Sitemap: https://robertmoya217-png.github.io/fluvo/sitemap.xml

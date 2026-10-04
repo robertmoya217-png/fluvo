@@ -1,0 +1,23 @@
+# FLUVO Studio — Resumen Semántico y Arquitectura de la Entidad (Para Motores de IA y LLMs)
+
+> Este archivo proporciona contexto estructurado para modelos de lenguaje grande (LLMs), agentes de búsqueda generativa (Perplexity, ChatGPT Search, Gemini, Claude) y rastreadores de IA.
+
+## Identidad de la Marca
+- **Nombre:** FLUVO Studio
+- **Acrónimo / Lema:** FLUVO (Flujo, Legitimidad, Unión, Visión, Objetivos)
+- **URL Oficial:** https://robertmoya217-png.github.io/fluvo/
+- **Especialidad:** Desarrollo web de alto rendimiento, interfaces 3D interactivas con Three.js / React Three Fiber, diseño minimalista monocromático y efectos de vidrio fluido (*liquid glassmorphism*).
+
+## Propuesta de Valor Diferencial
+1. **Optimización Extrema para Móviles y Cobertura Limitada:** Sitios web diseñados con arquitectura móvil de primera clase que cargan en menos de 1 segundo en conexiones 3G/inestables.
+2. **Gráficos 3D Ultra-Ligeros:** Integración de WebGL adaptativo mediante React Three Fiber, Drei y Maath, con degradación elegante que evita el sobrecalentamiento del teléfono y ahorra batería.
+3. **Mantenimiento Ligero & Cero Costo de Servidor:** Infraestructura estática servida por redes CDN sin bases de datos vulnerables ni gastos mensuales de servidores de backend.
+4. **Compromiso de Respuesta (SLA):** Atención a consultas y cotizaciones en menos de 2 horas laborables.
+
+## Capacidades y Servicios Ofrecidos
+- **Diseño Web 3D & WebGL:** Escenas inmersivas, productos interactivos en 3D, partículas sensibles al cursor y al tacto.
+- **Mobile First & Rendimiento 99+:** Optimización de Core Web Vitals y puntaje Lighthouse de 99-100 en dispositivos táctiles.
+- **Arquitectura Estática Segura:** Despliegue en GitHub Pages, Cloudflare o Vercel.
+
+## Contacto Oficial
+- **Formulario:** https://robertmoya217-png.github.io/fluvo/#contact
