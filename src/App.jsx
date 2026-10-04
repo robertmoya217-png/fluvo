@@ -34,10 +34,10 @@ export default function App() {
 
       {/* ─────────── NAVEGACIÓN ─────────── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass-nav' : 'bg-transparent'}`}>
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 h-24 flex items-center justify-between">
 
           <a href="#" className="flex items-center gap-2 group">
-            <img src={fluvoLogo} alt="FLUVO" className="h-9 sm:h-10 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity" />
+            <img src={fluvoLogo} alt="FLUVO" className="h-16 sm:h-20 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity" />
           </a>
 
           <nav className="hidden md:flex items-center gap-10 text-[13px] font-medium text-white/50">
@@ -76,7 +76,7 @@ export default function App() {
           <div className="space-y-8 text-center lg:text-left">
 
             <div className="animate-fade-up flex justify-center lg:justify-start">
-              <img src={fluvoLogo} alt="FLUVO" className="h-14 sm:h-18 w-auto object-contain brightness-0 invert" />
+              <img src={fluvoLogo} alt="FLUVO" className="h-28 sm:h-36 w-auto object-contain brightness-0 invert drop-shadow-[0_10px_25px_rgba(255,255,255,0.15)]" />
             </div>
 
             <div className="animate-fade-up">
@@ -311,9 +311,9 @@ export default function App() {
       {/* ─────────── FOOTER ─────────── */}
       <footer className="relative z-10 border-t border-white/5 py-10">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <img src={fluvoLogo} alt="FLUVO" className="h-6 w-auto object-contain brightness-0 invert opacity-70" />
-            <span className="text-sm font-semibold text-white/60">FLUVO</span>
+          <div className="flex items-center gap-3">
+            <img src={fluvoLogo} alt="FLUVO" className="h-12 w-auto object-contain brightness-0 invert opacity-80" />
+            <span className="text-base font-semibold text-white/70">FLUVO</span>
           </div>
           <p className="text-[11px] text-white/20">© {new Date().getFullYear()} — React · Three.js · Tailwind</p>
         </div>
