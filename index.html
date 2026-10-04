@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FLUVO Studio | Sitios Web Ultra-Optimizados, Vidrio Fluido y 3D</title>
-    <meta name="description" content="FLUVO Studio crea sitios web interactivos de alto rendimiento con efectos de vidrio fluido, 3D y optimización extrema para dispositivos móviles y conexiones limitadas." />
-    <meta name="keywords" content="FLUVO, desarrollo web, react three fiber, 3d web, glassmorphism, mobile first, sitios rapidos" />
+    <title>Desarrollo de Sitios Web 3D con Vidrio Fluido Ultra-Optimizados | FLUVO Studio</title>
+    <meta name="description" content="FLUVO Studio: Especialistas en desarrollo de sitios web 3D interactivos y diseño en vidrio fluido. Páginas ultra-optimizadas para móviles con carga rápida y cero mantenimiento." />
+    <meta name="keywords" content="desarrollo sitios web 3d, vidrio fluido, ultra-optimizados, fluvo studio, react three fiber, mobile first, sitios rapidos" />
     <meta name="author" content="FLUVO Studio" />
+    <link rel="canonical" href="https://robertmoya217-png.github.io/fluvo/" />
 
     <!-- Open Graph / Redes Sociales (Facebook, LinkedIn, Discord) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://robertmoya217-png.github.io/fluvo/" />
-    <meta property="og:title" content="FLUVO Studio | Sitios Web 3D & Alto Rendimiento" />
-    <meta property="og:description" content="Sitios web interactivos con efectos 3D de vidrio fluido, ultra-ligeros y optimizados para cualquier dispositivo móvil o conexión lenta." />
+    <meta property="og:title" content="Desarrollo de Sitios Web 3D con Vidrio Fluido Ultra-Optimizados | FLUVO Studio" />
+    <meta property="og:description" content="Especialistas en desarrollo de sitios web 3D interactivos y diseño en vidrio fluido. Páginas ultra-optimizadas para móviles con carga rápida y cero mantenimiento." />
     <meta property="og:image" content="https://robertmoya217-png.github.io/fluvo/logo.gif" />
 
     <!-- Twitter Card -->
@@ -85,9 +86,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+      // Redireccionamiento canónico: normalizar dominio y evitar duplicidad www / subdominios
+      (function() {
+        var canonicalHost = "robertmoya217-png.github.io";
+        if (window.location.hostname.indexOf("www.") === 0) {
+          var cleanHost = window.location.hostname.replace(/^www\./, "");
+          window.location.replace(window.location.protocol + "//" + cleanHost + window.location.pathname + window.location.search);
+        }
+      })();
+    </script>
   </head>
   <body class="bg-black text-white antialiased selection:bg-white/20 selection:text-white">
-    <div id="root"></div>
+    <div id="root">
+      <!-- Fallback accesible e indexable para motores de búsqueda estáticos -->
+      <noscript>
+        <header>
+          <h1>Desarrollo de Sitios Web 3D con Vidrio Fluido Ultra-Optimizados | FLUVO Studio</h1>
+          <p>FLUVO Studio: Especialistas en desarrollo de páginas web modernas con efectos de vidrio fluido, gráficos 3D interactivos y optimización de velocidad extrema para teléfonos móviles y tablets.</p>
+        </header>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

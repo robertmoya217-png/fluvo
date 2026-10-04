@@ -166,16 +166,12 @@ export default function App() {
               </span>
             </div>
 
-            <h1 className="text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[1.05] tracking-[-0.03em] animate-fade-up delay-100">
-              Diseñamos
-              <br />
-              <span className="text-white/30">experiencias</span>
-              <br />
-              digitales.
+            <h1 className="text-[clamp(2.5rem,5.5vw,4.5rem)] font-extrabold leading-[1.08] tracking-[-0.03em] animate-fade-up delay-100">
+              Desarrollo de <span className="bg-gradient-to-r from-white via-white/90 to-white/60 bg-clip-text text-transparent">Sitios Web 3D</span> con <span className="text-white/40">Vidrio Fluido</span> Ultra-Optimizados
             </h1>
 
-            <p className="text-base sm:text-lg text-white/40 max-w-md mx-auto lg:mx-0 leading-relaxed font-light animate-fade-up delay-200">
-              Sitios web de alto rendimiento, optimizados para móviles y conexiones limitadas. Código limpio. Cero mantenimiento.
+            <p className="text-base sm:text-lg text-white/50 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light animate-fade-up delay-200">
+              En <strong>FLUVO Studio</strong> creamos páginas web modernas de alto rendimiento, especializadas en efectos de vidrio fluido (*liquid glassmorphism*) y tecnología 3D, garantizando velocidad extrema y navegación fluida en dispositivos móviles, tablets y redes de baja cobertura.
             </p>
 
             {/* Elemento 2: Above-the-fold CTA primario y secundario */}
@@ -452,11 +448,13 @@ export default function App() {
 
             {/* Enlaces internos de navegación */}
             <div className="flex flex-wrap justify-center gap-6 text-xs text-white/40">
-              <a href="#work" className="hover:text-white transition">Servicios</a>
-              <a href="#portfolio" className="hover:text-white transition">Portafolio</a>
-              <a href="#about" className="hover:text-white transition">Tecnología</a>
+              <a href="#work" className="hover:text-white transition">Servicios Web 3D</a>
+              <a href="#portfolio" className="hover:text-white transition">Casos de Éxito</a>
+              <a href="#about" className="hover:text-white transition">Rendimiento Móvil</a>
               <a href="#faq" className="hover:text-white transition">Preguntas Frecuentes</a>
-              <a href="#contact" className="hover:text-white transition">Contacto</a>
+              <a href="#contact" className="hover:text-white transition">Cotizar Proyecto</a>
+              <a href="./sitemap.xml" className="hover:text-white transition" target="_blank" rel="noopener">Mapa del Sitio (XML)</a>
+              <a href="./robots.txt" className="hover:text-white transition" target="_blank" rel="noopener">Robots.txt</a>
             </div>
           </div>
 
