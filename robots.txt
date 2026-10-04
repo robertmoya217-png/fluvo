@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://robertmoya217-png.github.io/fluvo/sitemap.xml
