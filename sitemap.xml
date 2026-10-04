@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+                            http://www.google.com/schemas/sitemap-image/1.1
+                            http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
+  <!-- URL Principal del Sitio -->
   <url>
     <loc>https://robertmoya217-png.github.io/fluvo/</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://robertmoya217-png.github.io/fluvo/logo.gif</image:loc>
+      <image:title>FLUVO Studio - Desarrollo Web 3D &amp; Vidrio Fluido</image:title>
+      <image:caption>Logotipo oficial de FLUVO: Flujo, Legitimidad, Unión, Visión, Objetivos</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Sección de Servicios Especializados -->
+  <url>
+    <loc>https://robertmoya217-png.github.io/fluvo/#work</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sección de Casos de Éxito / Portafolio -->
+  <url>
+    <loc>https://robertmoya217-png.github.io/fluvo/#portfolio</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Stack Tecnológico & Desempeño Móvil -->
+  <url>
+    <loc>https://robertmoya217-png.github.io/fluvo/#about</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Preguntas Frecuentes y FAQ Semántica -->
+  <url>
+    <loc>https://robertmoya217-png.github.io/fluvo/#faq</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Formulario de Contacto y SLA -->
+  <url>
+    <loc>https://robertmoya217-png.github.io/fluvo/#contact</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
