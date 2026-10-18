@@ -40,16 +40,31 @@ function InteractiveParticles({ count = 500 }) {
 
   usePointer(mouseRef)
 
-  const [positions, sizes] = useMemo(() => {
+  const [positions, sizes, colors] = useMemo(() => {
     const pos = new Float32Array(count * 3)
     const sz = new Float32Array(count)
+    const col = new Float32Array(count * 3)
+    const colorWhite = new THREE.Color('#ffffff')
+    const colorCyan = new THREE.Color('#06b6d4')
+    const colorEmerald = new THREE.Color('#10b981')
+
     for (let i = 0; i < count; i++) {
       pos[i * 3] = (Math.random() - 0.5) * 18
       pos[i * 3 + 1] = (Math.random() - 0.5) * 12
       pos[i * 3 + 2] = (Math.random() - 0.5) * 8
       sz[i] = Math.random() * 0.03 + 0.005
+
+      // Acento sutil: 80% blanco cristalino, 12% cian tecnológico, 8% esmeralda
+      const r = Math.random()
+      let c = colorWhite
+      if (r > 0.88) c = colorCyan
+      else if (r > 0.80) c = colorEmerald
+
+      col[i * 3] = c.r
+      col[i * 3 + 1] = c.g
+      col[i * 3 + 2] = c.b
     }
-    return [pos, sz]
+    return [pos, sz, col]
   }, [count])
 
   const originalPositions = useMemo(() => new Float32Array(positions), [positions])
@@ -101,6 +116,12 @@ function InteractiveParticles({ count = 500 }) {
           itemSize={3}
         />
         <bufferAttribute
+          attach="attributes-color"
+          count={count}
+          array={colors}
+          itemSize={3}
+        />
+        <bufferAttribute
           attach="attributes-aSize"
           count={count}
           array={sizes}
@@ -108,11 +129,11 @@ function InteractiveParticles({ count = 500 }) {
         />
       </bufferGeometry>
       <pointsMaterial
-        color="#ffffff"
+        vertexColors
         size={0.035}
         sizeAttenuation
         transparent
-        opacity={0.5}
+        opacity={0.55}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />

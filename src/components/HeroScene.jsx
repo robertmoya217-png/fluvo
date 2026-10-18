@@ -27,30 +27,31 @@ function GlassObject({ isMobile }) {
 
   return (
     <group scale={isMobile ? 1.3 : 1.7}>
-      <Float speed={1.2} rotationIntensity={0.8} floatIntensity={1}>
+      {/* Flotación suave y pausada de estética zen */}
+      <Float speed={0.65} rotationIntensity={0.45} floatIntensity={0.7}>
         <Icosahedron
           ref={mainRef}
           args={[1, isMobile ? 4 : 8]}
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}
         >
-          {/* Material optimizado: resolución a 256/384 y samples 3/5 eliminan lag de GPU */}
+          {/* Material ultra-cristalino de alta refracción y reflejos nítidos */}
           <MeshTransmissionMaterial
             backside
-            backsideThickness={0.3}
+            backsideThickness={0.25}
             samples={isMobile ? 2 : 4}
             resolution={isMobile ? 128 : 256}
-            transmission={0.96}
-            roughness={0.05}
+            transmission={0.98}
+            roughness={0.02}
             clearcoat={1}
-            clearcoatRoughness={0.05}
-            ior={1.25}
-            chromaticAberration={0.03}
+            clearcoatRoughness={0.02}
+            ior={1.22}
+            chromaticAberration={0.02}
             anisotropy={0.1}
-            distortion={0.35}
-            distortionScale={0.2}
-            temporalDistortion={0.1}
-            color={hovered ? "#ffffff" : "#e2e8f0"}
+            distortion={0.25}
+            distortionScale={0.15}
+            temporalDistortion={0.08}
+            color={hovered ? "#ffffff" : "#f1f5f9"}
           />
         </Icosahedron>
       </Float>
@@ -105,9 +106,11 @@ export default function HeroScene() {
         gl={{ powerPreference: "high-performance", antialias: false, alpha: true }}
         style={{ background: 'transparent' }}
       >
-        <ambientLight intensity={1.2} />
-        <directionalLight position={[8, 8, 8]} intensity={3} color="#ffffff" />
-        <directionalLight position={[-5, -5, -5]} intensity={1.5} color="#e2e8f0" />
+        <ambientLight intensity={1.1} />
+        {/* Luces direccionales neutras + acentos cian y esmeralda tecnológicos */}
+        <directionalLight position={[8, 8, 8]} intensity={2.8} color="#ffffff" />
+        <directionalLight position={[-6, 6, 4]} intensity={1.5} color="#06b6d4" />
+        <directionalLight position={[5, -5, -3]} intensity={1.2} color="#10b981" />
 
         <GlassObject isMobile={isMobile} />
 
@@ -115,7 +118,7 @@ export default function HeroScene() {
           enableZoom={false}
           enablePan={false}
           autoRotate
-          autoRotateSpeed={0.5}
+          autoRotateSpeed={0.3}
           maxPolarAngle={Math.PI / 1.7}
           minPolarAngle={Math.PI / 2.3}
         />

@@ -170,7 +170,7 @@ ${formData.message ? `• Detalles: ${formData.message}` : ''}`
             <img 
               src={fluvoLogo} 
               alt="Logotipo oficial de FLUVO Studio en alta resolución" 
-              className="h-16 sm:h-20 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity" 
+              className="h-16 sm:h-20 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-all logo-glow" 
             />
           </a>
 
@@ -225,13 +225,13 @@ ${formData.message ? `• Detalles: ${formData.message}` : ''}`
               <img 
                 src={fluvoLogo} 
                 alt="FLUVO Estudio de desarrollo web y diseño interactivo" 
-                className="h-28 sm:h-36 w-auto object-contain brightness-0 invert drop-shadow-[0_10px_25px_rgba(255,255,255,0.15)]" 
+                className="h-28 sm:h-36 w-auto object-contain brightness-0 invert drop-shadow-[0_10px_25px_rgba(255,255,255,0.15)] logo-glow" 
               />
             </div>
 
             <div className="animate-fade-up">
               <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-medium text-white/40 glass px-4 py-2 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 Flujo · Legitimidad · Unión · Visión · Objetivos
               </span>
             </div>
@@ -246,7 +246,7 @@ ${formData.message ? `• Detalles: ${formData.message}` : ''}`
 
             {/* Elemento 2: Above-the-fold CTA primario y secundario */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-up delay-300">
-              <a href="#contact" className="glass-btn-primary px-8 py-4 rounded-full text-sm font-semibold flex items-center justify-center gap-2.5 shadow-lg shadow-white/10">
+              <a href="#contact" className="glass-btn-primary px-8 py-4 rounded-full text-sm font-semibold flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-500/10">
                 Comenzar Proyecto
                 <ArrowRight className="w-4 h-4" />
               </a>
@@ -257,9 +257,9 @@ ${formData.message ? `• Detalles: ${formData.message}` : ''}`
             </div>
 
             {/* Elemento 8: Response time commitment / SLA */}
-            <div className="pt-2 flex items-center justify-center lg:justify-start gap-2 text-xs text-white/45">
-              <Clock className="w-4 h-4 text-white/60" />
-              <span><strong>Compromiso SLA:</strong> Respuesta a cotizaciones en menos de 2 horas laborables.</span>
+            <div className="pt-2 flex items-center justify-center lg:justify-start gap-2.5 text-xs text-white/50">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span><strong>Compromiso SLA:</strong> Respuesta a cotizaciones en &lt; 2 horas laborables · 30 días de soporte.</span>
             </div>
 
           </div>
@@ -303,9 +303,12 @@ ${formData.message ? `• Detalles: ${formData.message}` : ''}`
               { value: '0$', label: 'Costo Servidor' },
               { value: '100%', label: 'Uptime Global' },
             ].map((item, i) => (
-              <div key={i} className="space-y-2">
-                <span className="text-3xl sm:text-4xl font-extrabold tracking-tight">{item.value}</span>
-                <p className="text-xs sm:text-sm text-white/35 font-medium uppercase tracking-wider">{item.label}</p>
+              <div key={i} className="space-y-2 group">
+                <div className="flex items-center justify-center gap-1.5">
+                  <span className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white group-hover:text-emerald-300 transition-colors">{item.value}</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                </div>
+                <p className="text-xs sm:text-sm text-white/40 font-medium uppercase tracking-wider">{item.label}</p>
               </div>
             ))}
           </div>
@@ -738,22 +741,23 @@ ${formData.message ? `• Detalles: ${formData.message}` : ''}`
       </footer>
 
       {/* ─────────── Elemento 9: STICKY MOBILE CTA BUTTON ─────────── */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 p-3 bg-black/80 backdrop-blur-xl border-t border-white/10 md:hidden flex items-center justify-between gap-3">
+      <div className="fixed bottom-0 left-0 right-0 z-40 p-3 bg-black/85 backdrop-blur-2xl border-t border-white/10 md:hidden flex items-center justify-between gap-3">
         <a 
           href="https://wa.me/584242220172?text=Hola%20FLUVO,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3.5 py-2 rounded-full glass text-xs font-medium text-emerald-400 hover:text-emerald-300 transition"
+          className="flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-full glass border border-white/10 text-xs font-semibold text-white/90 hover:text-white transition"
         >
-          <MessageCircle className="w-3.5 h-3.5" />
+          <MessageCircle className="w-4 h-4 text-emerald-400" />
           <span>WhatsApp</span>
         </a>
         <a 
           href="#contact" 
-          className="glass-btn-primary px-5 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-lg"
+          className="flex-1 glass-btn-primary py-2.5 px-4 rounded-full text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/10"
         >
+          <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
           <span>Cotizar</span>
-          <ArrowRight className="w-3.5 h-3.5" />
+          <ArrowRight className="w-3.5 h-3.5 text-white/70" />
         </a>
       </div>
 
