@@ -1,6 +1,6 @@
 @echo off
 title Publicando Fluvo en GitHub Pages
-cd /d "C:\Users\rober\Desktop\Nueva carpeta"
+cd /d "%~dp0"
 
 echo ========================================================
 echo   SUBIENDO SITIO FLUVO A GITHUB PAGES

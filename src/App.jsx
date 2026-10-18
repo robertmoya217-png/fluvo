@@ -19,7 +19,10 @@ import {
   Send,
   Home,
   Star,
-  Users
+  Users,
+  Phone,
+  Mail,
+  MessageCircle
 } from 'lucide-react'
 
 export default function App() {
@@ -359,6 +362,24 @@ export default function App() {
               <p className="text-base text-white/45 max-w-md mx-auto leading-relaxed">
                 Gracias por ponerte en contacto con <strong>FLUVO Studio</strong>. Nuestro compromiso de SLA garantiza que revisaremos tus requerimientos y te responderemos en menos de 2 horas.
               </p>
+              <div className="pt-2 flex flex-wrap justify-center gap-4 text-xs text-white/60">
+                <a 
+                  href="mailto:robertmoya217@gmail.com" 
+                  className="glass px-4 py-2 rounded-full flex items-center gap-2 hover:text-white transition"
+                >
+                  <Mail className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>robertmoya217@gmail.com</span>
+                </a>
+                <a 
+                  href="https://wa.me/584242220172?text=Hola%20FLUVO,%20acabo%20de%20enviar%20una%20solicitud" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="glass px-4 py-2 rounded-full flex items-center gap-2 hover:text-white transition"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>+58 424 222 0172 (WhatsApp)</span>
+                </a>
+              </div>
               <div className="pt-4">
                 <button 
                   onClick={() => setFormSubmitted(false)}
@@ -375,8 +396,39 @@ export default function App() {
                   Cotizar Proyecto: ¿Listo para crear tu <span className="text-white/30">Sitio Web?</span>
                 </h2>
                 <p className="text-base text-white/35 max-w-lg mx-auto leading-relaxed mt-4">
-                  Completa el formulario y te enviaremos una propuesta técnica sin costo.
+                  Completa el formulario o contáctanos directamente a través de nuestros canales oficiales.
                 </p>
+              </div>
+
+              {/* Canales de Contacto Directo */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                <a
+                  href="mailto:robertmoya217@gmail.com"
+                  className="glass-card p-5 rounded-2xl flex items-center gap-4 group hover:border-white/30 transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-xl glass-btn flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform">
+                    <Mail className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="text-[11px] uppercase tracking-wider text-white/40 font-semibold block">Correo Electrónico</span>
+                    <span className="text-sm font-semibold text-white/90 group-hover:text-white truncate block">robertmoya217@gmail.com</span>
+                  </div>
+                </a>
+
+                <a
+                  href="https://wa.me/584242220172?text=Hola%20FLUVO,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-card p-5 rounded-2xl flex items-center gap-4 group hover:border-white/30 transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-xl glass-btn flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform">
+                    <MessageCircle className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="text-[11px] uppercase tracking-wider text-white/40 font-semibold block">WhatsApp & Llamadas</span>
+                    <span className="text-sm font-semibold text-white/90 group-hover:text-white truncate block">0424 222 0172 / +58 424 222 0172</span>
+                  </div>
+                </a>
               </div>
 
               <form onSubmit={handleFormSubmit} className="glass-elevated rounded-3xl p-8 sm:p-10 text-left space-y-5">
@@ -451,6 +503,26 @@ export default function App() {
               </div>
             </div>
 
+            {/* Datos directos de contacto en el Footer */}
+            <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-white/60">
+              <a 
+                href="mailto:robertmoya217@gmail.com" 
+                className="flex items-center gap-1.5 hover:text-white transition glass px-3 py-1.5 rounded-full"
+              >
+                <Mail className="w-3.5 h-3.5 text-emerald-400" />
+                <span>robertmoya217@gmail.com</span>
+              </a>
+              <a 
+                href="https://wa.me/584242220172?text=Hola%20FLUVO,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-1.5 hover:text-white transition glass px-3 py-1.5 rounded-full"
+              >
+                <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                <span>0424 222 0172</span>
+              </a>
+            </div>
+
             {/* Enlaces internos de navegación */}
             <div className="flex flex-wrap justify-center gap-6 text-xs text-white/40">
               <a href="#work" className="hover:text-white transition">Servicios Web 3D</a>
@@ -472,15 +544,20 @@ export default function App() {
 
       {/* ─────────── Elemento 9: STICKY MOBILE CTA BUTTON ─────────── */}
       <div className="fixed bottom-0 left-0 right-0 z-40 p-3 bg-black/80 backdrop-blur-xl border-t border-white/10 md:hidden flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-[11px] font-medium text-white/70">SLA 2h</span>
-        </div>
+        <a 
+          href="https://wa.me/584242220172?text=Hola%20FLUVO,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 px-3.5 py-2 rounded-full glass text-xs font-medium text-emerald-400 hover:text-emerald-300 transition"
+        >
+          <MessageCircle className="w-3.5 h-3.5" />
+          <span>WhatsApp</span>
+        </a>
         <a 
           href="#contact" 
-          className="glass-btn-primary px-5 py-2.5 rounded-full text-xs font-bold flex items-center gap-2 shadow-lg"
+          className="glass-btn-primary px-5 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-lg"
         >
-          <span>Cotizar Proyecto</span>
+          <span>Cotizar</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </a>
       </div>
