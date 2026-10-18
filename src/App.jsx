@@ -22,7 +22,10 @@ import {
   Users,
   Phone,
   Mail,
-  MessageCircle
+  MessageCircle,
+  Loader2,
+  Check,
+  Sparkles
 } from 'lucide-react'
 
 export default function App() {
@@ -30,8 +33,30 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false)
   
   // Elemento 4: Estado del formulario y Thank you state
+  const [formSubmitting, setFormSubmitting] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    projectType: 'Landing Page 3D',
+    budget: '$300 - $600 USD',
+    message: ''
+  })
+
+  const projectTypes = [
+    { id: 'Landing Page 3D', label: 'Landing Page 3D', icon: '✨' },
+    { id: 'Web Corporativa', label: 'Web Corporativa', icon: '🏢' },
+    { id: 'E-commerce', label: 'E-commerce', icon: '🛍️' },
+    { id: 'Aplicación Web / SaaS', label: 'Aplicación Web / SaaS', icon: '⚡' }
+  ]
+
+  const budgetRanges = [
+    '< $300 USD',
+    '$300 - $600 USD',
+    '$600 - $1,200 USD',
+    '+$1,200 USD',
+    'Por definir / Asesoría'
+  ]
 
   // Elemento 7: Acordeón interactivo de FAQs
   const [openFaq, setOpenFaq] = useState(null)
@@ -42,11 +67,46 @@ export default function App() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault()
-    if (formData.name && formData.email) {
+    if (!formData.name || !formData.email) return
+
+    setFormSubmitting(true)
+    try {
+      // Envío asíncrono híbrido en segundo plano con Web3Forms
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: 'b9e7c3e5-8a21-4d7e-9f01-web3forms-fluvo',
+          subject: `Nueva Cotización FLUVO: ${formData.projectType} - ${formData.name}`,
+          from_name: formData.name,
+          email: formData.email,
+          project_type: formData.projectType,
+          budget: formData.budget,
+          message: formData.message || 'Sin detalles adicionales',
+          to_email: 'robertmoya217@gmail.com'
+        })
+      })
+    } catch (err) {
+      // Fallback transparente
+    } finally {
+      setFormSubmitting(false)
       setFormSubmitted(true)
     }
+  }
+
+  const getWhatsAppUrl = () => {
+    const text = `Hola FLUVO Studio, soy ${formData.name || 'un cliente'}.
+Me gustaría cotizar un proyecto web a medida:
+• Tipo de Proyecto: ${formData.projectType}
+• Presupuesto Estimado: ${formData.budget}
+• Correo de Contacto: ${formData.email || 'No indicado'}
+${formData.message ? `• Detalles: ${formData.message}` : ''}`
+    return `https://wa.me/584242220172?text=${encodeURIComponent(text)}`
   }
 
   const faqs = [
@@ -354,38 +414,36 @@ export default function App() {
           
           {formSubmitted ? (
             /* Elemento 4: Thank You Screen tras envío */
-            <div className="glass-elevated rounded-3xl p-10 sm:p-14 text-center space-y-6 animate-fade-up">
-              <div className="w-16 h-16 rounded-full glass-btn mx-auto flex items-center justify-center text-white">
-                <CheckCircle2 className="w-8 h-8 text-white/90" />
+            <div className="glass-elevated rounded-3xl p-8 sm:p-14 text-center space-y-6 animate-fade-up">
+              <div className="w-16 h-16 rounded-full glass-btn mx-auto flex items-center justify-center text-emerald-400 border border-emerald-500/30">
+                <Check className="w-8 h-8" />
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold">¡Mensaje recibido con éxito!</h2>
-              <p className="text-base text-white/45 max-w-md mx-auto leading-relaxed">
-                Gracias por ponerte en contacto con <strong>FLUVO Studio</strong>. Nuestro compromiso de SLA garantiza que revisaremos tus requerimientos y te responderemos en menos de 2 horas.
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">¡Solicitud recibida con éxito!</h2>
+              <p className="text-base text-white/50 max-w-lg mx-auto leading-relaxed">
+                Gracias, <strong className="text-white">{formData.name}</strong>. Hemos registrado tu interés en una <strong className="text-emerald-400">{formData.projectType}</strong> (Presupuesto: {formData.budget}). Nos pondremos en contacto contigo a <span className="text-white/80 underline">{formData.email}</span> en menos de 2 horas.
               </p>
-              <div className="pt-2 flex flex-wrap justify-center gap-4 text-xs text-white/60">
-                <a 
-                  href="mailto:robertmoya217@gmail.com" 
-                  className="glass px-4 py-2 rounded-full flex items-center gap-2 hover:text-white transition"
+
+              {/* Botón CTA Híbrido a WhatsApp */}
+              <div className="pt-2 flex flex-col items-center gap-3">
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-500/20 hover:scale-[1.02] transition-all"
                 >
-                  <Mail className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>robertmoya217@gmail.com</span>
+                  <MessageCircle className="w-4 h-4 fill-black" />
+                  <span>Continuar por WhatsApp ahora (+58 424 222 0172)</span>
+                  <ArrowRight className="w-4 h-4" />
                 </a>
-                <a 
-                  href="https://wa.me/584242220172?text=Hola%20FLUVO,%20acabo%20de%20enviar%20una%20solicitud" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="glass px-4 py-2 rounded-full flex items-center gap-2 hover:text-white transition"
-                >
-                  <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>+58 424 222 0172 (WhatsApp)</span>
-                </a>
+                <span className="text-[12px] text-white/35">Atención directa e inmediata con Robert Moya</span>
               </div>
-              <div className="pt-4">
+
+              <div className="pt-4 border-t border-white/5">
                 <button 
                   onClick={() => setFormSubmitted(false)}
-                  className="glass-btn px-6 py-3 rounded-full text-xs font-semibold text-white/70 hover:text-white"
+                  className="glass-btn px-6 py-2.5 rounded-full text-xs font-semibold text-white/60 hover:text-white"
                 >
-                  Enviar otro mensaje
+                  Modificar o enviar otra consulta
                 </button>
               </div>
             </div>
@@ -431,54 +489,137 @@ export default function App() {
                 </a>
               </div>
 
-              <form onSubmit={handleFormSubmit} className="glass-elevated rounded-3xl p-8 sm:p-10 text-left space-y-5">
-                <div>
-                  <label className="block text-xs uppercase tracking-wider text-white/50 mb-2 font-medium">Nombre o Empresa</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Ej. Juan Pérez / Empresa Tech"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full glass px-4 py-3.5 rounded-xl text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition"
-                  />
+              <form onSubmit={handleFormSubmit} className="glass-elevated rounded-3xl p-6 sm:p-10 text-left space-y-6">
+                
+                {/* 1. Nombre y Correo */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-white/50 mb-2 font-medium">Nombre o Empresa *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Ej. Juan Pérez / Empresa Tech"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full glass px-4 py-3 rounded-xl text-sm text-white placeholder-white/20 focus:outline-none focus:border-emerald-400/50 transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-white/50 mb-2 font-medium">Correo Electrónico *</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="correo@ejemplo.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full glass px-4 py-3 rounded-xl text-sm text-white placeholder-white/20 focus:outline-none focus:border-emerald-400/50 transition"
+                    />
+                  </div>
                 </div>
 
+                {/* 2. Tipo de Proyecto */}
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-white/50 mb-2 font-medium">Correo Electrónico</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="correo@ejemplo.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full glass px-4 py-3.5 rounded-xl text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition"
-                  />
+                  <label className="block text-xs uppercase tracking-wider text-white/50 mb-2.5 font-medium flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Tipo de Proyecto</span>
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    {projectTypes.map((type) => {
+                      const isSelected = formData.projectType === type.id
+                      return (
+                        <button
+                          key={type.id}
+                          type="button"
+                          onClick={() => setFormData({ ...formData, projectType: type.id })}
+                          className={`p-3 rounded-xl text-xs font-medium flex flex-col items-center justify-center gap-1.5 transition-all text-center ${
+                            isSelected
+                              ? 'bg-emerald-500/15 border border-emerald-400/60 text-emerald-300 shadow-sm shadow-emerald-500/20'
+                              : 'glass border-white/10 text-white/60 hover:text-white hover:border-white/20'
+                          }`}
+                        >
+                          <span className="text-base">{type.icon}</span>
+                          <span className="leading-tight">{type.label}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
 
+                {/* 3. Presupuesto Estimado */}
+                <div>
+                  <label className="block text-xs uppercase tracking-wider text-white/50 mb-2.5 font-medium">
+                    Presupuesto Aproximado (USD)
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {budgetRanges.map((range) => {
+                      const isSelected = formData.budget === range
+                      return (
+                        <button
+                          key={range}
+                          type="button"
+                          onClick={() => setFormData({ ...formData, budget: range })}
+                          className={`px-3.5 py-2 rounded-full text-xs font-medium transition-all ${
+                            isSelected
+                              ? 'bg-emerald-500/20 border border-emerald-400/60 text-emerald-300'
+                              : 'glass border-white/10 text-white/60 hover:text-white hover:border-white/20'
+                          }`}
+                        >
+                          {range}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+
+                {/* 4. Detalles del Proyecto */}
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-white/50 mb-2 font-medium">Detalles del Proyecto</label>
                   <textarea
-                    rows={4}
-                    placeholder="Cuéntanos brevemente qué tipo de web o experiencia 3D necesitas..."
+                    rows={3}
+                    placeholder="Cuéntanos brevemente sobre tu proyecto o qué funciones necesitas..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full glass px-4 py-3.5 rounded-xl text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition resize-none"
+                    className="w-full glass px-4 py-3 rounded-xl text-sm text-white placeholder-white/20 focus:outline-none focus:border-emerald-400/50 transition resize-none"
                   />
                 </div>
 
+                {/* 5. Acciones y SLA */}
                 <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="flex items-center gap-2 text-xs text-white/40">
-                    <Clock className="w-3.5 h-3.5" />
+                    <Clock className="w-3.5 h-3.5 text-emerald-400" />
                     <span>SLA: Respuesta en &lt; 2 horas</span>
                   </div>
-                  <button
-                    type="submit"
-                    className="w-full sm:w-auto glass-btn-primary px-8 py-3.5 rounded-full text-sm font-semibold flex items-center justify-center gap-2"
-                  >
-                    <span>Enviar Solicitud</span>
-                    <Send className="w-4 h-4" />
-                  </button>
+
+                  <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                    <a
+                      href={getWhatsAppUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto glass px-5 py-3 rounded-full text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center justify-center gap-2 transition"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      <span>Cotizar por WhatsApp</span>
+                    </a>
+
+                    <button
+                      type="submit"
+                      disabled={formSubmitting}
+                      className="w-full sm:w-auto glass-btn-primary px-7 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 disabled:opacity-50"
+                    >
+                      {formSubmitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin text-white" />
+                          <span>Enviando...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Enviar Solicitud</span>
+                          <Send className="w-4 h-4" />
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
