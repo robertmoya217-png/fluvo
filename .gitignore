@@ -2,3 +2,12 @@ node_modules/
 dist/
 .DS_Store
 *.log
+.gradle/
+build/
+android/app/build/
+android/build/
+android/.gradle/
+android/captures/
+android/.idea/
+*.iml
+

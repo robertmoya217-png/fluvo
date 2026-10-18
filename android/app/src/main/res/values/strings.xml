@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">FLUVO Studio</string>
+    <string name="title_activity_main">FLUVO Studio</string>
+    <string name="package_name">org.fluvo.app</string>
+    <string name="custom_url_scheme">org.fluvo.app</string>
+</resources>
