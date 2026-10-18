@@ -27,12 +27,15 @@ import {
   MessageCircle,
   Loader2,
   Check,
-  Sparkles
+  Sparkles,
+  FileText,
+  Lock
 } from 'lucide-react'
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [legalModal, setLegalModal] = useState(null) // 'terms' | 'privacy' | null
   
   // Elemento 4: Estado del formulario y Thank you state
   const [formSubmitting, setFormSubmitting] = useState(false)
@@ -635,6 +638,29 @@ ${formData.message ? `• Detalles: ${formData.message}` : ''}`
                     </button>
                   </div>
                 </div>
+
+                {/* Consentimiento Legal Sutil */}
+                <div className="pt-1">
+                  <p className="text-[11px] text-white/35 text-center sm:text-left leading-relaxed">
+                    Al enviar tu solicitud aceptas nuestros{' '}
+                    <button
+                      type="button"
+                      onClick={() => setLegalModal('terms')}
+                      className="text-white/70 underline hover:text-emerald-400 transition"
+                    >
+                      Términos de Servicio
+                    </button>{' '}
+                    y nuestra{' '}
+                    <button
+                      type="button"
+                      onClick={() => setLegalModal('privacy')}
+                      className="text-white/70 underline hover:text-emerald-400 transition"
+                    >
+                      Política de Privacidad
+                    </button>
+                    .
+                  </p>
+                </div>
               </form>
             </div>
           )}
@@ -685,7 +711,21 @@ ${formData.message ? `• Detalles: ${formData.message}` : ''}`
               <a href="#about" className="hover:text-white transition">Rendimiento Móvil</a>
               <a href="#faq" className="hover:text-white transition">Preguntas Frecuentes</a>
               <a href="#contact" className="hover:text-white transition">Cotizar Proyecto</a>
-              <a href="./sitemap.xml" className="hover:text-white transition" target="_blank" rel="noopener">Mapa del Sitio (XML)</a>
+              <button 
+                type="button" 
+                onClick={() => setLegalModal('terms')} 
+                className="hover:text-white transition text-xs text-white/50"
+              >
+                Términos de Servicio
+              </button>
+              <button 
+                type="button" 
+                onClick={() => setLegalModal('privacy')} 
+                className="hover:text-white transition text-xs text-white/50"
+              >
+                Política de Privacidad
+              </button>
+              <a href="./sitemap.xml" className="hover:text-white transition" target="_blank" rel="noopener">Sitemap (XML)</a>
               <a href="./robots.txt" className="hover:text-white transition" target="_blank" rel="noopener">Robots.txt</a>
             </div>
           </div>
@@ -716,6 +756,149 @@ ${formData.message ? `• Detalles: ${formData.message}` : ''}`
           <ArrowRight className="w-3.5 h-3.5" />
         </a>
       </div>
+
+      {/* ─────────── MODALES LEGALES (Fase 3: Responsive Bottom Sheet en Móvil / Centrado en Desktop) ─────────── */}
+      {legalModal && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 animate-fade-in"
+          onClick={() => setLegalModal(null)}
+        >
+          <div 
+            className="w-full sm:max-w-2xl max-h-[85vh] sm:max-h-[80vh] rounded-t-[2rem] sm:rounded-3xl glass-elevated border-t sm:border border-white/15 p-6 sm:p-8 flex flex-col overflow-hidden animate-slide-up"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Tirador táctil visual en móvil */}
+            <div className="w-12 h-1.5 rounded-full bg-white/20 mx-auto mb-4 sm:hidden shrink-0" />
+
+            {/* Cabecera del modal */}
+            <div className="flex items-center justify-between pb-4 border-b border-white/10 shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl glass-btn flex items-center justify-center text-emerald-400">
+                  {legalModal === 'terms' ? <FileText className="w-5 h-5" /> : <Lock className="w-5 h-5" />}
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white">
+                    {legalModal === 'terms' ? 'Términos de Servicio' : 'Política de Privacidad'}
+                  </h3>
+                  <span className="text-[11px] text-white/40">FLUVO Studio · Protocolos Oficiales</span>
+                </div>
+              </div>
+              <button 
+                onClick={() => setLegalModal(null)}
+                className="w-8 h-8 rounded-full glass flex items-center justify-center text-white/60 hover:text-white transition"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Contenido scrolleable */}
+            <div className="overflow-y-auto py-5 space-y-5 text-sm text-white/70 leading-relaxed pr-2">
+              {legalModal === 'terms' ? (
+                <>
+                  <div className="space-y-2">
+                    <h4 className="text-white font-semibold flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      1. Estructura de Pagos e Hitos (Milestones)
+                    </h4>
+                    <p className="text-white/50 text-xs">
+                      Para garantizar total transparencia y compromiso mutuo, nuestros proyectos se ejecutan bajo una estructura de 3 hitos verificables:
+                    </p>
+                    <ul className="list-disc list-inside text-xs text-white/60 space-y-1 pl-2">
+                      <li><strong>40% de anticipo:</strong> Inicio de requerimientos, arquitectura técnica y diseño base.</li>
+                      <li><strong>30% contra aprobación:</strong> Presentación y validación del prototipo funcional interactivo 3D.</li>
+                      <li><strong>30% final:</strong> Despliegue en producción, auditoría de velocidad extrema y entrega definitiva.</li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-semibold flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      2. Garantía Técnica Oficial (30 Días)
+                    </h4>
+                    <p className="text-white/50 text-xs">
+                      FLUVO Studio ofrece <strong>30 días continuos de garantía técnica</strong> tras la entrega del proyecto. Esta garantía cubre exclusivamente la resolución de cualquier bug técnico, fallas de compatibilidad entre navegadores o errores de renderizado WebGL/3D. Modificaciones estructurales o nuevas funcionalidades no pactadas en el briefing inicial serán cotizadas de forma independiente.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-semibold flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      3. Propiedad Intelectual y Cesión
+                    </h4>
+                    <p className="text-white/50 text-xs">
+                      El tratamiento de la propiedad intelectual se define de forma personalizada mediante un contrato de cesión adaptado según el perfil del cliente (empresa corporativa o startup), otorgando plenas facultades de uso comercial una vez completado el pago del 100% de los hitos.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-semibold flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      4. Alojamiento y Cero Costo de Servidor
+                    </h4>
+                    <p className="text-white/50 text-xs">
+                      Entregamos sitios bajo arquitectura estática servida a través de redes CDN globales de alta velocidad (GitHub Pages / Cloudflare). Esto garantiza cero vulnerabilidades de servidor y cero costos mensuales de hosting para el cliente, incluyendo acompañamiento técnico para la configuración del dominio propio.
+                    </p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="space-y-2">
+                    <h4 className="text-white font-semibold flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      1. Recolección de Datos Responsable
+                    </h4>
+                    <p className="text-white/50 text-xs">
+                      En FLUVO Studio recopilamos únicamente los datos proporcionados voluntariamente por el usuario a través de nuestro formulario de cotización (nombre, correo electrónico, tipo de proyecto, rango de presupuesto y detalles descriptivos).
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-semibold flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      2. Estándar Internacional de Confidencialidad
+                    </h4>
+                    <p className="text-white/50 text-xs">
+                      Nos alineamos con los estándares internacionales de protección de datos personales. La información enviada es de carácter estrictamente confidencial (bajo compromiso de no divulgación implícito) y se utiliza con el único propósito de elaborar y comunicar la propuesta técnica y comercial solicitada.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-semibold flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      3. Cero Comercialización a Terceros y Cero Rastreadores
+                    </h4>
+                    <p className="text-white/50 text-xs">
+                      FLUVO Studio jamás vende, alquila ni comparte datos personales con redes publicitarias ni intermediarios. No empleamos cookies invasivas de rastreo de terceros.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-semibold flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      4. Derechos del Titular y Contacto
+                    </h4>
+                    <p className="text-white/50 text-xs">
+                      Cualquier cliente puede solicitar la actualización o eliminación total de sus datos de nuestros registros en cualquier momento escribiendo a <a href="mailto:robertmoya217@gmail.com" className="text-emerald-400 underline">robertmoya217@gmail.com</a> o por WhatsApp al <a href="https://wa.me/584242220172" target="_blank" rel="noopener noreferrer" className="text-emerald-400 underline">+58 424 222 0172</a>.
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Pie del modal */}
+            <div className="pt-4 border-t border-white/10 shrink-0 flex items-center justify-between">
+              <span className="text-[11px] text-white/35">Actualizado a Octubre 2026</span>
+              <button
+                type="button"
+                onClick={() => setLegalModal(null)}
+                className="glass-btn-primary px-6 py-2.5 rounded-full text-xs font-semibold"
+              >
+                Entendido y Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   )
