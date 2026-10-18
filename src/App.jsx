@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import InteractiveBackground from './components/InteractiveBackground'
-import HeroScene from './components/HeroScene'
+import React, { useState, useEffect, Suspense, lazy } from 'react'
 import fluvoLogo from './assets/logo.gif'
+
+// Lazy loading diferido de componentes 3D WebGL para optimizar el bundle inicial
+const InteractiveBackground = lazy(() => import('./components/InteractiveBackground'))
+const HeroScene = lazy(() => import('./components/HeroScene'))
 import {
   ArrowRight,
   ArrowUpRight,
@@ -152,8 +154,10 @@ ${formData.message ? `• Detalles: ${formData.message}` : ''}`
   return (
     <div className="min-h-screen bg-black text-white relative pb-16 sm:pb-0">
 
-      {/* Fondo interactivo 3D que reacciona al cursor y al tacto */}
-      <InteractiveBackground />
+      {/* Fondo interactivo 3D con carga diferida (Suspense) */}
+      <Suspense fallback={<div className="fixed inset-0 pointer-events-none bg-black" />}>
+        <InteractiveBackground />
+      </Suspense>
 
       {/* ─────────── NAVEGACIÓN (Elemento 3: Internal links structure) ─────────── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass-nav' : 'bg-transparent'}`}>
@@ -257,10 +261,20 @@ ${formData.message ? `• Detalles: ${formData.message}` : ''}`
 
           </div>
 
-          {/* Cristal 3D */}
+          {/* Cristal 3D con carga diferida y placeholder líquido */}
           <div className="animate-fade-up delay-400">
             <div className="glass-elevated rounded-[2rem] p-2 relative">
-              <HeroScene />
+              <Suspense fallback={
+                <div className="w-full h-[420px] md:h-[520px] flex items-center justify-center rounded-[1.8rem] bg-gradient-to-br from-white/[0.03] to-transparent border border-white/5 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent animate-pulse" />
+                  <div className="flex flex-col items-center gap-3 text-white/40 text-xs font-mono relative z-10">
+                    <div className="w-8 h-8 rounded-full border-2 border-emerald-400/30 border-t-emerald-400 animate-spin" />
+                    <span className="tracking-widest uppercase text-[10px] text-white/50">Cargando 3D Studio...</span>
+                  </div>
+                </div>
+              }>
+                <HeroScene />
+              </Suspense>
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 glass px-4 py-2 rounded-full text-[11px] text-white/40 flex items-center gap-2 pointer-events-none">
                 <span className="w-2 h-2 rounded-full bg-white/50 animate-pulse" />
                 Interactúa con el cristal 3D
