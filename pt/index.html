@@ -179,7 +179,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="../src/styles.css" />
 </head>
 <body>
@@ -194,7 +195,7 @@
   </div>
 
   <a class="brand" href="#top" aria-label="FLUVO — Início">
-    <img class="brand__mark" src="../public/logo/isotipo-mono.svg" width="28" height="28" alt="Isotipo oficial da FLUVO Studio — Design e Desenvolvimento Web 3D Ultra-Otimizado" />
+    <img class="brand__mark" src="../public/logo/isotipo-mono.svg" width="28" height="28" fetchpriority="high" decoding="async" alt="Isotipo oficial da FLUVO Studio — Design e Desenvolvimento Web 3D Ultra-Otimizado" />
     <span class="notranslate" translate="no">FLUVO</span>
   </a>
 
@@ -695,11 +696,11 @@
           <div class="gl-form__row">
             <div class="gl-field">
               <label for="qName">Nome ou Empresa *</label>
-              <input class="gl-input" id="qName" type="text" required placeholder="Ex. João Silva / Aura Studio" />
+              <input class="gl-input" id="qName" name="name" type="text" autocomplete="name" required placeholder="Ex. João Silva / Aura Studio" />
             </div>
             <div class="gl-field">
               <label for="qEmail">E-mail *</label>
-              <input class="gl-input" id="qEmail" type="email" required placeholder="contato@empresa.com" />
+              <input class="gl-input" id="qEmail" name="email" type="email" autocomplete="email" autocorrect="off" autocapitalize="none" spellcheck="false" required placeholder="contato@empresa.com" />
             </div>
           </div>
 
@@ -726,7 +727,7 @@
 
           <div class="gl-field">
             <label for="qMessage">Detalhes do Projeto</label>
-            <textarea class="gl-textarea" id="qMessage" rows="3" placeholder="Conte sobre seus objetivos, seções ou mercado internacional..."></textarea>
+            <textarea class="gl-textarea" id="qMessage" name="details" rows="3" placeholder="Conte sobre seus objetivos, seções ou mercado internacional..."></textarea>
           </div>
 
           <div class="gl-form__actions">
@@ -748,7 +749,7 @@
     <div class="foot__cols">
       <div class="foot__about">
         <p class="foot__brand">
-          <img src="../public/logo/isotipo-mono.svg" width="34" height="34" alt="Isotipo oficial da FLUVO Studio — Design e Desenvolvimento Web 3D Ultra-Otimizado" />
+          <img src="../public/logo/isotipo-mono.svg" width="34" height="34" loading="lazy" decoding="async" alt="Isotipo oficial da FLUVO Studio — Design e Desenvolvimento Web 3D Ultra-Otimizado" />
           <span class="notranslate" translate="no">FLUVO</span>
         </p>
         <p class="body" style="font-size:.9rem;max-width:34ch">
@@ -774,7 +775,7 @@
       </div>
 
       <div>
-        <h5>Arquitetura</h5>
+        <h3>Arquitetura</h3>
         <ul>
           <li><a href="#filosofia">Filosofia 0.8s</a></li>
           <li><a href="#ingenieria">Engenharia 3D</a></li>
@@ -784,7 +785,7 @@
       </div>
 
       <div>
-        <h5>Estúdio</h5>
+        <h3>Estúdio</h3>
         <ul>
           <li><a href="#protocolo">Protocolo 40/30/30</a></li>
           <li><a href="#cotizar">Configurador Web</a></li>
@@ -794,7 +795,7 @@
       </div>
 
       <div>
-        <h5>Legal</h5>
+        <h3>Legal</h3>
         <ul>
           <li><button type="button" data-detail="terms">Marcos &amp; Garantia 30 Dias</button></li>
           <li><button type="button" data-detail="privacy">Política de Privacidade</button></li>
@@ -847,8 +848,8 @@
 </div>
 
 <div id="google_translate_element" class="gt-host" aria-hidden="true"></div>
-<script src="../src/glass-engine.js"></script>
-<script src="../src/i18n.js"></script>
-<script src="../src/app.js"></script>
+<script defer src="../src/glass-engine.js"></script>
+<script defer src="../src/i18n.js"></script>
+<script defer src="../src/app.js"></script>
 </body>
 </html>

@@ -46,8 +46,9 @@ const server = http.createServer(async (req, res) => {
         stat = await fs.stat(filePath);
       }
     } catch {
-      filePath = path.join(__dirname, "index.html");
-      stat = await fs.stat(filePath);
+      res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
+      res.end("Not Found");
+      return;
     }
 
     const ext = path.extname(filePath).toLowerCase();

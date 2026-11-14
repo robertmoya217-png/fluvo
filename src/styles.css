@@ -696,8 +696,12 @@ body {
 .rail__index button {
   font-size: .68rem;
   letter-spacing: .2em;
-  color: rgba(255, 255, 255, .32);
-  padding: .15em 0;
+  color: var(--ink-dim);
+  min-width: 28px;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: .2em .35em;
   text-align: left;
   transition: color .4s, transform .4s var(--ease);
 }
@@ -931,18 +935,28 @@ body {
 .dots {
   display: flex;
   align-items: center;
-  gap: .6rem;
+  gap: .25rem;
 }
 .dots button {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+}
+.dots button::before {
+  content: "";
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, .28);
+  background: rgba(255, 255, 255, .36);
   transition: background .35s, width .35s var(--ease);
 }
-.dots button.is-on {
+.dots button.is-on::before {
   background: var(--ink);
-  width: 26px;
+  width: 22px;
   border-radius: 4px;
 }
 
@@ -1234,6 +1248,7 @@ body {
 @media (min-width: 860px) {
   .foot__cols { grid-template-columns: 1.4fr repeat(3, 1fr); }
 }
+.foot h3,
 .foot h5 {
   margin: 0 0 1.4rem;
   font-size: .68rem;
@@ -1308,7 +1323,7 @@ body {
   font-size: .72rem;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: #6e7880;
+  color: var(--ink-dim);
 }
 .foot__legal-links {
   display: flex;
@@ -1477,6 +1492,15 @@ body {
 [data-reveal-delay="1"] { transition-delay: .1s; }
 [data-reveal-delay="2"] { transition-delay: .2s; }
 [data-reveal-delay="3"] { transition-delay: .3s; }
+
+/* Defer layout and paint cost of far below-the-fold sections until scrolled near */
+#casos,
+#protocolo,
+#cotizar,
+.foot {
+  content-visibility: auto;
+  contain-intrinsic-size: auto none auto 680px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   * {

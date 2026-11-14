@@ -6,20 +6,26 @@
   if (yrEl) yrEl.textContent = new Date().getFullYear();
 
   /* ---- header shrink + solid state ---- */
+  var winH = window.innerHeight || 1;
+  var maxScroll = 1;
+  function refreshScrollMetrics() {
+    winH = window.innerHeight || 1;
+    maxScroll = Math.max(1, document.documentElement.scrollHeight - winH);
+  }
+
   var nav = document.getElementById("nav");
   function onNav() {
     if (!nav) return;
     var y = window.scrollY;
     nav.classList.toggle("is-scrolled", y > 40);
-    nav.classList.toggle("is-solid", y > window.innerHeight * 0.45);
+    nav.classList.toggle("is-solid", y > winH * 0.45);
   }
 
   /* ---- scroll progress ---- */
   var bar = document.getElementById("progress");
   function onProgress() {
     if (!bar) return;
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.transform = "scaleX(" + (h > 0 ? window.scrollY / h : 0) + ")";
+    bar.style.transform = "scaleX(" + Math.min(1, Math.max(0, window.scrollY / maxScroll)) + ")";
   }
 
   /* ---- fullscreen menu ---- */
@@ -149,9 +155,10 @@
   if (idx) {
     railSlides.forEach(function (_, i) {
       var b = document.createElement("button");
+      var num = ("0" + (i + 1)).slice(-2);
       b.type = "button";
-      b.textContent = ("0" + (i + 1)).slice(-2);
-      b.setAttribute("aria-label", "Pilar " + (i + 1));
+      b.textContent = num;
+      b.setAttribute("aria-label", num + " — Pilar " + (i + 1));
       b.addEventListener("click", function () { railGo(i); });
       idx.appendChild(b);
     });
@@ -528,9 +535,13 @@
       ticking = false;
     });
   }
-  window.addEventListener("load", onScroll);
+  refreshScrollMetrics();
+  window.addEventListener("load", function () { refreshScrollMetrics(); onScroll(); });
   window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
+  window.addEventListener("resize", function () { refreshScrollMetrics(); onScroll(); });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { refreshScrollMetrics(); onScroll(); });
+  }
   onScroll();
 
   document.addEventListener("keydown", function (e) {

@@ -27,8 +27,16 @@
 - **Vortex Labs** — Deep-Tech Hardware & Edge Systems Showcase
 - **Nexo Industrial** — Global B2B Supply Chain & Heavy Catalog Platform
 
+## Multilingual Editions & Machine Indexes
+- [FLUVO Studio — Español (Principal)](https://fluvo.org/)
+- [FLUVO Studio — English Edition](https://fluvo.org/en/)
+- [FLUVO Studio — Edição em Português](https://fluvo.org/pt/)
+- [FLUVO Studio — Édition Française](https://fluvo.org/fr/)
+- [FLUVO Studio — Deutsche Ausgabe](https://fluvo.org/de/)
+- [XML Sitemap (Multilingual Hreflang)](https://fluvo.org/sitemap.xml)
+
 ## Worldwide Contact & Service Regions
 - **Area Served:** Worldwide (LATAM, North America, Europe, APAC)
-- **Direct Email:** robertmoya217@gmail.com
-- **WhatsApp Engineering Desk:** https://wa.me/584242220172 (+58 424 222 0172)
-- **Quote Configurator:** https://fluvo.org/#cotizar
+- **Direct Email:** [robertmoya217@gmail.com](mailto:robertmoya217@gmail.com)
+- **WhatsApp Engineering Desk:** [+58 424 222 0172 (WhatsApp)](https://wa.me/584242220172)
+- **Quote Configurator:** [Interactive Scope & Estimate Configurator](https://fluvo.org/#cotizar)

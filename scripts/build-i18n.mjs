@@ -367,15 +367,15 @@ for (const lang of NATIVE_LANGS) {
 
   // 13. Footer & Modal UI
   out = replaceFlexible(out, es.footer.desc, escHtml(t.footer.desc), `${lang}.ft.desc`);
-  out = replaceFlexible(out, `<h5>${es.footer.col1Heading}</h5>`, `<h5>${escHtml(t.footer.col1Heading)}</h5>`, `${lang}.ft.c1`);
+  out = replaceFlexible(out, `<h3>${es.footer.col1Heading}</h3>`, `<h3>${escHtml(t.footer.col1Heading)}</h3>`, `${lang}.ft.c1`);
   es.footer.col1Links.forEach((l, i) => {
     out = replaceFlexible(out, `>${escHtml(l)}</a>`, `>${escHtml(t.footer.col1Links[i])}</a>`, `${lang}.ft.l1.${i}`);
   });
-  out = replaceFlexible(out, `<h5>${es.footer.col2Heading}</h5>`, `<h5>${escHtml(t.footer.col2Heading)}</h5>`, `${lang}.ft.c2`);
+  out = replaceFlexible(out, `<h3>${es.footer.col2Heading}</h3>`, `<h3>${escHtml(t.footer.col2Heading)}</h3>`, `${lang}.ft.c2`);
   es.footer.col2Links.forEach((l, i) => {
     out = replaceFlexible(out, `>${escHtml(l)}</a>`, `>${escHtml(t.footer.col2Links[i])}</a>`, `${lang}.ft.l2.${i}`);
   });
-  out = replaceFlexible(out, `<h5>${es.footer.col3Heading}</h5>`, `<h5>${escHtml(t.footer.col3Heading)}</h5>`, `${lang}.ft.c3`);
+  out = replaceFlexible(out, `<h3>${es.footer.col3Heading}</h3>`, `<h3>${escHtml(t.footer.col3Heading)}</h3>`, `${lang}.ft.c3`);
   es.footer.col3Buttons.forEach((b, i) => {
     out = replaceFlexible(out, `>${escHtml(b)}</button>`, `>${escHtml(t.footer.col3Buttons[i])}</button>`, `${lang}.ft.b3.${i}`);
   });

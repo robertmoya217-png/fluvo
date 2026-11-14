@@ -169,7 +169,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="./src/styles.css" />
 </head>
 <body>
@@ -184,7 +185,7 @@
   </div>
 
   <a class="brand" href="#top" aria-label="FLUVO — Inicio">
-    <img class="brand__mark" src="./public/logo/isotipo-mono.svg" width="28" height="28" alt="Isotipo oficial de FLUVO Studio — Diseño y Desarrollo de Sitios Web 3D Ultra-Optimizados" />
+    <img class="brand__mark" src="./public/logo/isotipo-mono.svg" width="28" height="28" fetchpriority="high" decoding="async" alt="Isotipo oficial de FLUVO Studio — Diseño y Desarrollo de Sitios Web 3D Ultra-Optimizados" />
     <span class="notranslate" translate="no">FLUVO</span>
   </a>
 
@@ -697,11 +698,11 @@
           <div class="gl-form__row">
             <div class="gl-field">
               <label for="qName">Nombre o Empresa *</label>
-              <input class="gl-input" id="qName" type="text" required placeholder="Ej. Juan Pérez / Aura Studio" />
+              <input class="gl-input" id="qName" name="name" type="text" autocomplete="name" required placeholder="Ej. Juan Pérez / Aura Studio" />
             </div>
             <div class="gl-field">
               <label for="qEmail">Correo Electrónico *</label>
-              <input class="gl-input" id="qEmail" type="email" required placeholder="correo@empresa.com" />
+              <input class="gl-input" id="qEmail" name="email" type="email" autocomplete="email" autocorrect="off" autocapitalize="none" spellcheck="false" required placeholder="correo@empresa.com" />
             </div>
           </div>
 
@@ -728,7 +729,7 @@
 
           <div class="gl-field">
             <label for="qMessage">Detalles del Proyecto</label>
-            <textarea class="gl-textarea" id="qMessage" rows="3" placeholder="Cuéntanos sobre tus objetivos, secciones clave o referencias visuales..."></textarea>
+            <textarea class="gl-textarea" id="qMessage" name="details" rows="3" placeholder="Cuéntanos sobre tus objetivos, secciones clave o referencias visuales..."></textarea>
           </div>
 
           <div class="gl-form__actions">
@@ -750,7 +751,7 @@
     <div class="foot__cols">
       <div class="foot__about">
         <p class="foot__brand">
-          <img src="./public/logo/isotipo-mono.svg" width="34" height="34" alt="Isotipo oficial de FLUVO Studio — Diseño y Desarrollo de Sitios Web 3D Ultra-Optimizados" />
+          <img src="./public/logo/isotipo-mono.svg" width="34" height="34" loading="lazy" decoding="async" alt="Isotipo oficial de FLUVO Studio — Diseño y Desarrollo de Sitios Web 3D Ultra-Optimizados" />
           <span class="notranslate" translate="no">FLUVO</span>
         </p>
         <p class="body" style="font-size:.9rem;max-width:34ch">
@@ -776,7 +777,7 @@
       </div>
 
       <div>
-        <h5>Arquitectura</h5>
+        <h3>Arquitectura</h3>
         <ul>
           <li><a href="#filosofia">Filosofía 0.8s</a></li>
           <li><a href="#ingenieria">Ingeniería 3D</a></li>
@@ -786,7 +787,7 @@
       </div>
 
       <div>
-        <h5>Estudio</h5>
+        <h3>Estudio</h3>
         <ul>
           <li><a href="#protocolo">Protocolo 40/30/30</a></li>
           <li><a href="#cotizar">Configurador Web</a></li>
@@ -796,7 +797,7 @@
       </div>
 
       <div>
-        <h5>Legal</h5>
+        <h3>Legal</h3>
         <ul>
           <li><button type="button" data-detail="terms">Hitos &amp; Garantía 30 Días</button></li>
           <li><button type="button" data-detail="privacy">Política de Privacidad</button></li>
@@ -849,8 +850,8 @@
 </div>
 
 <div id="google_translate_element" class="gt-host" aria-hidden="true"></div>
-<script src="./src/glass-engine.js"></script>
-<script src="./src/i18n.js"></script>
-<script src="./src/app.js"></script>
+<script defer src="./src/glass-engine.js"></script>
+<script defer src="./src/i18n.js"></script>
+<script defer src="./src/app.js"></script>
 </body>
 </html>

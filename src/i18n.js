@@ -1746,20 +1746,20 @@
     if (footDesc) footDesc.textContent = t.footer.desc;
     var footCols = document.querySelectorAll(".foot__cols > div");
     if (footCols[1]) {
-      var h5a = footCols[1].querySelector("h5");
+      var h5a = footCols[1].querySelector("h3, h5");
       if (h5a) h5a.textContent = t.footer.col1Heading;
       var la = footCols[1].querySelectorAll("li a");
       t.footer.col1Links.forEach(function (lbl, i) { if (la[i]) la[i].textContent = lbl; });
     }
     if (footCols[2]) {
-      var h5b = footCols[2].querySelector("h5");
+      var h5b = footCols[2].querySelector("h3, h5");
       if (h5b) h5b.textContent = t.footer.col2Heading;
       var lb = footCols[2].querySelectorAll("li a");
       if (lb[0]) lb[0].textContent = t.footer.col2Links[0];
       if (lb[1]) lb[1].textContent = t.footer.col2Links[1];
     }
     if (footCols[3]) {
-      var h5c = footCols[3].querySelector("h5");
+      var h5c = footCols[3].querySelector("h3, h5");
       if (h5c) h5c.textContent = t.footer.col3Heading;
       var lbc = footCols[3].querySelectorAll("li button");
       t.footer.col3Buttons.forEach(function (lbl, i) { if (lbc[i]) lbc[i].textContent = lbl; });

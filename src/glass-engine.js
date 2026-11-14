@@ -196,12 +196,12 @@
     "",
     "  float dTotal = 0.0;",
     "  float hit = 0.0;",
-    "  for (int i = 0; i < 42; i++) {",
+    "  for (int i = 0; i < 28; i++) {",
     "    vec3 p = ro + rd * dTotal;",
     "    float d = mapScene(p);",
     "    if (d < 0.004) { hit = 1.0; break; }",
     "    if (dTotal > 7.5) break;",
-    "    dTotal += d * 0.85;",
+    "    dTotal += d * 0.92;",
     "  }",
     "",
     "  vec3 bg = vec3(0.031, 0.035, 0.043); // #08090b",
@@ -216,18 +216,12 @@
     "    vec3 v = -rd;",
     "    float fresnel = pow(clamp(1.0 - dot(n, v), 0.0, 1.0), 3.2);",
     "",
-    "    // Chromatic optical refraction offsets (dark luxury dispersion)",
+    "    // Chromatic optical refraction (single sample + spectral tint for fast GPU)",
     "    vec3 refDir = reflect(rd, n);",
-    "    vec3 refrR = refract(rd, n, 0.74);",
-    "    vec3 refrG = refract(rd, n, 0.78);",
-    "    vec3 refrB = refract(rd, n, 0.82);",
+    "    vec3 refrDir = refract(rd, n, 0.78);",
     "",
     "    vec3 envRefl = studioEnv(refDir, u_mode, u_time);",
-    "    vec3 envRefr = vec3(",
-    "      studioEnv(refrR, u_mode, u_time).r,",
-    "      studioEnv(refrG, u_mode, u_time).g,",
-    "      studioEnv(refrB, u_mode, u_time).b",
-    "    );",
+    "    vec3 envRefr = studioEnv(refrDir, u_mode, u_time) * vec3(1.04, 1.0, 0.96);",
     "",
     "    vec3 bronzeTint = vec3(0.757, 0.604, 0.357);",
     "    vec3 sharpSpec = pow(max(dot(refDir, normalize(vec3(0.48, 0.78, 0.46))), 0.0), 58.0) * vec3(1.0, 0.97, 0.92);",
@@ -277,6 +271,12 @@
     this.loc = {};
     this.startTime = performance.now();
     this.rafId = null;
+    this.activeUntil = 0;
+    this.lastRenderAt = 0;
+    this.minFrameMs = 32;
+    this.booted = false;
+    this.resizeTimer = null;
+    this.ro = null;
 
     this.initGL();
     this.scanStages();
@@ -287,11 +287,21 @@
   GlassStudioEngine.prototype.initGL = function () {
     try {
       var off = document.createElement("canvas");
-      off.width = 960;
-      off.height = 600;
+      off.width = 480;
+      off.height = 480;
       var opts = { alpha: false, antialias: false, depth: false, stencil: false, powerPreference: "high-performance" };
       var gl = off.getContext("webgl", opts) || off.getContext("experimental-webgl", opts);
       if (!gl) return;
+
+      // Avoid freezing CPU on software rasterizers (SwiftShader / llvmpipe / headless mobile);
+      // use fast architectural 2D optical glass renderer instead.
+      var dbg = gl.getExtension("WEBGL_debug_renderer_info");
+      if (dbg) {
+        var renderer = String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || "");
+        if (/(swiftshader|llvmpipe|softpipe|software|basic render)/i.test(renderer)) {
+          return;
+        }
+      }
 
       var vs = this.compileShader(gl, gl.VERTEX_SHADER, VERT_SRC);
       var fs = this.compileShader(gl, gl.FRAGMENT_SHADER, FRAG_COMMON_HEAD);
@@ -346,11 +356,19 @@
     var self = this;
     var canvases = document.querySelectorAll("canvas[data-shader]");
     var io = new IntersectionObserver(function (entries) {
+      var newlyVisible = false;
       entries.forEach(function (en) {
         var st = en.target._glassStage;
-        if (st) st.visible = en.isIntersecting;
+        if (!st) return;
+        var wasVisible = st.visible;
+        st.visible = en.isIntersecting;
+        if (!wasVisible && en.isIntersecting) newlyVisible = true;
       });
-    }, { rootMargin: "150px 0px" });
+      if (newlyVisible && self.booted) {
+        if (self.reduced) self.renderVisibleOnce();
+        else self.wake(600);
+      }
+    }, { rootMargin: "120px 0px" });
 
     canvases.forEach(function (canvas) {
       var presetName = canvas.getAttribute("data-shader") || "hero-monolith";
@@ -364,12 +382,49 @@
         seed: isNaN(seed) ? 0 : seed,
         mode: modeAttr !== null ? parseFloat(modeAttr) : (isHero ? null : 0),
         isHero: isHero,
-        visible: isHero
+        visible: isHero,
+        w: 0,
+        h: 0
       };
       canvas._glassStage = stage;
       self.stages.push(stage);
       io.observe(canvas);
     });
+
+    if (window.ResizeObserver) {
+      this.ro = new ResizeObserver(function (entries) {
+        var dirty = false;
+        for (var j = 0; j < entries.length; j++) {
+          var en = entries[j];
+          var st = en.target._glassStage;
+          if (!st) continue;
+          var cr = en.contentRect;
+          var w = cr ? cr.width : en.target.clientWidth;
+          var h = cr ? cr.height : en.target.clientHeight;
+          if (w !== st.w || h !== st.h) {
+            st.w = w;
+            st.h = h;
+            if (st.visible) dirty = true;
+          }
+        }
+        if (dirty && self.booted) {
+          if (self.reduced) self.renderVisibleOnce();
+          else self.wake(220);
+        }
+      });
+      canvases.forEach(function (canvas) { self.ro.observe(canvas); });
+    } else {
+      this.measureStages();
+    }
+  };
+
+  GlassStudioEngine.prototype.measureStages = function () {
+    for (var i = 0; i < this.stages.length; i++) {
+      var st = this.stages[i];
+      var rect = st.canvas.getBoundingClientRect();
+      st.w = rect.width;
+      st.h = rect.height;
+    }
   };
 
   GlassStudioEngine.prototype.bindInput = function () {
@@ -377,11 +432,30 @@
     window.addEventListener("pointermove", function (e) {
       self.targetMouseX = (e.clientX / Math.max(window.innerWidth, 1) - 0.5) * 2.0;
       self.targetMouseY = -(e.clientY / Math.max(window.innerHeight, 1) - 0.5) * 2.0;
+      self.wake(1200);
     }, { passive: true });
+    window.addEventListener("pointerdown", function () { self.wake(1200); }, { passive: true });
+    window.addEventListener("wheel", function () { self.wake(900); }, { passive: true });
+    window.addEventListener("touchstart", function () { self.wake(900); }, { passive: true });
+    if (!this.ro) {
+      window.addEventListener("resize", function () {
+        if (self.resizeTimer) clearTimeout(self.resizeTimer);
+        self.resizeTimer = setTimeout(function () {
+          self.measureStages();
+          self.wake(300);
+        }, 120);
+      }, { passive: true });
+    }
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) self.stopLoop();
+      else self.wake(400);
+    });
   };
 
   GlassStudioEngine.prototype.setHeroMode = function (modeIdx) {
     this.heroMode = modeIdx;
+    if (this.reduced) this.renderVisibleOnce();
+    else this.wake(1400);
   };
 
   GlassStudioEngine.prototype.drawFallback2D = function (stage, t) {
@@ -393,47 +467,95 @@
     ctx.fillRect(0, 0, w, h);
 
     var mode = stage.mode !== null ? stage.mode : this.heroMode;
-    var cx = w * 0.52 + this.mouseX * w * 0.06;
-    var cy = h * 0.48 - this.mouseY * h * 0.06;
+    var cx = w * 0.52 + this.mouseX * w * 0.05;
+    var cy = h * 0.48 - this.mouseY * h * 0.05;
     var r = Math.min(w, h) * 0.44;
+    var bronze = "rgba(193,154,91,";
+    var cool = "rgba(244,246,248,";
+    var dim = "rgba(154,164,173,";
 
-    var g = ctx.createRadialGradient(cx - r * 0.25, cy - r * 0.25, r * 0.06, cx, cy, r * 1.15);
+    var aura = ctx.createRadialGradient(cx - r * 0.2, cy - r * 0.25, r * 0.05, cx, cy, r * 1.25);
     if (mode === 1) {
-      g.addColorStop(0, "rgba(193,154,91,0.42)");
-      g.addColorStop(0.5, "rgba(193,154,91,0.10)");
+      aura.addColorStop(0, bronze + "0.34)");
+      aura.addColorStop(0.55, bronze + "0.09)");
     } else if (mode === 2) {
-      g.addColorStop(0, "rgba(244,246,248,0.36)");
-      g.addColorStop(0.5, "rgba(154,164,173,0.12)");
+      aura.addColorStop(0, cool + "0.28)");
+      aura.addColorStop(0.55, dim + "0.10)");
     } else {
-      g.addColorStop(0, "rgba(244,246,248,0.24)");
-      g.addColorStop(0.55, "rgba(193,154,91,0.08)");
+      aura.addColorStop(0, cool + "0.18)");
+      aura.addColorStop(0.5, bronze + "0.07)");
     }
-    g.addColorStop(1, "rgba(8,9,11,0)");
-    ctx.fillStyle = g;
+    aura.addColorStop(1, "rgba(8,9,11,0)");
+    ctx.fillStyle = aura;
     ctx.beginPath();
-    ctx.arc(cx, cy, r * 1.15, 0, Math.PI * 2);
+    ctx.arc(cx, cy, r * 1.25, 0, Math.PI * 2);
     ctx.fill();
 
+    // Sculptural beveled dark optical prism core
+    ctx.save();
+    ctx.translate(cx, cy);
+    var tilt = -0.32 + Math.sin(t * 0.25 + stage.seed) * 0.06 + this.mouseX * 0.08;
+    ctx.rotate(tilt);
+
+    var mw = r * (stage.preset === 0 || stage.preset === 6 ? 0.62 : 0.78);
+    var mh = r * (stage.preset === 0 || stage.preset === 6 ? 1.15 : 0.86);
+    var rad = Math.min(mw, mh) * 0.18;
+
+    ctx.beginPath();
+    if (ctx.roundRect) {
+      ctx.roundRect(-mw * 0.5, -mh * 0.5, mw, mh, rad);
+    } else {
+      ctx.rect(-mw * 0.5, -mh * 0.5, mw, mh);
+    }
+
+    var body = ctx.createLinearGradient(-mw * 0.6, -mh * 0.6, mw * 0.6, mh * 0.6);
+    body.addColorStop(0, mode === 2 ? "rgba(38,44,54,0.86)" : "rgba(22,25,31,0.92)");
+    body.addColorStop(0.45, mode === 1 ? "rgba(42,33,22,0.88)" : "rgba(12,14,18,0.95)");
+    body.addColorStop(1, "rgba(8,9,11,0.98)");
+    ctx.fillStyle = body;
+    ctx.fill();
+
+    var rim = ctx.createLinearGradient(-mw * 0.5, -mh * 0.5, mw * 0.5, mh * 0.5);
+    rim.addColorStop(0, mode === 1 ? bronze + "0.78)" : cool + "0.62)");
+    rim.addColorStop(0.5, dim + "0.18)");
+    rim.addColorStop(1, bronze + "0.52)");
+    ctx.strokeStyle = rim;
+    ctx.lineWidth = Math.max(1.2, w * 0.0022);
+    ctx.stroke();
+
+    // Internal specular studio strip reflection
+    ctx.clip();
+    var strip = ctx.createLinearGradient(-mw * 0.35, -mh * 0.5, mw * 0.15, mh * 0.4);
+    strip.addColorStop(0, cool + (mode === 2 ? "0.24)" : "0.15)"));
+    strip.addColorStop(0.5, "rgba(255,255,255,0)");
+    strip.addColorStop(1, bronze + (mode === 1 ? "0.22)" : "0.10)"));
+    ctx.fillStyle = strip;
+    ctx.fillRect(-mw * 0.5, -mh * 0.5, mw * 0.55, mh);
+    ctx.restore();
+
+    // Secondary orbital Fresnel caustic arc
     ctx.save();
     ctx.translate(cx, cy);
     ctx.rotate(t * 0.12 + stage.seed * 0.8);
-    ctx.strokeStyle = mode === 1 ? "rgba(193,154,91,0.55)" : "rgba(244,246,248,0.38)";
-    ctx.lineWidth = Math.max(1.5, w * 0.002);
+    ctx.strokeStyle = mode === 1 ? bronze + "0.48)" : cool + "0.30)";
+    ctx.lineWidth = Math.max(1, w * 0.0018);
     ctx.beginPath();
-    ctx.ellipse(0, 0, r * 0.62, r * 0.28, 0.35, 0, Math.PI * 2);
+    ctx.ellipse(0, 0, r * 0.72, r * 0.30, 0.35, 0, Math.PI * 2);
     ctx.stroke();
     ctx.restore();
   };
 
   GlassStudioEngine.prototype.renderStage = function (stage, t) {
     var canvas = stage.canvas;
-    var rect = canvas.getBoundingClientRect();
-    if (rect.width < 16 || rect.height < 16) return;
+    var rw = stage.w;
+    var rh = stage.h;
+    if (rw < 16 || rh < 16) return;
 
     // Smart adaptive resolution for crisp raymarching without burning mobile GPU
-    var scale = stage.isHero ? Math.min(window.devicePixelRatio || 1, 1.0) : 0.7;
-    var targetW = Math.max(240, Math.min(stage.isHero ? 1120 : 680, Math.round(rect.width * scale)));
-    var targetH = Math.max(180, Math.min(stage.isHero ? 760 : 680, Math.round(rect.height * scale)));
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.0);
+    var scale = stage.isHero ? (rw <= 768 ? 0.65 * dpr : 0.85 * dpr) : 0.6;
+    var targetW = Math.max(200, Math.min(stage.isHero ? 880 : 540, Math.round(rw * scale)));
+    var targetH = Math.max(150, Math.min(stage.isHero ? 600 : 540, Math.round(rh * scale)));
 
     if (canvas.width !== targetW || canvas.height !== targetH) {
       canvas.width = targetW;
@@ -445,6 +567,7 @@
       return;
     }
 
+    var tDrawStart = performance.now();
     var gl = this.gl;
     var off = this.glCanvas;
     if (off.width < targetW || off.height < targetH) {
@@ -465,14 +588,58 @@
     if (stage.ctx) {
       stage.ctx.drawImage(off, 0, off.height - targetH, targetW, targetH, 0, 0, targetW, targetH);
     }
+
+    // Automatic runtime safety downgrade if single WebGL frame blocks main thread >150ms
+    if (performance.now() - tDrawStart > 150) {
+      this.glReady = false;
+      this.drawFallback2D(stage, t);
+    }
   };
 
-  GlassStudioEngine.prototype.tick = function () {
-    var self = this;
-    this.mouseX += (this.targetMouseX - this.mouseX) * 0.06;
-    this.mouseY += (this.targetMouseY - this.mouseY) * 0.06;
+  GlassStudioEngine.prototype.stopLoop = function () {
+    if (this.rafId !== null) {
+      cancelAnimationFrame(this.rafId);
+      this.rafId = null;
+    }
+  };
 
-    var t = this.reduced ? 1.2 : (performance.now() - this.startTime) * 0.001;
+  GlassStudioEngine.prototype.renderVisibleOnce = function () {
+    for (var i = 0; i < this.stages.length; i++) {
+      var st = this.stages[i];
+      if (!st.visible) continue;
+      this.renderStage(st, 1.2);
+    }
+  };
+
+  GlassStudioEngine.prototype.wake = function (durationMs) {
+    if (this.reduced || document.hidden) return;
+    var until = performance.now() + (durationMs || 1000);
+    if (until > this.activeUntil) this.activeUntil = until;
+    if (this.rafId === null) {
+      var self = this;
+      this.rafId = requestAnimationFrame(function (ts) { self.tick(ts); });
+    }
+  };
+
+  GlassStudioEngine.prototype.tick = function (now) {
+    var self = this;
+    this.rafId = null;
+    if (document.hidden) return;
+
+    var ts = typeof now === "number" ? now : performance.now();
+    if (!this.reduced && this.lastRenderAt && ts - this.lastRenderAt < this.minFrameMs) {
+      if (ts < this.activeUntil) {
+        this.rafId = requestAnimationFrame(function (n) { self.tick(n); });
+      }
+      return;
+    }
+
+    var t0 = performance.now();
+    this.lastRenderAt = ts;
+    this.mouseX += (this.targetMouseX - this.mouseX) * 0.14;
+    this.mouseY += (this.targetMouseY - this.mouseY) * 0.14;
+
+    var t = this.reduced ? 1.2 : 1.2 + (ts - this.startTime) * 0.001;
 
     var rendered = 0;
     for (var i = 0; i < this.stages.length; i++) {
@@ -480,20 +647,23 @@
       if (!st.visible) continue;
       this.renderStage(st, t);
       rendered++;
-      if (rendered >= 6) break;
+      if (rendered >= 4) break;
     }
 
-    if (!this.reduced) {
-      this.rafId = requestAnimationFrame(function () { self.tick(); });
+    var elapsed = performance.now() - t0;
+    if (elapsed > 60) {
+      this.minFrameMs = Math.min(200, Math.max(this.minFrameMs, Math.round(elapsed * 1.8)));
+    }
+
+    if (!this.reduced && performance.now() < this.activeUntil) {
+      this.rafId = requestAnimationFrame(function (n) { self.tick(n); });
     }
   };
 
   GlassStudioEngine.prototype.start = function () {
-    var self = this;
-    if (this.reduced) {
-      this.tick();
-    } else {
-      this.rafId = requestAnimationFrame(function () { self.tick(); });
+    this.booted = true;
+    if (!this.ro) {
+      this.tick(performance.now());
     }
   };
 
