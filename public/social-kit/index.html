@@ -1,0 +1,1519 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLUVO — Kit Oficial Facebook &amp; Instagram (Blanco · Dorado Champán · Platino)</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="../logo/isotipo-mono.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet" /></noscript>
+  <style>
+    :root {
+      --alabaster: #FAF8F5;
+      --pure: #FFFFFF;
+      --pearl: #F3EFE7;
+      --platinum: #E4E7EC;
+      --platinum-deep: #C5CBD4;
+      --slate: #646D7A;
+      --ink: #161920;
+      --ink-soft: #3B424F;
+      --gold-light: #E8CF99;
+      --gold: #C19A5B;
+      --gold-deep: #967035;
+      --ok: #15803D;
+      --ok-bg: #ECFDF5;
+      --warn: #B91C1C;
+      --warn-bg: #FEF2F2;
+      --radius-lg: 28px;
+      --shadow-lux: 0 28px 70px rgba(22, 25, 32, 0.08), 0 4px 18px rgba(193, 154, 91, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #F7F5F0 0%, #ECEEF2 100%);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Hide shared SVG defs without display:none so metallic gradients always paint */
+    .svg-defs-host {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    /* ================= STUDIO CHROME ================= */
+    .studio-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--platinum);
+      padding: 16px 32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .studio-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .studio-brand h1 {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .studio-brand p {
+      margin: 2px 0 0;
+      font-size: 13px;
+      color: var(--slate);
+    }
+    .studio-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .studio-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--platinum-deep);
+      background: var(--pure);
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color .2s, transform .2s;
+    }
+    .studio-btn:hover {
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
+    .studio-btn--gold {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      border-color: var(--gold-deep);
+      color: #1A140B;
+      font-weight: 600;
+    }
+
+    .studio-main {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 40px 28px 96px;
+    }
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      font-weight: 600;
+    }
+    .section-h2 {
+      margin: 0 0 28px;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+    .board-card {
+      background: var(--pure);
+      border: 1px solid var(--platinum);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(22, 25, 32, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .board-card--wide {
+      grid-column: 1 / -1;
+    }
+    .board-card__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .board-card__label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .board-card__meta {
+      font-size: 12px;
+      color: var(--slate);
+      margin-top: 2px;
+    }
+    .preview-stage {
+      width: 100%;
+      background: #F4F5F7;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--platinum);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .preview-inner {
+      transform-origin: top left;
+      position: relative;
+    }
+
+    /* ================= EXPORT MODE ================= */
+    html.is-export,
+    html.is-export body {
+      background: transparent !important;
+      overflow: hidden !important;
+      width: 100%;
+      height: 100%;
+    }
+    html.is-export .studio-header,
+    html.is-export .studio-main,
+    html.is-export .copy-hub {
+      display: none !important;
+    }
+    .artboard.is-export-target {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      margin: 0 !important;
+      transform: none !important;
+      z-index: 9999 !important;
+      box-shadow: none !important;
+    }
+
+    /* ================= SHARED ARTBOARD LUXURY TOKENS ================= */
+    .artboard {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(232, 207, 153, 0.28) 0%, rgba(255, 255, 255, 0) 48%),
+        radial-gradient(circle at 12% 88%, rgba(197, 203, 212, 0.34) 0%, rgba(255, 255, 255, 0) 52%),
+        linear-gradient(145deg, #FFFFFF 0%, #FAF8F3 52%, #F1F3F6 100%);
+      color: var(--ink);
+      font-family: "Inter Tight", sans-serif;
+      user-select: none;
+    }
+    .artboard::after {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(193, 154, 91, 0.28);
+      border-radius: 22px;
+      pointer-events: none;
+    }
+    .ab-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(22, 25, 32, 0.032) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(22, 25, 32, 0.032) 1px, transparent 1px);
+      background-size: 54px 54px;
+      pointer-events: none;
+    }
+    .ab-kicker {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      width: fit-content;
+      gap: 10px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(193, 154, 91, 0.45);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      box-shadow: 0 6px 20px rgba(193, 154, 91, 0.12);
+    }
+    .gold-grad-text {
+      background: linear-gradient(135deg, #8F692D 0%, #C19A5B 48%, #9B7438 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .ab-brandbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .ab-brandmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .ab-brandmark span {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.34em;
+      color: var(--ink);
+    }
+    .ab-badge-plat {
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #FFFFFF, #ECEFF4);
+      border: 1px solid var(--platinum-deep);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .ab-footcta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 28px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #F7F4EC 100%);
+      border: 1px solid rgba(193, 154, 91, 0.42);
+      box-shadow: 0 12px 32px rgba(22, 25, 32, 0.05);
+    }
+    .ab-footcta__url {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+    .ab-footcta__sub {
+      font-size: 17px;
+      color: var(--slate);
+      margin-top: 3px;
+    }
+    .ab-footcta__pill {
+      padding: 14px 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #DFC287 0%, #C19A5B 55%, #A37B3E 100%);
+      color: #19140B;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(193, 154, 91, 0.34);
+    }
+
+    /* Decorative 3D White Quartz + Gold Glass Prism SVG wrapper */
+    .glass-monolith-deco {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ================= 1. AVATAR (1080 x 1080) ================= */
+    #art-avatar {
+      width: 1080px;
+      height: 1080px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 50% 44%, #FFFFFF 0%, #FAF7F1 55%, #E7E9EE 100%);
+    }
+    #art-avatar::after {
+      inset: 38px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(193, 154, 91, 0.42);
+    }
+    .avatar-dial {
+      position: relative;
+      width: 780px;
+      height: 780px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 28%, #FFFFFF 0%, #FBF9F4 58%, #E6E8ED 100%);
+      border: 2px solid rgba(193, 154, 91, 0.58);
+      box-shadow:
+        inset 0 18px 40px rgba(255, 255, 255, 0.95),
+        inset 0 -22px 45px rgba(193, 154, 91, 0.14),
+        0 30px 90px rgba(22, 25, 32, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+    .avatar-dial::before {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border-radius: 50%;
+      border: 1px solid rgba(197, 203, 212, 0.9);
+      pointer-events: none;
+    }
+    .avatar-dial::after {
+      content: "";
+      position: absolute;
+      inset: 52px;
+      border-radius: 50%;
+      border: 1px dashed rgba(193, 154, 91, 0.42);
+      pointer-events: none;
+    }
+    .avatar-wordmark {
+      font-size: 62px;
+      font-weight: 700;
+      letter-spacing: 0.42em;
+      padding-left: 0.42em;
+      color: var(--ink);
+    }
+    .avatar-sub {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.34em;
+      padding-left: 0.34em;
+      color: var(--gold-deep);
+      text-transform: uppercase;
+      margin-top: -12px;
+    }
+
+    /* ================= 2. FACEBOOK COVER (1640 x 624) ================= */
+    #art-cover {
+      width: 1640px;
+      height: 624px;
+      padding: 52px 72px 54px 80px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 44px;
+      align-items: center;
+    }
+    .cover-left {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .cover-top {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .cover-title {
+      margin: 0;
+      font-size: 60px;
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .cover-sub {
+      margin: 0;
+      font-size: 23px;
+      line-height: 1.4;
+      color: var(--ink-soft);
+      max-width: 780px;
+    }
+    .cover-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .cover-pill {
+      padding: 11px 20px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      border: 1px solid var(--platinum-deep);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      box-shadow: 0 4px 12px rgba(22, 25, 32, 0.04);
+    }
+    .cover-pill--gold {
+      background: linear-gradient(135deg, #FBF4E4 0%, #F4E6C5 100%);
+      border-color: rgba(193, 154, 91, 0.7);
+      color: #705121;
+    }
+    /* Leave bottom-left 220px safe zone clear for Facebook Page profile avatar overlap */
+    .cover-cta-safe {
+      margin-left: 190px;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      gap: 16px;
+      padding: 13px 24px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(193, 154, 91, 0.55);
+      box-shadow: 0 10px 26px rgba(22, 25, 32, 0.06);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      width: fit-content;
+    }
+    .cover-right {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cover-prism-card {
+      width: 470px;
+      height: 496px;
+      border-radius: 30px;
+      background: linear-gradient(155deg, rgba(255, 255, 255, 0.96) 0%, rgba(244, 240, 232, 0.92) 55%, rgba(228, 231, 236, 0.94) 100%);
+      border: 1.5px solid rgba(193, 154, 91, 0.45);
+      box-shadow: var(--shadow-lux);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 36px;
+      gap: 22px;
+      position: relative;
+    }
+    .cover-score-ring {
+      display: flex;
+      gap: 14px;
+    }
+    .mini-gauge {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 3px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(193, 154, 91, 0.16);
+    }
+    .mini-gauge strong {
+      font-size: 24px;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .mini-gauge span {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-top: 3px;
+    }
+
+    /* ================= 3..8 FEED POSTS (1080 x 1350) ================= */
+    .ab-post {
+      width: 1080px;
+      height: 1350px;
+      padding: 64px 68px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .post-head {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      position: relative;
+      z-index: 2;
+    }
+    .post-h1 {
+      margin: 0;
+      font-size: 62px;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .post-lead {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.38;
+      color: var(--ink-soft);
+    }
+    .post-body {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin: auto 0;
+    }
+
+    /* Post 1 Comparison Cards */
+    .cmp-card {
+      border-radius: 26px;
+      padding: 32px 36px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--platinum-deep);
+      box-shadow: 0 12px 34px rgba(22, 25, 32, 0.04);
+    }
+    .cmp-card--old {
+      background: linear-gradient(135deg, #F5F6F8 0%, #EBEEF2 100%);
+      border-color: #D2D6DD;
+    }
+    .cmp-card--fluvo {
+      background: linear-gradient(145deg, #FFFFFF 0%, #FDFBF6 58%, #F4ECDC 100%);
+      border: 2px solid var(--gold);
+      box-shadow: var(--shadow-lux);
+    }
+    .cmp-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .cmp-tag {
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .cmp-tag--bad { background: var(--warn-bg); color: var(--warn); border: 1px solid #FECACA; }
+    .cmp-tag--ok { background: var(--ok-bg); color: var(--ok); border: 1px solid #A7F3D0; }
+    .cmp-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .cmp-metric {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--platinum);
+      border-radius: 18px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    .cmp-card--fluvo .cmp-metric {
+      border-color: rgba(193, 154, 91, 0.45);
+      background: #FFFFFF;
+    }
+    .cmp-metric strong {
+      display: block;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+    .cmp-metric span {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--slate);
+      margin-top: 6px;
+    }
+
+    /* Post 2 Hero Figure + 40/30/30 Stepper */
+    .zero-hero-box {
+      border-radius: 30px;
+      padding: 46px 40px;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FAF5EA 100%);
+      border: 2px solid rgba(193, 154, 91, 0.65);
+      box-shadow: var(--shadow-lux);
+      text-align: center;
+    }
+    .zero-big {
+      font-size: 122px;
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+    .zero-sub {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 14px;
+    }
+    .steps-403030 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .step-card {
+      border-radius: 22px;
+      padding: 28px 24px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--platinum-deep);
+      box-shadow: 0 10px 26px rgba(22, 25, 32, 0.04);
+    }
+    .step-card > strong {
+      display: block;
+      font-size: 46px;
+      font-weight: 700;
+      color: var(--gold-deep);
+    }
+    .step-card h4 {
+      margin: 8px 0 8px;
+      font-size: 21px;
+      color: var(--ink);
+    }
+    .step-card p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.4;
+      color: var(--slate);
+    }
+
+    /* Posts 3A - 3D Niche Architectural Feature Grid */
+    .niche-showcase {
+      border-radius: 30px;
+      padding: 40px;
+      background: linear-gradient(150deg, #FFFFFF 0%, #F9F5EC 60%, #ECEEF3 100%);
+      border: 2px solid rgba(193, 154, 91, 0.55);
+      box-shadow: var(--shadow-lux);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .niche-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .niche-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--platinum);
+    }
+    .niche-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #1A140B;
+      font-size: 16px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .niche-item h4 {
+      margin: 0 0 4px;
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .niche-item p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.38;
+      color: var(--slate);
+    }
+    .niche-card-art {
+      height: 100%;
+      min-height: 360px;
+      border-radius: 24px;
+      background: linear-gradient(160deg, #FFFFFF 0%, #F3EEE3 100%);
+      border: 1.5px solid rgba(193, 154, 91, 0.45);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      text-align: center;
+      gap: 16px;
+    }
+    .niche-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .niche-stat {
+      border-radius: 20px;
+      padding: 24px 20px;
+      background: #FFFFFF;
+      border: 1px solid var(--platinum-deep);
+      text-align: center;
+    }
+    .niche-stat strong {
+      display: block;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .niche-stat span {
+      display: block;
+      font-size: 16px;
+      color: var(--slate);
+      margin-top: 6px;
+    }
+
+    /* ================= COPY & STRATEGY HUB ================= */
+    .copy-hub {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 24px;
+    }
+    .copy-card {
+      background: var(--pure);
+      border: 1px solid var(--platinum);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(22, 25, 32, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .copy-card h3 {
+      margin: 0;
+      font-size: 18px;
+      color: var(--ink);
+    }
+    .copy-pre {
+      margin: 0;
+      padding: 16px;
+      border-radius: 12px;
+      background: #FAF8F4;
+      border: 1px solid #EAE3D5;
+      font-family: inherit;
+      font-size: 14px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      color: var(--ink-soft);
+    }
+    .copy-btn {
+      align-self: flex-start;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(193, 154, 91, 0.6);
+      background: linear-gradient(135deg, #FBF5E8, #F4E8CA);
+      color: #6B4D1E;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared Metallic SVG Definitions (Must NOT be display:none) -->
+  <svg class="svg-defs-host" aria-hidden="true">
+    <defs>
+      <linearGradient id="platDarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#3C4350" />
+        <stop offset="50%" stop-color="#191D24" />
+        <stop offset="100%" stop-color="#2F3642" />
+      </linearGradient>
+      <linearGradient id="goldChampGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#E7CD95" />
+        <stop offset="50%" stop-color="#C19A5B" />
+        <stop offset="100%" stop-color="#9A7234" />
+      </linearGradient>
+      <linearGradient id="quartzFacet" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.95)" />
+        <stop offset="50%" stop-color="rgba(228,231,236,0.55)" />
+        <stop offset="100%" stop-color="rgba(193,154,91,0.35)" />
+      </linearGradient>
+      <!-- Exact Official FLUVO Tri-Ribbon Vector Paths from public/logo/isotipo-mono.svg -->
+      <symbol id="fluvo-emblem" viewBox="35 50 430 400">
+        <path d="M 171.1 97.7 C 184.1 97.4 199.9 98.8 212.9 102.1 C 225.9 105.5 232.9 107.0 249.0 117.8 C 265.0 128.5 292.7 155.8 309.0 166.6 C 325.3 177.5 334.1 177.4 346.7 182.8 C 345.1 190.8 344.7 199.6 341.9 206.6 C 339.2 213.6 334.7 219.6 330.4 224.8 C 326.0 230.1 320.7 233.8 315.8 238.4 C 305.5 233.4 298.2 233.1 284.8 223.4 C 271.4 213.8 247.9 190.4 235.3 180.6 C 222.6 170.7 218.3 168.5 208.8 164.5 C 199.2 160.6 188.7 157.3 178.1 156.9 C 167.5 156.6 154.7 158.9 145.2 162.5 C 135.7 166.1 127.6 172.2 121.0 178.5 C 114.4 184.9 109.1 193.8 105.5 200.6 C 101.8 207.5 100.4 212.7 99.0 219.5 C 97.7 226.4 101.6 230.6 97.3 241.5 C 93.1 252.4 78.8 271.0 73.5 285.0 C 68.2 299.0 68.3 311.9 65.7 325.3 C 59.8 313.5 52.3 301.6 47.9 289.7 C 43.6 277.8 40.9 265.9 39.9 254.0 C 38.8 242.0 39.3 230.5 41.6 218.0 C 44.0 205.5 48.8 190.7 54.1 179.1 C 59.4 167.4 65.3 157.7 73.3 148.0 C 81.3 138.3 91.8 128.3 102.1 121.0 C 112.3 113.7 123.4 108.0 135.0 104.1 C 146.5 100.3 158.1 98.0 171.1 97.7 Z" fill="url(#platDarkGrad)" />
+        <path d="M 291.1 54.9 C 306.7 54.2 322.4 56.2 337.0 61.0 C 351.6 65.8 366.8 74.1 378.6 83.7 C 390.5 93.2 400.9 105.7 408.2 118.5 C 415.5 131.3 420.4 147.1 422.6 160.5 C 424.7 173.9 423.4 186.9 421.1 198.7 C 418.8 210.5 419.3 215.7 408.8 231.3 C 398.3 246.8 369.4 277.2 358.2 292.1 C 347.1 306.9 345.7 315.3 341.9 320.3 C 338.2 325.4 341.8 322.4 335.5 322.5 C 329.2 322.6 313.5 323.2 304.1 320.9 C 294.7 318.7 287.6 312.9 279.3 308.8 C 283.9 299.3 283.4 293.0 293.2 280.1 C 303.0 267.2 328.0 243.6 337.9 231.3 C 347.8 219.0 349.4 215.8 352.6 206.3 C 355.8 196.8 357.6 184.4 356.8 174.5 C 356.0 164.6 351.8 154.4 347.9 146.9 C 343.9 139.4 339.0 134.3 333.4 129.5 C 327.7 124.6 320.9 120.4 313.7 117.8 C 306.5 115.1 298.1 113.6 290.1 113.5 C 282.1 113.4 274.3 119.4 265.5 117.3 C 256.7 115.1 247.2 105.2 237.1 100.7 C 227.0 96.1 215.7 93.4 205.0 89.8 C 217.7 81.7 228.8 71.5 243.2 65.7 C 257.5 59.9 275.4 55.7 291.1 54.9 Z M 171.5 166.6 C 177.9 167.1 192.8 168.3 201.5 171.5 C 210.3 174.7 216.5 181.1 224.0 185.9 C 219.5 195.8 220.4 202.2 210.3 215.8 C 200.2 229.3 173.8 254.7 163.6 267.2 C 153.5 279.8 152.8 282.2 149.4 291.1 C 146.0 299.9 142.7 310.3 143.1 320.6 C 143.6 330.8 148.3 344.6 152.1 352.7 C 155.9 360.8 160.0 364.3 166.0 369.1 C 172.0 373.8 180.5 378.7 188.3 381.3 C 196.1 383.9 204.1 385.3 212.9 384.7 C 221.7 384.0 231.6 376.2 241.3 377.4 C 250.9 378.5 260.6 387.8 270.8 391.7 C 281.0 395.5 291.9 397.5 302.4 400.4 C 291.3 409.4 282.0 420.1 269.0 427.3 C 255.9 434.4 239.2 440.8 224.3 443.5 C 209.3 446.2 190.7 444.6 179.2 443.5 C 167.7 442.4 163.2 439.9 155.3 436.7 C 147.4 433.6 138.6 429.1 131.6 424.6 C 124.5 420.2 119.0 415.9 113.0 410.0 C 107.0 404.2 101.4 400.4 95.7 389.8 C 89.9 379.2 81.4 359.7 78.4 346.3 C 75.4 332.9 75.8 321.6 77.8 309.2 C 79.7 296.8 85.6 281.7 90.0 271.8 C 94.4 261.8 95.0 261.0 104.1 249.4 C 113.3 237.8 135.0 215.7 144.8 202.1 C 154.7 188.6 157.0 179.4 163.1 168.1 C 165.9 167.6 165.1 166.0 171.5 166.6 Z" fill="url(#goldChampGrad)" />
+        <path d="M 433.0 168.5 C 437.4 175.4 442.5 180.9 446.3 189.3 C 450.1 197.6 453.6 207.1 455.9 218.4 C 458.2 229.8 459.8 246.5 459.8 257.4 C 459.8 268.3 458.3 274.7 455.8 283.9 C 453.4 293.1 449.8 303.3 444.9 312.6 C 440.1 322.0 433.2 331.9 426.7 339.9 C 420.2 347.8 413.6 354.2 405.9 360.3 C 398.2 366.5 392.0 371.9 380.5 376.9 C 369.1 382.0 352.8 388.9 337.4 390.7 C 322.0 392.4 302.8 390.7 288.2 387.3 C 273.6 384.0 266.1 380.7 249.6 370.7 C 233.1 360.7 205.0 336.7 189.1 327.3 C 173.2 317.8 165.7 318.5 154.0 314.1 C 156.9 304.9 157.3 295.7 162.6 286.5 C 167.9 277.3 178.0 268.1 185.7 259.0 C 196.2 263.9 204.2 264.8 217.3 273.6 C 230.5 282.5 252.4 303.0 264.8 311.9 C 277.1 320.8 280.9 323.5 291.7 327.0 C 302.4 330.5 317.5 333.4 329.1 332.8 C 340.6 332.3 352.1 328.0 360.9 324.0 C 369.6 320.0 375.5 315.1 381.5 308.8 C 387.5 302.5 393.1 294.9 396.9 286.1 C 400.6 277.4 400.2 265.2 404.0 256.3 C 407.8 247.3 415.4 240.2 419.5 232.4 C 423.6 224.6 426.2 220.4 428.5 209.7 C 430.7 199.0 431.5 182.2 433.0 168.5 Z" fill="url(#platDarkGrad)" />
+      </symbol>
+      <!-- Decorative 3D White Quartz & Gold Glass Prism -->
+      <symbol id="quartz-prism" viewBox="0 0 360 360">
+        <circle cx="180" cy="180" r="154" fill="none" stroke="url(#goldChampGrad)" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.7" />
+        <ellipse cx="180" cy="180" rx="142" ry="62" transform="rotate(-24 180 180)" fill="none" stroke="#9AA3B0" stroke-width="1.5" opacity="0.6" />
+        <rect x="108" y="64" width="144" height="232" rx="34" transform="rotate(-14 180 180)" fill="url(#quartzFacet)" stroke="url(#goldChampGrad)" stroke-width="2.5" />
+        <rect x="132" y="90" width="96" height="180" rx="22" transform="rotate(-14 180 180)" fill="rgba(255,255,255,0.65)" stroke="#D4DAE3" stroke-width="1.5" />
+        <line x1="115" y1="115" x2="225" y2="235" stroke="url(#goldChampGrad)" stroke-width="2" opacity="0.65" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="studio-header">
+    <div class="studio-brand">
+      <svg width="34" height="34" aria-hidden="true"><use href="#fluvo-emblem" /></svg>
+      <div>
+        <h1>FLUVO Social Media Kit · Blanco, Dorado Champán &amp; Platino</h1>
+        <p>8 piezas gráficas en resolución nativa PNG + Copys, Bio, Guiones Reels y WhatsApp listos para lanzar</p>
+      </div>
+    </div>
+    <nav class="studio-nav">
+      <a class="studio-btn" href="#piezas">8 Piezas Gráficas</a>
+      <a class="studio-btn" href="#copys">Copys &amp; Anuncios</a>
+      <a class="studio-btn studio-btn--gold" href="https://fluvo.org/#cotizar" target="_blank" rel="noopener">Abrir fluvo.org</a>
+    </nav>
+  </header>
+
+  <main class="studio-main" id="piezas">
+    <p class="section-title">Identidad &amp; Anuncios Meta Ads / Facebook / Instagram</p>
+    <h2 class="section-h2">Piezas Gráficas Oficiales (Resolución Nativa Lista para Subir)</h2>
+
+    <div class="board-grid">
+      <!-- 1. FACEBOOK COVER (WIDE) -->
+      <article class="board-card board-card--wide">
+        <div class="board-card__top">
+          <div>
+            <div class="board-card__label">02 · Portada Oficial Facebook (1640 × 624 px)</div>
+            <div class="board-card__meta">Zona inferior izquierda libre para el avatar móvil/escritorio · Listo en PNG HD</div>
+          </div>
+          <a class="studio-btn studio-btn--gold" href="./02-portada-facebook-1640x624.png" download>Descargar PNG (1640×624)</a>
+        </div>
+        <div class="preview-stage" data-w="1640" data-h="624">
+          <div class="preview-inner">
+            <div class="artboard" id="art-cover">
+              <div class="ab-grid"></div>
+              <div class="cover-left">
+                <div class="cover-top">
+                  <svg width="56" height="56"><use href="#fluvo-emblem" /></svg>
+                  <span class="ab-kicker">FLUVO STUDIO · INGENIERÍA WEB 3D</span>
+                </div>
+                <h2 class="cover-title">CRISTAL LÍQUIDO <span class="gold-grad-text">EN CARGA REAL</span></h2>
+                <p class="cover-sub">Sitios web corporativos, landing pages 3D y catálogos B2B ultrarrápidos diseñados para posicionar y vender desde cualquier móvil sin pagar servidor.</p>
+                <div class="cover-pills">
+                  <span class="cover-pill cover-pill--gold">100 / 100 GOOGLE SCORE</span>
+                  <span class="cover-pill">CARGA 0.8s</span>
+                  <span class="cover-pill">$0 USD / MES SERVIDOR</span>
+                  <span class="cover-pill">PROTOCOLO 40 / 30 / 30</span>
+                </div>
+                <div class="cover-cta-safe">
+                  <span>fluvo.org/#cotizar</span>
+                  <span style="color:var(--gold-deep)">·</span>
+                  <span>WhatsApp +58 424 222 0172</span>
+                  <span style="color:var(--gold-deep)">·</span>
+                  <span>ES · EN · PT · FR · DE</span>
+                </div>
+              </div>
+              <div class="cover-right">
+                <div class="cover-prism-card">
+                  <svg width="210" height="210"><use href="#quartz-prism" /></svg>
+                  <div class="cover-score-ring">
+                    <div class="mini-gauge"><strong>100</strong><span>Perf</span></div>
+                    <div class="mini-gauge"><strong>100</strong><span>A11y</span></div>
+                    <div class="mini-gauge"><strong>100</strong><span>SEO</span></div>
+                    <div class="mini-gauge"><strong>3/3</strong><span>IA</span></div>
+                  </div>
+                  <div style="font-size:15px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--gold-deep);">ARQUITECTURA ESTÁTICA CERTIFICADA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. PROFILE AVATAR -->
+      <article class="board-card">
+        <div class="board-card__top">
+          <div>
+            <div class="board-card__label">01 · Foto de Perfil Oficial (1080 × 1080 px)</div>
+            <div class="board-card__meta">Facebook, Instagram &amp; WhatsApp Business</div>
+          </div>
+          <a class="studio-btn studio-btn--gold" href="./01-foto-perfil-fluvo-1080x1080.png" download>Descargar PNG</a>
+        </div>
+        <div class="preview-stage" data-w="1080" data-h="1080">
+          <div class="preview-inner">
+            <div class="artboard" id="art-avatar">
+              <div class="avatar-dial">
+                <svg width="430" height="430"><use href="#fluvo-emblem" /></svg>
+                <div class="avatar-wordmark">FLUVO</div>
+                <div class="avatar-sub">WEB 3D ENGINEERING</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. POST 1: AUDIT 100/100 -->
+      <article class="board-card">
+        <div class="board-card__top">
+          <div>
+            <div class="board-card__label">03 · Post 1: Auditoría Rojo vs. 100/100 (1080 × 1350)</div>
+            <div class="board-card__meta">Formato comparativo directo para anuncios de diagnóstico</div>
+          </div>
+          <a class="studio-btn studio-btn--gold" href="./03-post-1-auditoria-100x100.png" download>Descargar PNG</a>
+        </div>
+        <div class="preview-stage" data-w="1080" data-h="1350">
+          <div class="preview-inner">
+            <div class="artboard ab-post" id="art-post-audit">
+              <div class="ab-grid"></div>
+              <div class="ab-brandbar">
+                <div class="ab-brandmark">
+                  <svg width="48" height="48"><use href="#fluvo-emblem" /></svg>
+                  <span>FLUVO</span>
+                </div>
+                <span class="ab-badge-plat">AUDITORÍA GOOGLE LIGHTHOUSE</span>
+              </div>
+              <div class="post-head">
+                <span class="ab-kicker">FORMATO 01 · PRUEBA TÉCNICA EN VIVO</span>
+                <h2 class="post-h1">Tu web lenta te cuesta clientes <span class="gold-grad-text">todos los días.</span></h2>
+                <p class="post-lead">El 53% de los usuarios móviles abandona si tu sitio tarda más de 3 segundos. Mira la diferencia real en Google PageSpeed Insights:</p>
+              </div>
+              <div class="post-body">
+                <div class="cmp-card cmp-card--old">
+                  <div class="cmp-title">
+                    <span>Web Tradicional (WordPress / Wix / Plantillas)</span>
+                    <span class="cmp-tag cmp-tag--bad">LENTA Y COSTOSA</span>
+                  </div>
+                  <div class="cmp-metrics">
+                    <div class="cmp-metric"><strong style="color:var(--warn)">58</strong><span>Rendimiento</span></div>
+                    <div class="cmp-metric"><strong style="color:var(--warn)">6.4s</strong><span>Carga Móvil</span></div>
+                    <div class="cmp-metric"><strong>$85</strong><span>Servidor / mes</span></div>
+                    <div class="cmp-metric"><strong>40+</strong><span>Plugins Frágiles</span></div>
+                  </div>
+                </div>
+                <div class="cmp-card cmp-card--fluvo">
+                  <div class="cmp-title">
+                    <span>Arquitectura FLUVO Studio (3D Vidrio Líquido)</span>
+                    <span class="cmp-tag cmp-tag--ok">CERTIFICADA 100%</span>
+                  </div>
+                  <div class="cmp-metrics">
+                    <div class="cmp-metric"><strong style="color:var(--ok)">100</strong><span>Rendimiento</span></div>
+                    <div class="cmp-metric"><strong style="color:var(--ok)">100</strong><span>SEO &amp; Acceso</span></div>
+                    <div class="cmp-metric"><strong class="gold-grad-text">0.8s</strong><span>Carga Real</span></div>
+                    <div class="cmp-metric"><strong class="gold-grad-text">$0</strong><span>Servidor / mes</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="ab-footcta">
+                <div>
+                  <div class="ab-footcta__url">fluvo.org/#cotizar</div>
+                  <div class="ab-footcta__sub">Diagnóstico técnico y cotización directa · WhatsApp +58 424 222 0172</div>
+                </div>
+                <span class="ab-footcta__pill">Auditar Mi Web</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. POST 2: ZERO MONTHLY HOSTING -->
+      <article class="board-card">
+        <div class="board-card__top">
+          <div>
+            <div class="board-card__label">04 · Post 2: Cero Mensualidades + 40/30/30 (1080 × 1350)</div>
+            <div class="board-card__meta">Enfoque financiero para dueños de negocio</div>
+          </div>
+          <a class="studio-btn studio-btn--gold" href="./04-post-2-cero-mensualidad.png" download>Descargar PNG</a>
+        </div>
+        <div class="preview-stage" data-w="1080" data-h="1350">
+          <div class="preview-inner">
+            <div class="artboard ab-post" id="art-post-hosting">
+              <div class="ab-grid"></div>
+              <div class="ab-brandbar">
+                <div class="ab-brandmark">
+                  <svg width="48" height="48"><use href="#fluvo-emblem" /></svg>
+                  <span>FLUVO</span>
+                </div>
+                <span class="ab-badge-plat">PROPIEDAD TOTAL DE ACTIVOS</span>
+              </div>
+              <div class="post-head">
+                <span class="ab-kicker">FORMATO 02 · INVERSIÓN ÚNICA INTELIGENTE</span>
+                <h2 class="post-h1">Deja de pagar alquiler mensual por <span class="gold-grad-text">una web lenta.</span></h2>
+                <p class="post-lead">Desplegamos sobre infraestructura global Edge sin bases de datos pesadas. Tu sitio vuela y es 100% tuyo.</p>
+              </div>
+              <div class="post-body">
+                <div class="zero-hero-box">
+                  <div class="zero-big gold-grad-text">$0 USD / MES</div>
+                  <div class="zero-sub">EN SERVIDORES, LICENCIAS NI MANTENIMIENTO FORZOSO</div>
+                </div>
+                <div class="steps-403030">
+                  <div class="step-card">
+                    <strong>40%</strong>
+                    <h4>Inicio de Obra</h4>
+                    <p>Diseño a medida blanco/platino u obsidiana y arquitectura 3D.</p>
+                  </div>
+                  <div class="step-card">
+                    <strong>30%</strong>
+                    <h4>Avance en Vivo</h4>
+                    <p>Apruebas cada detalle en URL privada probando velocidad real.</p>
+                  </div>
+                  <div class="step-card">
+                    <strong>30%</strong>
+                    <h4>Entrega + Garantía</h4>
+                    <p>Publicación 100/100 y <strong>30 días de garantía técnica</strong>.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ab-footcta">
+                <div>
+                  <div class="ab-footcta__url">fluvo.org/#cotizar</div>
+                  <div class="ab-footcta__sub">Desde $300 USD pago único · Respuesta en menos de 2 horas</div>
+                </div>
+                <span class="ab-footcta__pill">Cotizar Hoy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. POST 3A: REAL ESTATE -->
+      <article class="board-card">
+        <div class="board-card__top">
+          <div>
+            <div class="board-card__label">05 · Nicho 3A: Inmobiliarias &amp; Arquitectura (1080 × 1350)</div>
+            <div class="board-card__meta">Segmento desarrolladoras, bienes raíces y constructoras</div>
+          </div>
+          <a class="studio-btn studio-btn--gold" href="./05-post-3a-inmobiliarias-arquitectura.png" download>Descargar PNG</a>
+        </div>
+        <div class="preview-stage" data-w="1080" data-h="1350">
+          <div class="preview-inner">
+            <div class="artboard ab-post" id="art-post-real-estate">
+              <div class="ab-grid"></div>
+              <div class="ab-brandbar">
+                <div class="ab-brandmark">
+                  <svg width="48" height="48"><use href="#fluvo-emblem" /></svg>
+                  <span>FLUVO</span>
+                </div>
+                <span class="ab-badge-plat">SECTOR INMOBILIARIO &amp; ARQUITECTURA</span>
+              </div>
+              <div class="post-head">
+                <span class="ab-kicker">FORMATO 03A · CONSTRUCCIÓN Y DESARROLLOS</span>
+                <h2 class="post-h1">Proyectos de alto valor exigen <span class="gold-grad-text">presencia de lujo.</span></h2>
+                <p class="post-lead">Si un comprador abre tu brochure desde su teléfono y tarda 6 segundos, perdiste el lead.</p>
+              </div>
+              <div class="post-body">
+                <div class="niche-showcase">
+                  <div class="niche-list">
+                    <div class="niche-item">
+                      <span class="niche-num">01</span>
+                      <div>
+                        <h4>Showcase 3D Cristal &amp; Mármol</h4>
+                        <p>Estética arquitectónica que transmite exclusividad en torres, villas y desarrollos.</p>
+                      </div>
+                    </div>
+                    <div class="niche-item">
+                      <span class="niche-num">02</span>
+                      <div>
+                        <h4>WhatsApp Directo con Ficha</h4>
+                        <p>El inversor elige tipología y agenda visita en 1 toque sin formularios rotos.</p>
+                      </div>
+                    </div>
+                    <div class="niche-item">
+                      <span class="niche-num">03</span>
+                      <div>
+                        <h4>Listo para Brokers Extranjeros</h4>
+                        <p>Ediciones nativas en Español, Inglés, Portugués, Francés y Alemán.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="niche-card-art">
+                    <svg width="210" height="210"><use href="#quartz-prism" /></svg>
+                    <div style="font-size:20px;font-weight:700;color:var(--ink);">LANDING INMOBILIARIA 3D</div>
+                    <div style="font-size:16px;color:var(--gold-deep);font-weight:600;">RESPUESTA 0.8s EN 4G</div>
+                  </div>
+                </div>
+                <div class="niche-stat-row">
+                  <div class="niche-stat"><strong>100</strong><span>SEO Local y Global</span></div>
+                  <div class="niche-stat"><strong class="gold-grad-text">5</strong><span>Idiomas Nativos</span></div>
+                  <div class="niche-stat"><strong>$0/m</strong><span>Hosting de por vida</span></div>
+                </div>
+              </div>
+              <div class="ab-footcta">
+                <div>
+                  <div class="ab-footcta__url">fluvo.org/#cotizar</div>
+                  <div class="ab-footcta__sub">Desarrollo listo en días · Protocolo 40/30/30 · +58 424 222 0172</div>
+                </div>
+                <span class="ab-footcta__pill">Ver Propuesta</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. POST 3B: CLINICS -->
+      <article class="board-card">
+        <div class="board-card__top">
+          <div>
+            <div class="board-card__label">06 · Nicho 3B: Clínicas Estéticas &amp; Odontológicas (1080 × 1350)</div>
+            <div class="board-card__meta">Estética blanco-platino ideal para medicina privada</div>
+          </div>
+          <a class="studio-btn studio-btn--gold" href="./06-post-3b-clinicas-estetica.png" download>Descargar PNG</a>
+        </div>
+        <div class="preview-stage" data-w="1080" data-h="1350">
+          <div class="preview-inner">
+            <div class="artboard ab-post" id="art-post-clinics">
+              <div class="ab-grid"></div>
+              <div class="ab-brandbar">
+                <div class="ab-brandmark">
+                  <svg width="48" height="48"><use href="#fluvo-emblem" /></svg>
+                  <span>FLUVO</span>
+                </div>
+                <span class="ab-badge-plat">SECTOR SALUD &amp; ESTÉTICA PREMIUM</span>
+              </div>
+              <div class="post-head">
+                <span class="ab-kicker">FORMATO 03B · CLÍNICAS &amp; ESPECIALISTAS</span>
+                <h2 class="post-h1">Precisión clínica e imagen <span class="gold-grad-text">impecable al instante.</span></h2>
+                <p class="post-lead">Tus pacientes evalúan la higiene y nivel de tu clínica antes de escribirte. Conviértelo en citas reales.</p>
+              </div>
+              <div class="post-body">
+                <div class="niche-showcase">
+                  <div class="niche-list">
+                    <div class="niche-item">
+                      <span class="niche-num">01</span>
+                      <div>
+                        <h4>Diseño Clínico Blanco &amp; Oro</h4>
+                        <p>Composición limpia, sobria y luminosa que eleva el valor percibido de cada consulta.</p>
+                      </div>
+                    </div>
+                    <div class="niche-item">
+                      <span class="niche-num">02</span>
+                      <div>
+                        <h4>Cita por WhatsApp Precalificada</h4>
+                        <p>Botones interactivos por tratamiento y sede listos para recepción.</p>
+                      </div>
+                    </div>
+                    <div class="niche-item">
+                      <span class="niche-num">03</span>
+                      <div>
+                        <h4>#1 en Búsquedas de Google</h4>
+                        <p>Velocidad 100/100 y Schema médico/corporativo para superar a otras clínicas.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="niche-card-art">
+                    <svg width="210" height="210"><use href="#quartz-prism" /></svg>
+                    <div style="font-size:20px;font-weight:700;color:var(--ink);">WEB CLÍNICA DE AUTORIDAD</div>
+                    <div style="font-size:16px;color:var(--gold-deep);font-weight:600;">ALTA CONVERSIÓN MÓVIL</div>
+                  </div>
+                </div>
+                <div class="niche-stat-row">
+                  <div class="niche-stat"><strong>0.8s</strong><span>Apertura desde Ads</span></div>
+                  <div class="niche-stat"><strong class="gold-grad-text">100</strong><span>Score Accesibilidad</span></div>
+                  <div class="niche-stat"><strong>30 días</strong><span>Garantía FLUVO</span></div>
+                </div>
+              </div>
+              <div class="ab-footcta">
+                <div>
+                  <div class="ab-footcta__url">fluvo.org/#cotizar</div>
+                  <div class="ab-footcta__sub">Convierte más tráfico de Instagram y Google en pacientes · +58 424 222 0172</div>
+                </div>
+                <span class="ab-footcta__pill">Agendar Demo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. POST 3C: LEGAL & CONSULTING -->
+      <article class="board-card">
+        <div class="board-card__top">
+          <div>
+            <div class="board-card__label">07 · Nicho 3C: Bufetes Legales &amp; Consultoras (1080 × 1350)</div>
+            <div class="board-card__meta">Enfoque institucional, seguridad y multi-idioma</div>
+          </div>
+          <a class="studio-btn studio-btn--gold" href="./07-post-3c-bufetes-consultoras.png" download>Descargar PNG</a>
+        </div>
+        <div class="preview-stage" data-w="1080" data-h="1350">
+          <div class="preview-inner">
+            <div class="artboard ab-post" id="art-post-legal">
+              <div class="ab-grid"></div>
+              <div class="ab-brandbar">
+                <div class="ab-brandmark">
+                  <svg width="48" height="48"><use href="#fluvo-emblem" /></svg>
+                  <span>FLUVO</span>
+                </div>
+                <span class="ab-badge-plat">FIRMAS LEGALES &amp; CONSULTORÍA</span>
+              </div>
+              <div class="post-head">
+                <span class="ab-kicker">FORMATO 03C · AUTORIDAD INTERNACIONAL</span>
+                <h2 class="post-h1">Sobriedad ejecutiva en <span class="gold-grad-text">5 idiomas nativos.</span></h2>
+                <p class="post-lead">Proyecta confianza ante clientes corporativos y fondos internacionales con arquitectura estática impenetrable.</p>
+              </div>
+              <div class="post-body">
+                <div class="niche-showcase">
+                  <div class="niche-list">
+                    <div class="niche-item">
+                      <span class="niche-num">01</span>
+                      <div>
+                        <h4>Cero Bases de Datos Vulnerables</h4>
+                        <p>Sin WordPress ni plugins que comprometan la reputación de tu firma ante hackeos.</p>
+                      </div>
+                    </div>
+                    <div class="niche-item">
+                      <span class="niche-num">02</span>
+                      <div>
+                        <h4>ES · EN · PT · FR · DE Indexados</h4>
+                        <p>URLs independientes por país para captar inversión extranjera y clientes B2B.</p>
+                      </div>
+                    </div>
+                    <div class="niche-item">
+                      <span class="niche-num">03</span>
+                      <div>
+                        <h4>Leíble por IA (ChatGPT / Gemini)</h4>
+                        <p>Incluye índice semántico <strong>llms.txt</strong> para que los buscadores con IA recomienden tu firma.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="niche-card-art">
+                    <svg width="210" height="210"><use href="#quartz-prism" /></svg>
+                    <div style="font-size:20px;font-weight:700;color:var(--ink);">ESTÁNDAR CORPORATIVO</div>
+                    <div style="font-size:16px;color:var(--gold-deep);font-weight:600;">ES · EN · PT · FR · DE</div>
+                  </div>
+                </div>
+                <div class="niche-stat-row">
+                  <div class="niche-stat"><strong>100</strong><span>Prácticas y Seguridad</span></div>
+                  <div class="niche-stat"><strong class="gold-grad-text">3/3</strong><span>Navegación Agéntica</span></div>
+                  <div class="niche-stat"><strong>$0/m</strong><span>Servidor Global CDN</span></div>
+                </div>
+              </div>
+              <div class="ab-footcta">
+                <div>
+                  <div class="ab-footcta__url">fluvo.org/#cotizar</div>
+                  <div class="ab-footcta__sub">Moderniza la firma con estándar bancario y 100/100 SEO · +58 424 222 0172</div>
+                </div>
+                <span class="ab-footcta__pill">Solicitar Cotización</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8. POST 3D: INDUSTRIAL B2B -->
+      <article class="board-card">
+        <div class="board-card__top">
+          <div>
+            <div class="board-card__label">08 · Nicho 3D: Catálogos Industriales &amp; B2B (1080 × 1350)</div>
+            <div class="board-card__meta">Segmento manufactura, maquinaria, logística y exportación</div>
+          </div>
+          <a class="studio-btn studio-btn--gold" href="./08-post-3d-catalogos-industriales-b2b.png" download>Descargar PNG</a>
+        </div>
+        <div class="preview-stage" data-w="1080" data-h="1350">
+          <div class="preview-inner">
+            <div class="artboard ab-post" id="art-post-industrial">
+              <div class="ab-grid"></div>
+              <div class="ab-brandbar">
+                <div class="ab-brandmark">
+                  <svg width="48" height="48"><use href="#fluvo-emblem" /></svg>
+                  <span>FLUVO</span>
+                </div>
+                <span class="ab-badge-plat">INDUSTRIA B2B &amp; EXPORTADORAS</span>
+              </div>
+              <div class="post-head">
+                <span class="ab-kicker">FORMATO 03D · CATÁLOGOS TÉCNICOS</span>
+                <h2 class="post-h1">Catálogos industriales con <span class="gold-grad-text">cotizador instantáneo.</span></h2>
+                <p class="post-lead">Deja atrás los PDF pesados de 40 MB. Muestra tus líneas, fichas técnicas y capta RFQ en segundos.</p>
+              </div>
+              <div class="post-body">
+                <div class="niche-showcase">
+                  <div class="niche-list">
+                    <div class="niche-item">
+                      <span class="niche-num">01</span>
+                      <div>
+                        <h4>Fichas Técnicas Sin Lag Móvil</h4>
+                        <p>Ingenieros y gerentes de compras consultan capacidades directo desde planta.</p>
+                      </div>
+                    </div>
+                    <div class="niche-item">
+                      <span class="niche-num">02</span>
+                      <div>
+                        <h4>SEO Mundial B2B (Hreflang + XML)</h4>
+                        <p>Posiciona tus productos en LATAM, EE.UU. y Europa en 5 idiomas.</p>
+                      </div>
+                    </div>
+                    <div class="niche-item">
+                      <span class="niche-num">03</span>
+                      <div>
+                        <h4>Configurador RFQ a Correo y WA</h4>
+                        <p>Cada solicitud llega estructurada con especificaciones, volumen y empresa.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="niche-card-art">
+                    <svg width="210" height="210"><use href="#quartz-prism" /></svg>
+                    <div style="font-size:20px;font-weight:700;color:var(--ink);">CATÁLOGO B2B EN RED EDGE</div>
+                    <div style="font-size:16px;color:var(--gold-deep);font-weight:600;">MUNDO ENTERO · CERO PDF LENTO</div>
+                  </div>
+                </div>
+                <div class="niche-stat-row">
+                  <div class="niche-stat"><strong>0.8s</strong><span>En Redes Móviles</span></div>
+                  <div class="niche-stat"><strong class="gold-grad-text">100</strong><span>SEO Internacional</span></div>
+                  <div class="niche-stat"><strong>40/30/30</strong><span>Pago por Hitos</span></div>
+                </div>
+              </div>
+              <div class="ab-footcta">
+                <div>
+                  <div class="ab-footcta__url">fluvo.org/#cotizar</div>
+                  <div class="ab-footcta__sub">Escala tus ventas industriales B2B sin mensualidades · +58 424 222 0172</div>
+                </div>
+                <span class="ab-footcta__pill">Digitalizar Catálogo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- COPYWRITING & META CAMPAIGN HUB -->
+    <section id="copys">
+      <p class="section-title">Textos Persuasivos, Segmentación &amp; Guiones</p>
+      <h2 class="section-h2">Centro de Copys para Copiar y Pegar</h2>
+
+      <div class="copy-hub">
+        <article class="copy-card">
+          <h3>Configuración de Página (Facebook &amp; Instagram)</h3>
+          <pre class="copy-pre" id="copy-bio">Nombre: FLUVO Studio — Ingeniería Web 3D &amp; Vidrio Líquido
+Categoría: Diseño web · Consultoría tecnológica · Agencia digital
+Biografía corta (IG / FB Intro):
+Diseñamos sitios web 3D en carga real (0.8s) con puntuación 100/100 en Google.
+$0 USD/mes en servidor · 5 idiomas · Protocolo 40/30/30.
+Cotiza directo: fluvo.org/#cotizar
+
+Sitio web principal: https://fluvo.org/#cotizar
+WhatsApp Business: +58 424 222 0172 (https://wa.me/584242220172)
+Correo oficial: robertmoya217@gmail.com</pre>
+          <button class="copy-btn" type="button" data-copy="copy-bio">Copiar Bio y Datos</button>
+        </article>
+
+        <article class="copy-card">
+          <h3>Anuncio Formato 1 — Auditoría en Vivo (Rojo vs. 100/100)</h3>
+          <pre class="copy-pre" id="copy-ad1">El 53% de tus clientes móviles cierra tu página si tarda más de 3 segundos en abrir.
+
+Mientras la mayoría de las agencias entrega plantillas pesadas de WordPress que marcan 50–60 en Google y te cobran mensualidades de servidor, en FLUVO construimos ingeniería web estática con acabados 3D que carga en 0.8s.
+
+Resultados auditables hoy mismo en Google PageSpeed Insights:
+✅ 100 Rendimiento
+✅ 100 Accesibilidad
+✅ 100 Prácticas recomendadas
+✅ 100 SEO mundial
+✅ $0 USD al mes en servidor
+
+¿Quieres ver cuánto saca tu web actual frente a nuestra arquitectura? Escríbenos por WhatsApp o configura tu proyecto en 1 minuto.
+
+Titular del enlace: Web 3D 100/100 en Google — $0/mes Servidor
+CTA recomendado: Cotizar ahora / Enviar mensaje a WhatsApp</pre>
+          <button class="copy-btn" type="button" data-copy="copy-ad1">Copiar Anuncio 1</button>
+        </article>
+
+        <article class="copy-card">
+          <h3>Anuncio Formato 2 — Cero Mensualidad + Protocolo 40/30/30</h3>
+          <pre class="copy-pre" id="copy-ad2">¿Por qué sigues pagando $40 a $120 USD al mes por un hosting lento y mantenimiento de plugins?
+
+En FLUVO desarrollamos tu web corporativa o landing 3D con tecnología estática desplegada en red Edge global:
+🔹 Carga en 0.8s en cualquier celular
+🔹 $0 USD de mensualidad de servidor para siempre
+🔹 Sin bases de datos vulnerables a hackeos
+🔹 Pago seguro por hitos: 40% inicio · 30% avance en vivo · 30% contra entrega + 30 días de garantía técnica.
+
+Proyectos desde $300 USD pago único. Pide tu cotización directa aquí: https://fluvo.org/#cotizar</pre>
+          <button class="copy-btn" type="button" data-copy="copy-ad2">Copiar Anuncio 2</button>
+        </article>
+
+        <article class="copy-card">
+          <h3>Anuncio Formato 3 (Adaptado a los 4 Nichos Rentables)</h3>
+          <pre class="copy-pre" id="copy-ad3">[NICHO A · INMOBILIARIA]
+Tus desarrollos inmobiliarios valen cientos de miles de dólares; tu web no puede verse como una plantilla lenta. Creamos tu Showcase 3D en 5 idiomas para compradores locales e inversores extranjeros con reserva directa a WhatsApp.
+
+[NICHO B · CLÍNICAS ESTÉTICAS / ODONTOLOGÍA]
+El paciente juzga la precisión de tu clínica en los primeros 3 segundos. Estética blanco y oro platino, carga instantánea desde Instagram Ads y agenda directa a recepción.
+
+[NICHO C · BUFETES Y CONSULTORAS]
+Proyecta autoridad institucional en 5 idiomas (ES/EN/PT/FR/DE) con sitio estático imbatible en seguridad y optimizado para ChatGPT Search y Google.
+
+[NICHO D · INDUSTRIA Y CATÁLOGOS B2B]
+Cambia el PDF pesado de 40 MB por un catálogo técnico interactivo con cotizador RFQ directo a tu equipo de ingeniería.</pre>
+          <button class="copy-btn" type="button" data-copy="copy-ad3">Copiar Anuncios por Nicho</button>
+        </article>
+
+        <article class="copy-card">
+          <h3>Guion de Reel / Video Corto (15–20 segundos)</h3>
+          <pre class="copy-pre" id="copy-reel">0–3s (Gancho visual): Graba la pantalla de tu teléfono abriendo una web común (lenta, en rojo/naranja en PageSpeed) y desliza hacia fluvo.org marcando 100 / 100 / 100 / 100.
+Texto en pantalla: "Por qué tu web actual pierde clientes en móvil"
+3–12s: Muestra cómo fluvo.org abre al instante, interactúa con los modos 3D y cambia de idioma.
+Voz / Subtítulo: "Mientras una plantilla tarda 6 segundos y te cobra hosting cada mes, en FLUVO entregamos ingeniería 3D en 0.8 segundos y $0 de mensualidad de servidor."
+12–18s (Cierre): Muestra el configurador #cotizar.
+CTA: "Pide tu auditoría gratis por WhatsApp o en fluvo.org"</pre>
+          <button class="copy-btn" type="button" data-copy="copy-reel">Copiar Guion Reel</button>
+        </article>
+
+        <article class="copy-card">
+          <h3>Guion de Cierre Rápido por WhatsApp (+58 424 222 0172)</h3>
+          <pre class="copy-pre" id="copy-wa">1. Respuesta inmediata (&lt;15 min):
+"¡Hola [Nombre]! Qué gusto saludarte desde FLUVO Studio. ¿Buscas renovar una web actual (para mejorar velocidad/ventas) o construir un proyecto desde cero?"
+
+2. Si ya tienen web (Cierre por Auditoría):
+"Pásame tu dominio y en 60 segundos le corro una auditoría de Google móvil para mostrarte exactamente dónde estás perdiendo clientes y cómo lo llevamos a 100/100."
+
+3. Presentación de propuesta:
+"Trabajamos con nuestro Protocolo 40/30/30: 40% al iniciar, 30% cuando apruebas la versión en vivo, 30% al publicar en tu dominio (con 30 días de garantía y $0/mes en servidor). ¿Te gustaría que empecemos con una landing 3D ($300–$600 USD) o web corporativa completa?"</pre>
+          <button class="copy-btn" type="button" data-copy="copy-wa">Copiar Guion WhatsApp</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var exportId = params.get("export");
+      if (exportId) {
+        document.documentElement.classList.add("is-export");
+        var target = document.getElementById(exportId);
+        if (target) {
+          target.classList.add("is-export-target");
+          document.body.appendChild(target);
+        }
+        return;
+      }
+
+      function fitStages() {
+        var stages = document.querySelectorAll(".preview-stage");
+        stages.forEach(function (st) {
+          var nw = Number(st.getAttribute("data-w") || 1080);
+          var nh = Number(st.getAttribute("data-h") || 1080);
+          var inner = st.querySelector(".preview-inner");
+          if (!inner) return;
+          var avail = st.clientWidth;
+          var scale = Math.min(1, avail / nw);
+          inner.style.width = nw + "px";
+          inner.style.height = nh + "px";
+          inner.style.transform = "scale(" + scale + ")";
+          st.style.height = Math.round(nh * scale) + "px";
+        });
+      }
+
+      window.addEventListener("resize", fitStages);
+      window.addEventListener("load", fitStages);
+      fitStages();
+
+      document.querySelectorAll("[data-copy]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var el = document.getElementById(btn.getAttribute("data-copy"));
+          if (!el || !navigator.clipboard) return;
+          navigator.clipboard.writeText(el.textContent).then(function () {
+            var old = btn.textContent;
+            btn.textContent = "Copiado ✓";
+            setTimeout(function () { btn.textContent = old; }, 1600);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
