@@ -58,6 +58,8 @@
     });
   }
 
+  var isCrawler = /googlebot|bingbot|yandex|duckduckbot|baiduspider|applebot|slurp|oai-searchbot|gptbot|claudebot|perplexitybot|facebookexternalhit|twitterbot|linkedinbot/i.test(navigator.userAgent || "");
+
   /* ---- scroll reveals ---- */
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
@@ -69,7 +71,7 @@
   }, { rootMargin: "0px 0px -10% 0px", threshold: 0.12 });
 
   document.querySelectorAll("[data-reveal]").forEach(function (el) {
-    if (el.getBoundingClientRect().top < window.innerHeight) {
+    if (reduce || isCrawler || el.getBoundingClientRect().top < window.innerHeight) {
       requestAnimationFrame(function () { el.classList.add("in"); });
     } else {
       io.observe(el);
@@ -118,7 +120,7 @@
   var oio = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
       if (en.isIntersecting) {
-        if (reduce) {
+        if (reduce || isCrawler) {
           en.target.querySelectorAll(".odo__strip").forEach(function (s) { s.style.transition = "none"; });
         }
         runOdo(en.target);
@@ -126,7 +128,14 @@
       }
     });
   }, { threshold: 0.5 });
-  odos.forEach(function (el) { oio.observe(el); });
+  odos.forEach(function (el) {
+    if (isCrawler) {
+      el.querySelectorAll(".odo__strip").forEach(function (s) { s.style.transition = "none"; });
+      runOdo(el);
+    } else {
+      oio.observe(el);
+    }
+  });
 
   /* ---- stepped 3D engineering rail ---- */
   var rail = document.getElementById("ingenieria");

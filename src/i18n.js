@@ -37,11 +37,12 @@
   var TRANSLATIONS = {
     es: {
       htmlLang: "es",
-      title: "FLUVO — Sitios Web 3D con Vidrio Fluido Ultra-Optimizados",
-      description: "FLUVO Studio crea sitios web 3D interactivos con vidrio fluido, carga sub-segundo (0.8s), 99/100 en Lighthouse móvil y arquitectura Edge sin costo mensual de servidor.",
+      title: "FLUVO — Diseño y Desarrollo Web 3D Ultra-Rápido | Sitios Corporativos",
+      description: "FLUVO Studio diseña y desarrolla páginas web corporativas, landing pages 3D con vidrio fluido y catálogos B2B que cargan en 0.8s (99/100 Lighthouse móvil) sin costo mensual de servidor.",
       nav: {
         links: ["Ingeniería", "Casos", "Cotizar"],
         brandAria: "FLUVO — Inicio",
+        brandImgAlt: "Isotipo oficial de FLUVO Studio — Diseño y Desarrollo de Sitios Web 3D Ultra-Optimizados",
         burgerAria: "Abrir menú"
       },
       menu: {
@@ -53,7 +54,7 @@
       hero: {
         eyebrow: "FLUVO.ORG · INGENIERÍA WEB 3D & VIDRIO FLUIDO",
         titleHtml: "Cristal líquido<br>en carga real",
-        copy: "Sitios web 3D con vidrio fluido y arquitectura estática ultra-optimizada. Diseñados para abrir al instante en cualquier pantalla móvil sin servidores costosos ni latencia.",
+        copy: "Diseño y desarrollo de páginas web rápidas para empresas, landing pages 3D con vidrio fluido y catálogos B2B que abren al instante en cualquier móvil sin costo mensual de servidor.",
         ctaPrimary: "Iniciar Proyecto",
         ctaSecondary: "Explorar Arquitectura",
         modesLabel: "Material Óptico 3D",
@@ -249,7 +250,8 @@
         col2Links: ["Protocolo 40/30/30", "Configurador Web"],
         col3Heading: "Legal",
         col3Buttons: ["Hitos & Garantía 30 Días", "Política de Privacidad"],
-        col3Links: ["Sitemap XML", "Robots.txt"],
+        col3Links: ["Sitemap XML", "Robots.txt", "Índice Semántico IA (LLMs.txt)"],
+        footLangsAria: "Ediciones internacionales de FLUVO",
         legalButtons: ["Términos", "Privacidad"]
       },
       modalUi: {
@@ -325,11 +327,12 @@
 
     en: {
       htmlLang: "en",
-      title: "FLUVO — Ultra-Optimized Liquid-Glass 3D Websites",
-      description: "FLUVO Studio engineers interactive 3D liquid-glass websites with sub-second loading (0.8s), 99/100 mobile Lighthouse scores, and zero monthly server fees on global Edge CDNs.",
+      title: "FLUVO — Fast 3D Web Design & Corporate Websites | Liquid Glass",
+      description: "FLUVO Studio designs and builds fast corporate websites, 3D liquid-glass landing pages, and interactive B2B catalogs with 0.8s loading, 99/100 mobile Lighthouse, and $0/month server hosting.",
       nav: {
         links: ["Engineering", "Work", "Quote"],
         brandAria: "FLUVO — Home",
+        brandImgAlt: "Official FLUVO Studio emblem — Ultra-Optimized 3D Web Design & Corporate Websites",
         burgerAria: "Open menu"
       },
       menu: {
@@ -341,7 +344,7 @@
       hero: {
         eyebrow: "FLUVO.ORG · 3D WEB ENGINEERING & LIQUID GLASS",
         titleHtml: "Liquid crystal<br>in real load",
-        copy: "Interactive 3D liquid-glass websites backed by ultra-light static Edge architecture. Built to launch instantly on every mobile screen with zero latency or costly servers.",
+        copy: "Fast custom web design and development for companies, 3D liquid-glass landing pages, and B2B catalogs engineered to open instantly on mobile with $0/month server costs.",
         ctaPrimary: "Start Project",
         ctaSecondary: "Explore Architecture",
         modesLabel: "3D Optical Material",
@@ -537,7 +540,8 @@
         col2Links: ["40/30/30 Protocol", "Web Configurator"],
         col3Heading: "Legal",
         col3Buttons: ["Milestones & 30-Day Warranty", "Privacy Policy"],
-        col3Links: ["Sitemap XML", "Robots.txt"],
+        col3Links: ["Sitemap XML", "Robots.txt", "AI Semantic Index (LLMs.txt)"],
+        footLangsAria: "FLUVO international editions",
         legalButtons: ["Terms", "Privacy"]
       },
       modalUi: {
@@ -613,11 +617,12 @@
 
     pt: {
       htmlLang: "pt",
-      title: "FLUVO — Sites 3D com Vidro Fluido Ultra-Otimizados",
-      description: "A FLUVO Studio cria sites 3D interativos com vidro fluido, carregamento sub-segundo (0,8s), 99/100 no Lighthouse móvel e arquitetura Edge sem custo mensal de servidor.",
+      title: "FLUVO — Design e Desenvolvimento Web 3D Rápido | Sites Corporativos",
+      description: "A FLUVO Studio projeta e desenvolve sites corporativos rápidos, landing pages 3D com vidro fluido e catálogos B2B com carregamento em 0,8s, 99/100 no Lighthouse móvel e zero custo mensal de servidor.",
       nav: {
         links: ["Engenharia", "Casos", "Orçamento"],
         brandAria: "FLUVO — Início",
+        brandImgAlt: "Isotipo oficial da FLUVO Studio — Design e Desenvolvimento Web 3D Ultra-Otimizado",
         burgerAria: "Abrir menu"
       },
       menu: {
@@ -629,7 +634,7 @@
       hero: {
         eyebrow: "FLUVO.ORG · ENGENHARIA WEB 3D & VIDRO FLUIDO",
         titleHtml: "Cristal líquido<br>em carga real",
-        copy: "Sites 3D com vidro fluido e arquitetura estática ultra-otimizada. Projetados para abrir instantaneamente em qualquer tela móvel sem servidores caros nem latência.",
+        copy: "Design e desenvolvimento de sites rápidos para empresas, landing pages 3D com vidro fluido e catálogos B2B projetados para abrir instantaneamente no celular sem custo mensal de servidor.",
         ctaPrimary: "Iniciar Projeto",
         ctaSecondary: "Explorar Arquitetura",
         modesLabel: "Material Óptico 3D",
@@ -825,7 +830,8 @@
         col2Links: ["Protocolo 40/30/30", "Configurador Web"],
         col3Heading: "Legal",
         col3Buttons: ["Marcos & Garantia 30 Dias", "Política de Privacidade"],
-        col3Links: ["Sitemap XML", "Robots.txt"],
+        col3Links: ["Sitemap XML", "Robots.txt", "Índice Semântico IA (LLMs.txt)"],
+        footLangsAria: "Edições internacionais da FLUVO",
         legalButtons: ["Termos", "Privacidade"]
       },
       modalUi: {
@@ -901,11 +907,12 @@
 
     fr: {
       htmlLang: "fr",
-      title: "FLUVO — Sites Web 3D en Verre Fluide Ultra-Optimisés",
-      description: "FLUVO Studio conçoit des sites web 3D interactifs en verre fluide avec chargement sous la seconde (0,8s), 99/100 sur Lighthouse mobile et hébergement Edge sans frais mensuels.",
+      title: "FLUVO — Création et Développement Web 3D Rapide | Sites Corporate",
+      description: "FLUVO Studio conçoit et développe des sites web d'entreprise rapides, landing pages 3D en verre fluide et catalogues B2B chargeant en 0,8s (99/100 Lighthouse mobile) sans frais de serveur mensuels.",
       nav: {
         links: ["Ingénierie", "Projets", "Devis"],
         brandAria: "FLUVO — Accueil",
+        brandImgAlt: "Isotype officiel de FLUVO Studio — Conception et Développement Web 3D Ultra-Optimisé",
         burgerAria: "Ouvrir le menu"
       },
       menu: {
@@ -917,7 +924,7 @@
       hero: {
         eyebrow: "FLUVO.ORG · INGÉNIERIE WEB 3D & VERRE FLUIDE",
         titleHtml: "Cristal liquide<br>à vitesse réelle",
-        copy: "Sites web 3D en verre fluide et architecture statique ultra-optimisée. Conçus pour démarrer instantanément sur chaque écran mobile sans serveurs coûteux ni latence.",
+        copy: "Conception et développement de sites web rapides pour entreprises, landing pages 3D en verre fluide et catalogues B2B conçus pour démarrer instantanément sur mobile sans coûts serveur mensuels.",
         ctaPrimary: "Lancer un Projet",
         ctaSecondary: "Explorer l'Architecture",
         modesLabel: "Matériau Optique 3D",
@@ -1113,7 +1120,8 @@
         col2Links: ["Protocole 40/30/30", "Configurateur Web"],
         col3Heading: "Légal",
         col3Buttons: ["Jalons & Garantie 30 Jours", "Politique de Confidentialité"],
-        col3Links: ["Sitemap XML", "Robots.txt"],
+        col3Links: ["Sitemap XML", "Robots.txt", "Index Sémantique IA (LLMs.txt)"],
+        footLangsAria: "Éditions internationales de FLUVO",
         legalButtons: ["Conditions", "Confidentialité"]
       },
       modalUi: {
@@ -1189,11 +1197,12 @@
 
     de: {
       htmlLang: "de",
-      title: "FLUVO — Ultra-Optimierte Liquid-Glass 3D-Websites",
-      description: "FLUVO Studio entwickelt interaktive 3D-Liquid-Glass-Websites mit Ladezeiten unter 1 Sekunde (0,8s), 99/100 Mobile Lighthouse und Edge-Architektur ohne monatliche Serverkosten.",
+      title: "FLUVO — Schnelles 3D-Webdesign & Unternehmenswebsites | Liquid Glass",
+      description: "FLUVO Studio gestaltet und entwickelt schnelle Unternehmenswebsites, 3D-Liquid-Glass-Landingpages und interaktive B2B-Kataloge mit 0,8s Ladezeit, 99/100 Mobile Lighthouse und $0/Monat Serverkosten.",
       nav: {
         links: ["Technik", "Projekte", "Angebot"],
         brandAria: "FLUVO — Startseite",
+        brandImgAlt: "Offizielles FLUVO Studio Emblem — Ultra-Optimiertes 3D-Webdesign & Unternehmenswebsites",
         burgerAria: "Menü öffnen"
       },
       menu: {
@@ -1205,7 +1214,7 @@
       hero: {
         eyebrow: "FLUVO.ORG · 3D-WEB-ENGINEERING & LIQUID GLASS",
         titleHtml: "Flüssigkristall<br>in Echtzeit-Last",
-        copy: "Interaktive 3D-Liquid-Glass-Websites auf ultra-schlanker statischer Edge-Architektur. Entwickelt für sofortiges Öffnen auf jedem Smartphone ohne Latenz oder Serverkosten.",
+        copy: "Schnelles Webdesign und Entwicklung für Unternehmen, 3D-Liquid-Glass-Landingpages und B2B-Kataloge, entwickelt für sofortiges Laden auf Mobilgeräten ohne monatliche Serverkosten.",
         ctaPrimary: "Projekt Starten",
         ctaSecondary: "Architektur Entdecken",
         modesLabel: "3D Optisches Material",
@@ -1401,7 +1410,8 @@
         col2Links: ["40/30/30-Protokoll", "Web-Konfigurator"],
         col3Heading: "Rechtliches",
         col3Buttons: ["Meilensteine & 30-Tage-Garantie", "Datenschutz"],
-        col3Links: ["Sitemap XML", "Robots.txt"],
+        col3Links: ["Sitemap XML", "Robots.txt", "KI-Semantikindex (LLMs.txt)"],
+        footLangsAria: "Internationale Ausgaben von FLUVO",
         legalButtons: ["Bedingungen", "Datenschutz"]
       },
       modalUi: {
@@ -1519,7 +1529,7 @@
   root.googleTranslateElementInit = function () {
     if (!root.google || !root.google.translate || !root.google.translate.TranslateElement) return;
     new root.google.translate.TranslateElement({
-      pageLanguage: document.documentElement.getAttribute("data-page-lang") || "es",
+      pageLanguage: "es",
       autoDisplay: false
     }, "google_translate_element");
     if (pendingGtLang) {
@@ -1581,6 +1591,7 @@
     var navLinks = document.querySelectorAll("#nav .nav__link");
     t.nav.links.forEach(function (lbl, i) { if (navLinks[i]) navLinks[i].textContent = lbl; });
     setAttr("#nav .brand", "aria-label", t.nav.brandAria);
+    if (t.nav.brandImgAlt) setAttr("#nav .brand__mark", "alt", t.nav.brandImgAlt);
     setAttr("#burger", "aria-label", t.nav.burgerAria);
 
     var menuLinks = document.querySelectorAll("#menu .menu__list a");
@@ -1730,6 +1741,7 @@
     setText("#qWhatsApp", t.cotizar.form.whatsapp);
 
     /* footer */
+    if (t.nav.brandImgAlt) setAttr(".foot__brand img", "alt", t.nav.brandImgAlt);
     var footDesc = document.querySelector(".foot__about > p.body");
     if (footDesc) footDesc.textContent = t.footer.desc;
     var footCols = document.querySelectorAll(".foot__cols > div");
@@ -1754,6 +1766,16 @@
       var lac = footCols[3].querySelectorAll("li a");
       t.footer.col3Links.forEach(function (lbl, i) { if (lac[i]) lac[i].textContent = lbl; });
     }
+    if (t.footer.footLangsAria) setAttr(".foot__langs", "aria-label", t.footer.footLangsAria);
+    var activeHtmlLang = t.htmlLang || langCode;
+    var flLinks = document.querySelectorAll(".foot__langs a[hreflang]");
+    for (var fi = 0; fi < flLinks.length; fi++) {
+      if (flLinks[fi].getAttribute("hreflang") === activeHtmlLang) {
+        flLinks[fi].setAttribute("aria-current", "page");
+      } else {
+        flLinks[fi].removeAttribute("aria-current");
+      }
+    }
     var legBtns = document.querySelectorAll(".foot__legal-links button");
     t.footer.legalButtons.forEach(function (lbl, i) { if (legBtns[i]) legBtns[i].textContent = lbl; });
 
@@ -1767,6 +1789,11 @@
   }
 
   function detectPreferredLang() {
+    var pageLang = document.documentElement.getAttribute("data-page-lang") || "";
+    var ua = (typeof navigator !== "undefined" && navigator.userAgent) ? navigator.userAgent : "";
+    var isCrawler = /googlebot|bingbot|yandex|duckduckbot|baiduspider|applebot|slurp|oai-searchbot|gptbot|claudebot|perplexitybot|facebookexternalhit|twitterbot|linkedinbot/i.test(ua);
+    if (isCrawler) return pageLang || "es";
+
     var qs = new URLSearchParams(location.search);
     var qLang = qs.get("lang");
     if (qLang) return qLang;
@@ -1776,19 +1803,19 @@
       if (saved) return saved;
     } catch (e) {}
 
-    var pageLang = document.documentElement.getAttribute("data-page-lang");
-    if (pageLang) return pageLang;
-
-    var langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "es"];
+    var langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ""];
     for (var i = 0; i < langs.length; i++) {
       var raw = String(langs[i] || "").toLowerCase();
+      if (!raw) continue;
       var base = raw.split("-")[0];
-      if (NATIVE_LANGS.indexOf(base) !== -1) return base;
+      if (NATIVE_LANGS.indexOf(base) !== -1) {
+        return pageLang || base;
+      }
       if (GOOGLE_EXTRA[raw]) return GOOGLE_EXTRA[raw];
       if (GOOGLE_EXTRA[base]) return GOOGLE_EXTRA[base];
       if (base && /^[a-z]{2,3}$/.test(base)) return base;
     }
-    return "es";
+    return pageLang || "es";
   }
 
   function selectAndApply(lang, saveChoice) {
@@ -1833,6 +1860,16 @@
   if (selEl) {
     selEl.addEventListener("change", function () {
       selectAndApply(selEl.value, true);
+    });
+  }
+
+  var footLangLinks = document.querySelectorAll(".foot__langs a[hreflang]");
+  for (var fli = 0; fli < footLangLinks.length; fli++) {
+    footLangLinks[fli].addEventListener("click", function () {
+      var hl = this.getAttribute("hreflang");
+      if (hl) {
+        try { localStorage.setItem("fluvo_lang", hl); } catch (e) {}
+      }
     });
   }
 

@@ -1278,6 +1278,24 @@ body {
   height: 34px;
   flex-shrink: 0;
 }
+.foot__langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  border-top: 1px solid var(--line);
+  margin-top: clamp(32px, 5vh, 56px);
+  padding-top: 22px;
+}
+.foot__langs a {
+  font-size: .74rem;
+  letter-spacing: .12em;
+  color: var(--ink-dim);
+  transition: color .25s var(--ease);
+}
+.foot__langs a:hover,
+.foot__langs a[aria-current="page"] {
+  color: var(--accent);
+}
 .foot__base {
   display: flex;
   flex-wrap: wrap;
@@ -1285,7 +1303,7 @@ body {
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid var(--line);
-  margin-top: clamp(40px, 6vh, 72px);
+  margin-top: 22px;
   padding-top: 26px;
   font-size: .72rem;
   letter-spacing: .14em;

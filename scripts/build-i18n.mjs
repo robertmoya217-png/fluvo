@@ -45,10 +45,41 @@ const OG_LOCALE = {
 };
 
 const SERVICE_TYPES = {
-  en: ["WebGL 3D Web Design", "Ultra-Optimized 3D Landing Page", "Flagship Corporate Website", "Interactive B2B Catalogs", "Static Edge CDN Architecture"],
-  pt: ["Web Design 3D WebGL", "Landing Page 3D Ultra-Otimizada", "Site Corporativo Flagship", "Catálogos B2B Interativos", "Arquitetura Estática Edge CDN"],
-  fr: ["Design Web 3D WebGL", "Landing Page 3D Ultra-Optimisée", "Site Corporate Flagship", "Catalogues B2B Interactifs", "Architecture Statique Edge CDN"],
-  de: ["WebGL 3D-Webdesign", "Ultra-Optimierte 3D-Landingpage", "Flagship-Unternehmenswebsite", "Interaktive B2B-Kataloge", "Statische Edge-CDN-Architektur"]
+  en: ["3D WebGL Web Design & Development", "Ultra-Optimized 3D Landing Page", "Flagship Corporate Website", "Interactive B2B Catalogs & Stores", "Static Edge CDN Architecture"],
+  pt: ["Design e Desenvolvimento Web 3D WebGL", "Landing Page 3D Ultra-Otimizada", "Site Corporativo Flagship para Empresas", "Catálogos B2B Interativos e Lojas", "Arquitetura Estática Edge CDN"],
+  fr: ["Conception et Développement Web 3D WebGL", "Landing Page 3D Ultra-Optimisée", "Site Corporate Flagship pour Entreprises", "Catalogues B2B Interactifs et Boutiques", "Architecture Statique Edge CDN"],
+  de: ["WebGL 3D-Webdesign & Entwicklung", "Ultra-Optimierte 3D-Landingpage", "Flagship-Unternehmenswebsite", "Interaktive B2B-Kataloge & Shops", "Statische Edge-CDN-Architektur"]
+};
+
+const STRUCTURED_I18N = {
+  en: {
+    breadcrumbEdition: "3D Web Design & Development (English)",
+    serviceName: "FLUVO Studio — 3D Web Design, Corporate Websites & Liquid Glass",
+    catalogName: "FLUVO Web Solutions",
+    offer1Desc: "Flagship 3D landing page with WebGL liquid glass, 99/100 mobile Lighthouse score, and 5–7 business day delivery.",
+    offer2Desc: "Multi-section corporate website, e-commerce, SaaS platform, or B2B catalog delivered in 7–10 business days."
+  },
+  pt: {
+    breadcrumbEdition: "Design e Desenvolvimento Web 3D (Português)",
+    serviceName: "FLUVO Studio — Web Design 3D, Sites Corporativos & Vidro Fluido",
+    catalogName: "Soluções Web FLUVO",
+    offer1Desc: "Landing page flagship 3D com vidro fluido WebGL, 99/100 no Lighthouse móvel e entrega em 5–7 dias úteis.",
+    offer2Desc: "Site corporativo multi-seção, e-commerce, plataforma SaaS ou catálogo B2B com entrega em 7–10 dias úteis."
+  },
+  fr: {
+    breadcrumbEdition: "Conception et Développement Web 3D (Français)",
+    serviceName: "FLUVO Studio — Design Web 3D, Sites Corporate & Verre Fluide",
+    catalogName: "Solutions Web FLUVO",
+    offer1Desc: "Landing page flagship 3D avec verre fluide WebGL, 99/100 Lighthouse mobile et livraison en 5–7 jours ouvrés.",
+    offer2Desc: "Site corporate multi-sections, e-commerce, plateforme SaaS ou catalogue B2B livré en 7–10 jours ouvrés."
+  },
+  de: {
+    breadcrumbEdition: "3D-Webdesign & Entwicklung (Deutsch)",
+    serviceName: "FLUVO Studio — 3D-Webdesign, Unternehmenswebsites & Liquid Glass",
+    catalogName: "FLUVO Web-Lösungen",
+    offer1Desc: "Flagship-3D-Landingpage mit WebGL Liquid Glass, 99/100 Mobile Lighthouse und Lieferung in 5–7 Werktagen.",
+    offer2Desc: "Mehrseitige Unternehmenswebsite, E-Commerce, SaaS-Plattform oder B2B-Katalog mit Lieferung in 7–10 Werktagen."
+  }
 };
 
 const es = TRANSLATIONS.es;
@@ -56,10 +87,11 @@ const es = TRANSLATIONS.es;
 for (const lang of NATIVE_LANGS) {
   if (lang === "es") continue;
   const t = TRANSLATIONS[lang];
+  const sMeta = STRUCTURED_I18N[lang];
   let out = baseHtml;
 
   // 1. HTML root, canonical, metadata & OG
-  out = out.replace('<html lang="es">', `<html lang="${t.htmlLang}" data-page-lang="${lang}">`);
+  out = out.replace('<html lang="es" data-page-lang="es">', `<html lang="${t.htmlLang}" data-page-lang="${lang}">`);
   out = out.replace(
     `<title>${escHtml(es.title)}</title>`,
     `<title>${escHtml(t.title)}</title>`
@@ -71,6 +103,10 @@ for (const lang of NATIVE_LANGS) {
   out = out.replace(
     '<link rel="canonical" href="https://fluvo.org/" />',
     `<link rel="canonical" href="https://fluvo.org/${lang}/" />`
+  );
+  out = out.replace(
+    '<link rel="sitemap" type="application/xml" title="Sitemap" href="https://fluvo.org/sitemap.xml" />',
+    '<link rel="sitemap" type="application/xml" title="Sitemap" href="https://fluvo.org/sitemap.xml" />'
   );
   out = out.replace(
     '<meta property="og:url" content="https://fluvo.org/" />',
@@ -101,7 +137,7 @@ for (const lang of NATIVE_LANGS) {
     `${lang}.twDesc`
   );
 
-  // 2. Replace JSON-LD FAQ & WebSite cleanly
+  // 2. Replace JSON-LD @graph cleanly
   const jsonLdObj = {
     "@context": "https://schema.org",
     "@graph": [
@@ -127,14 +163,54 @@ for (const lang of NATIVE_LANGS) {
         inLanguage: t.htmlLang
       },
       {
+        "@type": "BreadcrumbList",
+        "@id": `https://fluvo.org/${lang}/#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "FLUVO Studio",
+            item: "https://fluvo.org/"
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: sMeta.breadcrumbEdition,
+            item: `https://fluvo.org/${lang}/`
+          }
+        ]
+      },
+      {
         "@type": "ProfessionalService",
         "@id": `https://fluvo.org/${lang}/#service`,
-        name: t.title,
+        name: sMeta.serviceName,
         url: `https://fluvo.org/${lang}/`,
         image: "https://fluvo.org/public/logo/Isotipo_Fluvo_Favicon.png",
         provider: { "@id": "https://fluvo.org/#organization" },
         areaServed: "Worldwide",
         serviceType: SERVICE_TYPES[lang],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: sMeta.catalogName,
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "FLUVO Showcase 3D",
+                description: sMeta.offer1Desc
+              }
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "FLUVO Flagship Enterprise",
+                description: sMeta.offer2Desc
+              }
+            }
+          ]
+        },
         availableLanguage: ["Spanish", "English", "Portuguese", "French", "German"]
       },
       {
@@ -164,6 +240,7 @@ for (const lang of NATIVE_LANGS) {
     out = out.replace(`>${escHtml(lbl)}</a>`, `>${escHtml(t.nav.links[i])}</a>`);
   });
   out = out.replace(`aria-label="${es.nav.brandAria}"`, `aria-label="${escHtml(t.nav.brandAria)}"`);
+  out = out.replaceAll(`alt="${escHtml(es.nav.brandImgAlt)}"`, `alt="${escHtml(t.nav.brandImgAlt)}"`);
   out = out.replace(`aria-label="${es.nav.burgerAria}"`, `aria-label="${escHtml(t.nav.burgerAria)}"`);
 
   es.menu.items.forEach((lbl, i) => {
@@ -302,6 +379,13 @@ for (const lang of NATIVE_LANGS) {
   es.footer.col3Buttons.forEach((b, i) => {
     out = replaceFlexible(out, `>${escHtml(b)}</button>`, `>${escHtml(t.footer.col3Buttons[i])}</button>`, `${lang}.ft.b3.${i}`);
   });
+  es.footer.col3Links.forEach((l, i) => {
+    out = replaceFlexible(out, `>${escHtml(l)}</a>`, `>${escHtml(t.footer.col3Links[i])}</a>`, `${lang}.ft.l3.${i}`);
+  });
+  out = out.replace(`aria-label="${escHtml(es.footer.footLangsAria)}"`, `aria-label="${escHtml(t.footer.footLangsAria)}"`);
+  out = out
+    .replace('href="https://fluvo.org/" hreflang="es" lang="es" aria-current="page"', 'href="https://fluvo.org/" hreflang="es" lang="es"')
+    .replace(`href="https://fluvo.org/${lang}/" hreflang="${lang}" lang="${lang}"`, `href="https://fluvo.org/${lang}/" hreflang="${lang}" lang="${lang}" aria-current="page"`);
   es.footer.legalButtons.forEach((b, i) => {
     out = replaceFlexible(out, `>${escHtml(b)}</button>`, `>${escHtml(t.footer.legalButtons[i])}</button>`, `${lang}.ft.lb.${i}`);
   });
@@ -317,6 +401,7 @@ for (const lang of NATIVE_LANGS) {
     .replaceAll('href="./src/styles.css"', 'href="../src/styles.css"')
     .replaceAll('href="./sitemap.xml"', 'href="../sitemap.xml"')
     .replaceAll('href="./robots.txt"', 'href="../robots.txt"')
+    .replaceAll('href="./llms.txt"', 'href="../llms.txt"')
     .replaceAll('src="./src/glass-engine.js"', 'src="../src/glass-engine.js"')
     .replaceAll('src="./src/i18n.js"', 'src="../src/i18n.js"')
     .replaceAll('src="./src/app.js"', 'src="../src/app.js"');
