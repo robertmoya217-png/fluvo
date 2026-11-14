@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FLUVO — Sitios Web 3D con Vidrio Fluido Ultra-Optimizados</title>
+  <meta name="description" content="FLUVO Studio crea sitios web 3D interactivos con vidrio fluido, carga sub-segundo (0.8s), 99/100 en Lighthouse móvil y arquitectura Edge sin costo mensual de servidor." />
+  <meta name="theme-color" content="#08090b" />
+  <link rel="icon" type="image/svg+xml" href="./public/logo/isotipo-mono.svg" />
+  <link rel="manifest" href="./manifest.json" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FLUVO — Sitios Web 3D con Vidrio Fluido Ultra-Optimizados" />
+  <meta property="og:description" content="Carga sub-segundo, 99/100 en Lighthouse móvil, cero costo mensual de servidor y diseño 3D adaptativo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/styles.css" />
+</head>
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="nav" id="nav">
+  <div class="nav__side">
+    <a class="nav__link" href="#ingenieria">Ingeniería</a>
+    <a class="nav__link" href="#casos">Casos</a>
+  </div>
+
+  <a class="brand" href="#top" aria-label="FLUVO — Inicio">
+    <img class="brand__mark" src="./public/logo/isotipo-mono.svg" width="28" height="28" alt="" aria-hidden="true" />
+    <span>FLUVO</span>
+  </a>
+
+  <div class="nav__side nav__side--r">
+    <span class="nav__sla" aria-hidden="true"><i></i>SLA &lt; 2h</span>
+    <a class="nav__link" href="#cotizar">Cotizar</a>
+    <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-hidden="true">
+  <div class="menu__grid">
+    <ul class="menu__list">
+      <li><a href="#filosofia">Filosofía<span>01</span></a></li>
+      <li><a href="#ingenieria">Ingeniería 3D<span>02</span></a></li>
+      <li><a href="#casos">Casos de Éxito<span>03</span></a></li>
+      <li><a href="#protocolo">Protocolo 40/30/30<span>04</span></a></li>
+      <li><a href="#cotizar">Soluciones &amp; Cotizar<span>05</span></a></li>
+    </ul>
+
+    <div class="menu__meta">
+      <p class="eyebrow">FLUVO.ORG · ESTUDIO DIGITAL</p>
+      <p>
+        Flujo · Legitimidad · Unión · Visión · Objetivos.<br />
+        Sitios web 3D con vidrio fluido pensados para responder al instante en redes móviles y globales.
+      </p>
+      <div class="menu__links">
+        <a href="mailto:robertmoya217@gmail.com">robertmoya217@gmail.com</a>
+        <a href="https://wa.me/584242220172" target="_blank" rel="noopener noreferrer">+58 424 222 0172 · WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ======================= 1 · HERO 3D GLASS STAGE ======================= -->
+  <section class="hero" id="top">
+    <canvas class="stage-canvas" data-shader="hero-monolith" aria-hidden="true"></canvas>
+    <div class="scrim scrim--bottom"></div>
+
+    <div class="hero__inner">
+      <div class="hero__grid">
+        <div>
+          <p class="eyebrow" data-reveal>FLUVO.ORG · INGENIERÍA WEB 3D &amp; VIDRIO FLUIDO</p>
+          <h1 class="display hero__title" data-reveal>Cristal líquido<br>en carga real</h1>
+          <p class="hero__copy" data-reveal data-reveal-delay="1">
+            Sitios web 3D con vidrio fluido y arquitectura estática ultra-optimizada. Diseñados para
+            abrir al instante en cualquier pantalla móvil sin servidores costosos ni latencia.
+          </p>
+          <div class="hero__cta" data-reveal data-reveal-delay="2">
+            <a class="btn btn--solid" href="#cotizar">Iniciar Proyecto</a>
+            <a class="btn btn--ghost" href="#ingenieria">Explorar Arquitectura</a>
+          </div>
+        </div>
+
+        <div class="hero__controls" data-reveal data-reveal-delay="2">
+          <span class="hero__modes-label">Material Óptico 3D</span>
+          <div class="hero__modes" id="heroModes" role="group" aria-label="Modo óptico del cristal 3D">
+            <button class="hero__mode is-active" type="button" data-mode-idx="0">01 Obsidiana</button>
+            <button class="hero__mode" type="button" data-mode-idx="1">02 Bronce Óptico</button>
+            <button class="hero__mode" type="button" data-mode-idx="2">03 Cuarzo Líquido</button>
+          </div>
+          <div class="hero__telemetry">
+            <span><strong>0.8s</strong> LCP Móvil</span>
+            <span><strong>99/100</strong> Lighthouse</span>
+            <span><strong>$0/mes</strong> Servidor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 2 · MANIFESTO + 4-COLUMN ODOMETERS ======================= -->
+  <section class="section" id="filosofia">
+    <div class="wrap">
+      <div class="manifesto__grid">
+        <div>
+          <p class="eyebrow" data-reveal>01 / Filosofía de Flujo</p>
+          <h2 class="h2" data-reveal>El peso visual del vidrio,<br><span class="hl">sin el peso en kilobytes.</span></h2>
+        </div>
+        <p class="lede" data-reveal data-reveal-delay="1">
+          La mayoría de los sitios 3D sacrifican el tiempo de carga por adorno. En FLUVO calibramos
+          <span class="hl">shaders modulares en vidrio líquido, renderizado adaptativo Mobile-First y despliegue Edge</span>
+          para que la primera impresión ocurra en menos de un segundo.
+        </p>
+      </div>
+
+      <div class="stats stats--4">
+        <div class="stat" data-reveal>
+          <div class="stat__rule"></div>
+          <div class="stat__value"><span class="odo" data-odo="0.8"></span><span class="stat__suffix">s</span></div>
+          <p class="stat__label">Carga inicial verificada en red 3G</p>
+        </div>
+        <div class="stat" data-reveal data-reveal-delay="1">
+          <div class="stat__rule"></div>
+          <div class="stat__value"><span class="odo" data-odo="99"></span><span class="stat__suffix">/100</span></div>
+          <p class="stat__label">Puntuación Google Lighthouse Móvil</p>
+        </div>
+        <div class="stat" data-reveal data-reveal-delay="2">
+          <div class="stat__rule"></div>
+          <div class="stat__value"><span class="stat__prefix">$</span><span class="odo" data-odo="0"></span><span class="stat__suffix">/mes</span></div>
+          <p class="stat__label">Costo mensual de servidor en CDN Edge</p>
+        </div>
+        <div class="stat" data-reveal data-reveal-delay="3">
+          <div class="stat__rule"></div>
+          <div class="stat__value"><span class="odo" data-odo="100"></span><span class="stat__suffix">%</span></div>
+          <p class="stat__label">Disponibilidad global en producción</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 3 · STEPPED 3D ENGINEERING STAGE ======================= -->
+  <section class="rail" id="ingenieria" aria-label="Secuencia de Ingeniería 3D">
+    <div class="rail__sticky">
+      <div class="rail__head" data-reveal>
+        <p class="eyebrow">02 / Ingeniería en Tiempo Real</p>
+        <h3 class="h3">Cinco pilares de<br>arquitectura FLUVO</h3>
+      </div>
+
+      <div class="rail__index" id="railIndex" aria-label="Índice de arquitectura"></div>
+
+      <div class="rail__nav">
+        <button class="sqbtn" id="railPrev" type="button" aria-label="Pilar anterior">
+          <svg width="19" height="11" viewBox="0 0 19 11" fill="none" aria-hidden="true"><path d="M19 5.5H1M6 1 1 5.5 6 10" stroke="currentColor" stroke-width="1.2" /></svg>
+        </button>
+        <button class="sqbtn" id="railNext" type="button" aria-label="Siguiente pilar">
+          <svg width="19" height="11" viewBox="0 0 19 11" fill="none" aria-hidden="true"><path d="M0 5.5h18M13 1l5 4.5-5 4.5" stroke="currentColor" stroke-width="1.2" /></svg>
+        </button>
+      </div>
+
+      <div class="rail__track" id="railTrack">
+        <figure class="rail__slide is-active">
+          <canvas class="stage-canvas" data-shader="refraction-waves" data-mode="0" aria-hidden="true"></canvas>
+          <div class="scrim scrim--vignette"></div>
+          <figcaption class="rail__caption">
+            <span class="rail__tag">01 · SUPERFICIE ÓPTICA</span>
+            <h4>Vidrio Fluido Dinámico</h4>
+            <p>Shaders con refracción calibrada e iluminación de estudio sobre fondo obsidiana sin saturar el hilo principal.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="rail__slide">
+          <canvas class="stage-canvas" data-shader="webgl-lattice" data-mode="1" aria-hidden="true"></canvas>
+          <div class="scrim scrim--vignette"></div>
+          <figcaption class="rail__caption">
+            <span class="rail__tag">02 · COMPILACIÓN MODULAR</span>
+            <h4>Núcleo WebGL Ligero</h4>
+            <p>Geometría matemática compilada al instante que reemplaza pesados archivos 3D externos de decenas de megabytes.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="rail__slide">
+          <canvas class="stage-canvas" data-shader="subsecond-pulse" data-mode="0" aria-hidden="true"></canvas>
+          <div class="scrim scrim--vignette"></div>
+          <figcaption class="rail__caption">
+            <span class="rail__tag">03 · VELOCIDAD SUB-SEGUNDO</span>
+            <h4>Carga Inicial 0.8s</h4>
+            <p>Arquitectura estática sin bloqueos de renderizado ni JavaScript ocioso, probada bajo perfiles de red 3G reales.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="rail__slide">
+          <canvas class="stage-canvas" data-shader="tactile-spheres" data-mode="2" aria-hidden="true"></canvas>
+          <div class="scrim scrim--vignette"></div>
+          <figcaption class="rail__caption">
+            <span class="rail__tag">04 · ERGONOMÍA TÁCTIL</span>
+            <h4>Diseño Mobile-First</h4>
+            <p>Interacción fluida con cursor y gesto táctil, control térmico inteligente y objetivos de toque amplios.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="rail__slide">
+          <canvas class="stage-canvas" data-shader="edge-horizon" data-mode="1" aria-hidden="true"></canvas>
+          <div class="scrim scrim--vignette"></div>
+          <figcaption class="rail__caption">
+            <span class="rail__tag">05 · INFRAESTRUCTURA CERO</span>
+            <h4>Edge CDN Global 100%</h4>
+            <p>Alojamiento estático en Cloudflare o GitHub Pages con cero vulnerabilidades backend y $0 mensual de mantenimiento.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 4 · ASYMMETRIC OPTICAL DUO ======================= -->
+  <section class="section section--tight">
+    <div class="wrap duo">
+      <article class="gl-panel" data-reveal>
+        <canvas class="stage-canvas" data-shader="webgl-lattice" data-mode="0" aria-hidden="true"></canvas>
+        <div class="scrim scrim--bottom"></div>
+        <div class="gl-panel__copy">
+          <p class="eyebrow" style="margin-bottom:.7em">03 / Estética de Precisión</p>
+          <h3 class="h3">Refracción física<br>adaptativa</h3>
+          <p>
+            Cada escena ajusta su densidad de trazado y FPS según el dispositivo y las preferencias
+            de movimiento del usuario, conservando fidelidad visual sin consumir batería.
+          </p>
+          <div class="gl-panel__specs">INTERSECTION PAUSING · CERO FUGAS WEBGL · 60 FPS</div>
+        </div>
+      </article>
+
+      <article class="gl-panel gl-panel--tall" data-reveal data-reveal-delay="1">
+        <canvas class="stage-canvas" data-shader="tactile-spheres" data-mode="1" aria-hidden="true"></canvas>
+        <div class="scrim scrim--bottom"></div>
+        <div class="gl-panel__copy">
+          <p class="eyebrow" style="margin-bottom:.7em">04 / Cobertura &amp; Alcance</p>
+          <h3 class="h3">Fluidez total incluso<br>en redes limitadas</h3>
+          <p>
+            Pensado primero para móviles y tablets en conexiones reales: HTML estático inmediato,
+            fuentes ligeras y entrega directa desde nodos Edge distribuidos globalmente.
+          </p>
+          <div class="gl-panel__specs">EDGE CDN · CERO BACKEND VULNERABLE · TIEMPO REAL</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======================= 5 · PORTFOLIO SNAP CAROUSEL (#casos) ======================= -->
+  <section class="section section--tight" id="casos">
+    <div class="wrap carousel">
+      <div class="carousel__head">
+        <div>
+          <p class="eyebrow" data-reveal>05 / Portafolio Verificado</p>
+          <h2 class="h2" data-reveal>Proyectos insignia</h2>
+        </div>
+        <p class="body" style="font-size:.92rem;max-width:38ch" data-reveal data-reveal-delay="1">
+          Casos de éxito desarrollados bajo la arquitectura FLUVO. Pulsa <strong style="color:var(--ink)">+</strong> para abrir el análisis técnico.
+        </p>
+      </div>
+
+      <div class="carousel__track" id="carTrack" tabindex="0" aria-label="Portafolio de proyectos FLUVO">
+        <article class="gl-slide">
+          <canvas class="stage-canvas" data-shader="case-prism" data-seed="0" data-mode="0" aria-hidden="true"></canvas>
+          <div class="scrim scrim--bottom"></div>
+          <div class="gl-slide__top">
+            <p class="gl-slide__kicker">FINTECH WEB3</p>
+            <h3 class="gl-slide__title">Aura Protocol</h3>
+          </div>
+          <div class="gl-slide__foot">
+            <div>
+              <p>Plataforma con visualización de nodos en vidrio fluido 3D.</p>
+              <span class="gl-slide__metric">0.8S CARGA INICIAL · 99 LIGHTHOUSE</span>
+            </div>
+            <button class="plus" type="button" data-detail="aura" aria-label="Inspeccionar Aura Protocol">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1.2" /></svg>
+            </button>
+          </div>
+        </article>
+
+        <article class="gl-slide">
+          <canvas class="stage-canvas" data-shader="case-prism" data-seed="1.6" data-mode="1" aria-hidden="true"></canvas>
+          <div class="scrim scrim--bottom"></div>
+          <div class="gl-slide__top">
+            <p class="gl-slide__kicker">MODA &amp; ARQUITECTURA</p>
+            <h3 class="gl-slide__title">Kroma Studio</h3>
+          </div>
+          <div class="gl-slide__foot">
+            <div>
+              <p>Showcase editorial interactivo con rotación libre y refracción en tiempo real.</p>
+              <span class="gl-slide__metric">+140% INTERACCIÓN TÁCTIL</span>
+            </div>
+            <button class="plus" type="button" data-detail="kroma" aria-label="Inspeccionar Kroma Studio">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1.2" /></svg>
+            </button>
+          </div>
+        </article>
+
+        <article class="gl-slide">
+          <canvas class="stage-canvas" data-shader="case-prism" data-seed="3.1" data-mode="2" aria-hidden="true"></canvas>
+          <div class="scrim scrim--bottom"></div>
+          <div class="gl-slide__top">
+            <p class="gl-slide__kicker">SAAS ENTERPRISE</p>
+            <h3 class="gl-slide__title">Pulse Analytics</h3>
+          </div>
+          <div class="gl-slide__foot">
+            <div>
+              <p>Sitio corporativo ultra-ligero enfocado en conversión y telemetría visual.</p>
+              <span class="gl-slide__metric">$0 COSTO DE SERVIDOR MENSUAL</span>
+            </div>
+            <button class="plus" type="button" data-detail="pulse" aria-label="Inspeccionar Pulse Analytics">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1.2" /></svg>
+            </button>
+          </div>
+        </article>
+
+        <article class="gl-slide">
+          <canvas class="stage-canvas" data-shader="case-prism" data-seed="4.7" data-mode="1" aria-hidden="true"></canvas>
+          <div class="scrim scrim--bottom"></div>
+          <div class="gl-slide__top">
+            <p class="gl-slide__kicker">INFRAESTRUCTURA AI</p>
+            <h3 class="gl-slide__title">Vortex Labs</h3>
+          </div>
+          <div class="gl-slide__foot">
+            <div>
+              <p>Documentación técnica interactiva y visor 3D modular sin frameworks pesados.</p>
+              <span class="gl-slide__metric">99/100 LIGHTHOUSE MÓVIL</span>
+            </div>
+            <button class="plus" type="button" data-detail="vortex" aria-label="Inspeccionar Vortex Labs">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1.2" /></svg>
+            </button>
+          </div>
+        </article>
+
+        <article class="gl-slide">
+          <canvas class="stage-canvas" data-shader="case-prism" data-seed="6.2" data-mode="0" aria-hidden="true"></canvas>
+          <div class="scrim scrim--bottom"></div>
+          <div class="gl-slide__top">
+            <p class="gl-slide__kicker">PORTAL B2B 24/7</p>
+            <h3 class="gl-slide__title">Nexo Industrial</h3>
+          </div>
+          <div class="gl-slide__foot">
+            <div>
+              <p>Catálogo de especificaciones técnicas con embudo directo a WhatsApp y cotización.</p>
+              <span class="gl-slide__metric">100% UPTIME GLOBAL EDGE</span>
+            </div>
+            <button class="plus" type="button" data-detail="nexo" aria-label="Inspeccionar Nexo Industrial">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1.2" /></svg>
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <div class="carousel__ui">
+        <button class="cbtn" id="carPrev" type="button" aria-label="Proyecto anterior">
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M18 5H1M5.5 1 1 5l4.5 4" stroke="currentColor" stroke-width="1.2" /></svg>
+        </button>
+        <div class="dots" id="carDots"></div>
+        <button class="cbtn" id="carNext" type="button" aria-label="Siguiente proyecto">
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M0 5h17M12.5 1 17 5l-4.5 4" stroke="currentColor" stroke-width="1.2" /></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 6 · STICKY EXECUTION PROTOCOL & FAQ (#protocolo) ======================= -->
+  <section class="section" id="protocolo">
+    <div class="wrap protocol">
+      <div class="protocol__media" data-reveal>
+        <canvas class="stage-canvas" data-shader="protocol-core" data-mode="1" aria-hidden="true"></canvas>
+        <div class="scrim scrim--bottom"></div>
+        <div class="protocol__overlay">
+          <p class="eyebrow" style="margin-bottom:.6em">06 / Garantía &amp; Hitos</p>
+          <h3 class="h3">Entrega en 5–10 días<br>laborables</h3>
+        </div>
+      </div>
+
+      <div>
+        <div class="protocol__steps">
+          <div class="protocol__step" data-reveal>
+            <span class="num">HITO 01 · 40% ANTICIPO</span>
+            <h3 class="h3">Arquitectura &amp; Dirección 3D</h3>
+            <p>
+              Definición de estructura, tokens tipográficos, prototipo de shaders en vidrio líquido
+              y arquitectura estática orientada a conversión.
+            </p>
+          </div>
+          <div class="protocol__step" data-reveal>
+            <span class="num">HITO 02 · 30% APROBACIÓN</span>
+            <h3 class="h3">Prototipo Funcional Interactivo</h3>
+            <p>
+              Validación en navegador real tanto en escritorio como en teléfono móvil, afinando
+              transiciones, contraste y respuesta de cotización.
+            </p>
+          </div>
+          <div class="protocol__step" data-reveal>
+            <span class="num">HITO 03 · 30% FINAL · 30 DÍAS DE GARANTÍA</span>
+            <h3 class="h3">Auditoría &amp; Despliegue Edge CDN</h3>
+            <p>
+              Publicación en red global con cesión de propiedad intelectual, métricas verificadas y
+              30 días continuos de garantía técnica oficial.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-wrap" id="faqList" data-reveal>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span>¿Cómo logra FLUVO sitios tan rápidos con gráficos 3D?</span>
+              <svg class="faq-icon" width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1.2" /></svg>
+            </button>
+            <div class="faq-a">
+              <p>Empleamos motores WebGL modulares y shaders procedimentales compilados al instante sin pesadas librerías externas ni modelos binarios de megabytes. Cuando detectamos móviles o redes lentas, la escena se auto-escala.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span>¿Qué significa que el sitio tiene cero costo mensual de servidor?</span>
+              <svg class="faq-icon" width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1.2" /></svg>
+            </button>
+            <div class="faq-a">
+              <p>Publicamos arquitectura 100% estática sobre redes CDN globales como Cloudflare Pages o GitHub Pages. No existen servidores Node o bases de datos costosas que requieran mantenimiento ni rentas mensuales obligatorias.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span>¿Funciona correctamente en cualquier teléfono móvil o tablet?</span>
+              <svg class="faq-icon" width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1.2" /></svg>
+            </button>
+            <div class="faq-a">
+              <p>Sí. Todos los componentes táctiles, carruseles y escenas 3D responden tanto al cursor como al tacto, e incluyen un motor automático de respaldo 2D y respeto por la configuración de movimiento reducido del sistema.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span>¿Cuánto tiempo toma tener una web completa lista?</span>
+              <svg class="faq-icon" width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1.2" /></svg>
+            </button>
+            <div class="faq-a">
+              <p>Los lanzamientos insignia (Showcase 3D) se completan en 5 a 7 días laborables, y los portales corporativos o SaaS entre 7 y 10 días con garantía técnica incluida.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 7 · SPLIT WORD ======================= -->
+  <section class="section split" aria-label="Flujo y Visión">
+    <span data-reveal>Flujo</span>
+    <span data-reveal data-reveal-delay="1">Visión</span>
+  </section>
+
+  <!-- ======================= 8 · SOLUTIONS + EMBEDDED QUOTE CONFIGURATOR (#cotizar) ======================= -->
+  <section class="section" id="cotizar" style="background:var(--bg-2)">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>07 / Soluciones &amp; Cotización</p>
+      <h2 class="h2" style="margin-bottom:clamp(36px,6vh,68px)" data-reveal>Elige tu arquitectura</h2>
+
+      <div class="cards">
+        <article class="card" data-reveal>
+          <canvas class="stage-canvas" data-shader="refraction-waves" data-mode="0" aria-hidden="true"></canvas>
+          <div class="scrim scrim--bottom"></div>
+          <div class="card__copy">
+            <p class="card__kicker">01 · ENTREGA 5–7 DÍAS</p>
+            <h3 class="h3">FLUVO Showcase 3D</h3>
+            <p>
+              Landing page insignia con escena WebGL en vidrio fluido, métricas 99/100 en Lighthouse
+              móvil e integración directa con Web3Forms y WhatsApp.
+            </p>
+            <button class="btn btn--ghost btn--sm" type="button" data-select-type="Landing Page 3D">Seleccionar Showcase</button>
+          </div>
+        </article>
+
+        <article class="card" data-reveal data-reveal-delay="1">
+          <canvas class="stage-canvas" data-shader="edge-horizon" data-mode="1" aria-hidden="true"></canvas>
+          <div class="scrim scrim--bottom"></div>
+          <div class="card__copy">
+            <p class="card__kicker">02 · ENTREGA 7–10 DÍAS</p>
+            <h3 class="h3">FLUVO Flagship Enterprise</h3>
+            <p>
+              Sitio corporativo multi-sección, e-commerce o plataforma SaaS con configurador técnico,
+              catálogo interactivo y cesión integral en CDN global.
+            </p>
+            <button class="btn btn--ghost btn--sm" type="button" data-select-type="Web Corporativa">Seleccionar Flagship</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="config-shell" id="configurator">
+        <div data-reveal>
+          <p class="eyebrow">SLA &lt; 2 HORAS LABORABLES</p>
+          <h2 class="h2">Configura tu<br>proyecto hoy</h2>
+          <p class="lede" style="margin-top:1.2rem">
+            Completa las especificaciones técnicas para recibir una propuesta formal en menos de
+            dos horas o abre una conversación directa por WhatsApp.
+          </p>
+
+          <div class="config-direct">
+            <a class="config-link" href="mailto:robertmoya217@gmail.com">
+              <div>
+                <span>CORREO OFICIAL</span>
+                <strong>robertmoya217@gmail.com</strong>
+              </div>
+              <svg width="20" height="8" viewBox="0 0 20 8" fill="none" aria-hidden="true"><path d="M0 4h18M14.5.5 18.5 4l-4 3.5" stroke="currentColor" /></svg>
+            </a>
+            <a class="config-link" href="https://wa.me/584242220172?text=Hola%20FLUVO%20Studio,%20me%20gustar%C3%ADa%20cotizar%20un%20sitio%20web%203D" target="_blank" rel="noopener noreferrer">
+              <div>
+                <span>WHATSAPP DIRECTO</span>
+                <strong>+58 424 222 0172 / 0424 222 0172</strong>
+              </div>
+              <svg width="20" height="8" viewBox="0 0 20 8" fill="none" aria-hidden="true"><path d="M0 4h18M14.5.5 18.5 4l-4 3.5" stroke="currentColor" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <form class="gl-form" id="quoteForm" data-reveal data-reveal-delay="1">
+          <div class="gl-form__row">
+            <div class="gl-field">
+              <label for="qName">Nombre o Empresa *</label>
+              <input class="gl-input" id="qName" type="text" required placeholder="Ej. Juan Pérez / Aura Studio" />
+            </div>
+            <div class="gl-field">
+              <label for="qEmail">Correo Electrónico *</label>
+              <input class="gl-input" id="qEmail" type="email" required placeholder="correo@empresa.com" />
+            </div>
+          </div>
+
+          <div class="gl-field">
+            <label>Tipo de Proyecto</label>
+            <div class="gl-chips" id="qTypeChips">
+              <button class="gl-chip is-selected" type="button" data-value="Landing Page 3D">Landing Page 3D</button>
+              <button class="gl-chip" type="button" data-value="Web Corporativa">Web Corporativa</button>
+              <button class="gl-chip" type="button" data-value="E-commerce">E-commerce</button>
+              <button class="gl-chip" type="button" data-value="Aplicación Web / SaaS">Aplicación Web / SaaS</button>
+            </div>
+          </div>
+
+          <div class="gl-field">
+            <label>Presupuesto Aproximado (USD)</label>
+            <div class="gl-chips" id="qBudgetChips">
+              <button class="gl-chip" type="button" data-value="< $300 USD">&lt; $300 USD</button>
+              <button class="gl-chip is-selected" type="button" data-value="$300 - $600 USD">$300 - $600 USD</button>
+              <button class="gl-chip" type="button" data-value="$600 - $1,200 USD">$600 - $1,200 USD</button>
+              <button class="gl-chip" type="button" data-value="+$1,200 USD">+$1,200 USD</button>
+              <button class="gl-chip" type="button" data-value="Por definir / Asesoría">Por definir / Asesoría</button>
+            </div>
+          </div>
+
+          <div class="gl-field">
+            <label for="qMessage">Detalles del Proyecto</label>
+            <textarea class="gl-textarea" id="qMessage" rows="3" placeholder="Cuéntanos sobre tus objetivos, secciones clave o referencias visuales..."></textarea>
+          </div>
+
+          <div class="gl-form__actions">
+            <button class="btn btn--solid" id="qSubmit" type="submit">Enviar Solicitud</button>
+            <a class="btn btn--ghost" id="qWhatsApp" href="https://wa.me/584242220172" target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
+          </div>
+
+          <div class="gl-status" id="qStatus" hidden aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================= 9 · FOOTER ======================= -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__cols">
+      <div class="foot__about">
+        <p class="foot__brand">
+          <img src="./public/logo/isotipo-mono.svg" width="34" height="34" alt="" aria-hidden="true" />
+          <span>FLUVO</span>
+        </p>
+        <p class="body" style="font-size:.9rem;max-width:34ch">
+          Flujo · Legitimidad · Unión · Visión · Objetivos. Ingeniería web 3D, vidrio fluido y velocidad móvil extrema.
+        </p>
+        <ul class="foot__social" aria-label="Canales oficiales de FLUVO">
+          <li>
+            <a href="https://wa.me/584242220172?text=Hola%20FLUVO%20Studio,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp FLUVO">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.03 2a9.97 9.97 0 0 0-8.46 15.27L2 22l4.86-1.54A9.97 9.97 0 1 0 12.03 2Zm5.82 14.12c-.25.7-1.44 1.35-1.99 1.43-.52.08-1.18.11-1.91-.12-.44-.14-1-.33-1.72-.65-3.03-1.31-5-4.37-5.15-4.57-.15-.2-1.23-1.64-1.23-3.13 0-1.49.78-2.22 1.06-2.52.27-.3.6-.38.8-.38h.58c.19 0 .44-.07.69.53.26.62.88 2.13.95 2.28.08.15.13.33.03.53-.1.2-.15.33-.3.51-.15.18-.32.4-.45.53-.15.15-.31.32-.13.62.18.3.78 1.29 1.67 2.08 1.15 1.02 2.12 1.34 2.42 1.49.3.15.48.13.66-.08.18-.2.75-.88.95-1.18.2-.3.4-.25.67-.15.27.1 1.75.83 2.05.98.3.15.5.22.58.35.08.13.08.73-.17 1.43Z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:robertmoya217@gmail.com" aria-label="Correo robertmoya217@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 3.2V18h16V7.2l-8 5.2-8-5.2ZM19.5 6h-15L12 10.8 19.5 6Z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://fluvo.org" target="_blank" rel="noopener noreferrer" aria-label="Sitio web oficial fluvo.org">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm6.93 9h-3.17a15.6 15.6 0 0 0-1.38-5.01A8.03 8.03 0 0 1 18.93 11ZM12 4.04c.83 1.2 1.48 2.9 1.82 4.96h-3.64c.34-2.06.99-3.76 1.82-4.96ZM4.26 14a8.18 8.18 0 0 1 0-4h3.38a16.5 16.5 0 0 0 0 4H4.26Zm.81 2h3.17a15.6 15.6 0 0 0 1.38 5.01A8.03 8.03 0 0 1 5.07 16Zm3.17-8H5.07a8.03 8.03 0 0 1 4.55-5.01A15.6 15.6 0 0 0 8.24 8Zm3.76 11.96c-.83-1.2-1.48-2.9-1.82-4.96h3.64c-.34 2.06-.99 3.76-1.82 4.96ZM14.34 14H9.66a14.4 14.4 0 0 1 0-4h4.68a14.4 14.4 0 0 1 0 4Zm.04 7.01A15.6 15.6 0 0 0 15.76 16h3.17a8.03 8.03 0 0 1-4.55 5.01ZM16.36 14a16.5 16.5 0 0 0 0-4h3.38a8.18 8.18 0 0 1 0 4h-3.38Z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Arquitectura</h5>
+        <ul>
+          <li><a href="#filosofia">Filosofía 0.8s</a></li>
+          <li><a href="#ingenieria">Ingeniería 3D</a></li>
+          <li><a href="#casos">Portafolio</a></li>
+          <li><a href="#cotizar">Showcase &amp; Flagship</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Estudio</h5>
+        <ul>
+          <li><a href="#protocolo">Protocolo 40/30/30</a></li>
+          <li><a href="#cotizar">Configurador Web</a></li>
+          <li><a href="mailto:robertmoya217@gmail.com">robertmoya217@gmail.com</a></li>
+          <li><a href="https://wa.me/584242220172" target="_blank" rel="noopener noreferrer">+58 424 222 0172</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><button type="button" data-detail="terms">Hitos &amp; Garantía 30 Días</button></li>
+          <li><button type="button" data-detail="privacy">Política de Privacidad</button></li>
+          <li><a href="./sitemap.xml" target="_blank" rel="noopener">Sitemap XML</a></li>
+          <li><a href="./robots.txt" target="_blank" rel="noopener">Robots.txt</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot__base">
+      <span>&copy; <span id="yr"></span> FLUVO Studio</span>
+      <div class="foot__legal-links">
+        <button type="button" data-detail="terms">Términos</button>
+        <button type="button" data-detail="privacy">Privacidad</button>
+        <a href="./robots.txt" target="_blank" rel="noopener">Robots.txt</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ======================= CASE STUDY & LEGAL MODAL ======================= -->
+<div class="gl-modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle" aria-hidden="true">
+  <div class="gl-modal">
+    <div class="gl-modal__head">
+      <div>
+        <p class="eyebrow" id="detailModalKicker" style="margin-bottom:.6em">FICHA TÉCNICA</p>
+        <h3 class="h3" id="detailModalTitle">Detalle</h3>
+      </div>
+      <button class="gl-modal__close" id="detailClose" type="button" aria-label="Cerrar ficha">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 1l13 13M14 1L1 14" stroke="currentColor" stroke-width="1.3" /></svg>
+      </button>
+    </div>
+
+    <div class="gl-modal__body" id="detailModalBody"></div>
+
+    <div class="gl-form__actions" style="margin-top:1.6rem">
+      <a class="btn btn--solid btn--sm" id="detailToQuote" href="#cotizar">Cotizar proyecto similar</a>
+      <button class="btn btn--ghost btn--sm" id="detailDismiss" type="button">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="./src/glass-engine.js"></script>
+<script src="./src/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "FLUVO — Ingeniería Web 3D & Vidrio Fluido",
+  "short_name": "FLUVO",
+  "description": "Sitios web 3D con vidrio fluido y arquitectura estática ultra-optimizada. Carga sub-segundo (0.8s), 99/100 en Lighthouse móvil y cero costo mensual de servidor.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08090b",
+  "theme_color": "#c19a5b",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "./public/logo/isotipo-mono.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

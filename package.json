@@ -1,0 +1,20 @@
+{
+  "name": "fluvo-org-v4",
+  "version": "4.0.0",
+  "description": "FLUVO Studio — Sitio web oficial de ingeniería web 3D, vidrio fluido, catálogos B2B interactivos y posicionamiento ultra-rápido (<0.8s).",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs"
+  },
+  "keywords": [
+    "fluvo",
+    "web 3d",
+    "vidrio fluido",
+    "catalogo b2b",
+    "alto rendimiento",
+    "mobile first"
+  ],
+  "author": "FLUVO Studio — Robert Moya",
+  "license": "PROPRIETARY"
+}
