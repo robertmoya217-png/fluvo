@@ -238,6 +238,54 @@ button {
   background: var(--accent);
   display: inline-block;
 }
+.nav__lang {
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(8, 9, 11, .72);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding: .42em .7em;
+  font-family: inherit;
+  font-size: .64rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  transition: border-color .25s var(--ease), color .25s var(--ease), background .25s var(--ease);
+}
+.nav__lang:hover,
+.nav__lang:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
+.nav__lang option {
+  background: #0e1013;
+  color: #f4f6f8;
+}
+.gt-host {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+/* Suppress Google Website Translator intrusive top banner */
+iframe.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+body > .skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+  position: static !important;
+}
 .brand {
   display: inline-flex;
   align-items: center;
@@ -1369,18 +1417,25 @@ button {
 }
 
 /* ---------- responsive rules ---------- */
-@media (max-width: 960px) {
-  .nav__side .nav__link,
+@media (max-width: 1200px) {
   .nav__sla {
+    display: none;
+  }
+}
+@media (max-width: 960px) {
+  .nav__side .nav__link {
     display: none;
   }
 }
 @media (max-width: 760px) {
   :root { --h-nav: 64px; }
+  .nav { column-gap: 10px; }
+  .nav__side--r { gap: .75rem; }
+  .nav__lang { padding: .34em .5em; font-size: .58rem; letter-spacing: .12em; }
   .nav.is-scrolled { height: 56px; }
   .brand { font-size: .95rem; letter-spacing: .28em; }
   .brand__mark { width: 24px; height: 24px; }
-  .burger { padding-left: 0; }
+  .burger { padding-left: 4px; }
   .hero { min-height: 600px; }
   .hero__grid { gap: 20px; }
   .hero__telemetry { gap: .9rem; font-size: .6rem; }
@@ -1396,6 +1451,7 @@ button {
   transform: translateY(24px);
   transition: opacity .95s var(--ease), transform .95s var(--ease);
 }
+.hero [data-reveal],
 [data-reveal].in {
   opacity: 1;
   transform: none;

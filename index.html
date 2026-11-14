@@ -11,7 +11,7 @@
   <meta name="theme-color" content="#08090b" />
   <link rel="canonical" href="https://fluvo.org/" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://fluvo.org/sitemap.xml" />
-  <link rel="alternate" hreflang="x-default" href="https://fluvo.org/" />
+  <link rel="alternate" hreflang="x-default" href="https://fluvo.org/en/" />
   <link rel="alternate" hreflang="es" href="https://fluvo.org/" />
   <link rel="alternate" hreflang="es-419" href="https://fluvo.org/" />
   <link rel="alternate" hreflang="es-US" href="https://fluvo.org/" />
@@ -22,9 +22,13 @@
   <link rel="alternate" hreflang="es-CL" href="https://fluvo.org/" />
   <link rel="alternate" hreflang="es-PE" href="https://fluvo.org/" />
   <link rel="alternate" hreflang="es-VE" href="https://fluvo.org/" />
-  <link rel="alternate" hreflang="en" href="https://fluvo.org/" />
-  <link rel="alternate" hreflang="en-US" href="https://fluvo.org/" />
-  <link rel="alternate" hreflang="en-GB" href="https://fluvo.org/" />
+  <link rel="alternate" hreflang="en" href="https://fluvo.org/en/" />
+  <link rel="alternate" hreflang="en-US" href="https://fluvo.org/en/" />
+  <link rel="alternate" hreflang="en-GB" href="https://fluvo.org/en/" />
+  <link rel="alternate" hreflang="pt" href="https://fluvo.org/pt/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://fluvo.org/pt/" />
+  <link rel="alternate" hreflang="fr" href="https://fluvo.org/fr/" />
+  <link rel="alternate" hreflang="de" href="https://fluvo.org/de/" />
   <link rel="icon" type="image/svg+xml" href="./public/logo/isotipo-mono.svg" />
   <link rel="manifest" href="./manifest.json" />
   <meta property="og:type" content="website" />
@@ -141,12 +145,28 @@
 
   <a class="brand" href="#top" aria-label="FLUVO — Inicio">
     <img class="brand__mark" src="./public/logo/isotipo-mono.svg" width="28" height="28" alt="" aria-hidden="true" />
-    <span>FLUVO</span>
+    <span class="notranslate" translate="no">FLUVO</span>
   </a>
 
   <div class="nav__side nav__side--r">
-    <span class="nav__sla" aria-hidden="true"><i></i>SLA &lt; 2h</span>
+    <span class="nav__sla notranslate" translate="no" aria-hidden="true"><i></i>SLA &lt; 2h</span>
     <a class="nav__link" href="#cotizar">Cotizar</a>
+    <select id="langSelect" class="nav__lang notranslate" translate="no" aria-label="Idioma / Language">
+      <option value="es">ES</option>
+      <option value="en">EN</option>
+      <option value="pt">PT</option>
+      <option value="fr">FR</option>
+      <option value="de">DE</option>
+      <option value="it">IT</option>
+      <option value="zh-CN">ZH</option>
+      <option value="ja">JA</option>
+      <option value="ar">AR</option>
+      <option value="ru">RU</option>
+      <option value="ko">KO</option>
+      <option value="nl">NL</option>
+      <option value="tr">TR</option>
+      <option value="hi">HI</option>
+    </select>
     <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
       <span></span><span></span><span></span>
     </button>
@@ -234,22 +254,22 @@
       <div class="stats stats--4">
         <div class="stat" data-reveal>
           <div class="stat__rule"></div>
-          <div class="stat__value"><span class="odo" data-odo="0.8"></span><span class="stat__suffix">s</span></div>
+          <div class="stat__value notranslate" translate="no"><span class="odo" data-odo="0.8"></span><span class="stat__suffix">s</span></div>
           <p class="stat__label">Carga inicial verificada en red 3G</p>
         </div>
         <div class="stat" data-reveal data-reveal-delay="1">
           <div class="stat__rule"></div>
-          <div class="stat__value"><span class="odo" data-odo="99"></span><span class="stat__suffix">/100</span></div>
+          <div class="stat__value notranslate" translate="no"><span class="odo" data-odo="99"></span><span class="stat__suffix">/100</span></div>
           <p class="stat__label">Puntuación Google Lighthouse Móvil</p>
         </div>
         <div class="stat" data-reveal data-reveal-delay="2">
           <div class="stat__rule"></div>
-          <div class="stat__value"><span class="stat__prefix">$</span><span class="odo" data-odo="0"></span><span class="stat__suffix">/mes</span></div>
+          <div class="stat__value notranslate" translate="no"><span class="stat__prefix">$</span><span class="odo" data-odo="0"></span><span class="stat__suffix">/mes</span></div>
           <p class="stat__label">Costo mensual de servidor en CDN Edge</p>
         </div>
         <div class="stat" data-reveal data-reveal-delay="3">
           <div class="stat__rule"></div>
-          <div class="stat__value"><span class="odo" data-odo="100"></span><span class="stat__suffix">%</span></div>
+          <div class="stat__value notranslate" translate="no"><span class="odo" data-odo="100"></span><span class="stat__suffix">%</span></div>
           <p class="stat__label">Disponibilidad global en producción</p>
         </div>
       </div>
@@ -691,7 +711,7 @@
       <div class="foot__about">
         <p class="foot__brand">
           <img src="./public/logo/isotipo-mono.svg" width="34" height="34" alt="" aria-hidden="true" />
-          <span>FLUVO</span>
+          <span class="notranslate" translate="no">FLUVO</span>
         </p>
         <p class="body" style="font-size:.9rem;max-width:34ch">
           Flujo · Legitimidad · Unión · Visión · Objetivos. Ingeniería web 3D, vidrio fluido y velocidad móvil extrema.
@@ -779,7 +799,9 @@
   </div>
 </div>
 
+<div id="google_translate_element" class="gt-host" aria-hidden="true"></div>
 <script src="./src/glass-engine.js"></script>
+<script src="./src/i18n.js"></script>
 <script src="./src/app.js"></script>
 </body>
 </html>

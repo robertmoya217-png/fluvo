@@ -8,9 +8,7 @@
     <lastmod>2026-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-
-    <!-- Cobertura Multi-Región Internacional (Global / LATAM / Norteamérica / Europa) -->
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fluvo.org/en/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://fluvo.org/" />
     <xhtml:link rel="alternate" hreflang="es-419" href="https://fluvo.org/" />
     <xhtml:link rel="alternate" hreflang="es-US" href="https://fluvo.org/" />
@@ -26,41 +24,198 @@
     <xhtml:link rel="alternate" hreflang="es-DO" href="https://fluvo.org/" />
     <xhtml:link rel="alternate" hreflang="es-CR" href="https://fluvo.org/" />
     <xhtml:link rel="alternate" hreflang="es-UY" href="https://fluvo.org/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://fluvo.org/" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://fluvo.org/" />
-    <xhtml:link rel="alternate" hreflang="en-GB" href="https://fluvo.org/" />
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://fluvo.org/" />
-    <xhtml:link rel="alternate" hreflang="en-AU" href="https://fluvo.org/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://fluvo.org/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://fluvo.org/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://fluvo.org/" />
-
-    <!-- Activos Oficiales de Marca para Indexación Visual Global -->
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-AU" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://fluvo.org/de/" />
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://fluvo.org/de/" />
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://fluvo.org/de/" />
     <image:image>
       <image:loc>https://fluvo.org/public/logo/isotipo-mono.svg</image:loc>
-      <image:title>FLUVO Isotipo Oficial Monocromático</image:title>
-      <image:caption>FLUVO Studio — Ingeniería Web 3D &amp; Vidrio Fluido</image:caption>
+      <image:title>FLUVO Official Brand Mark</image:title>
+      <image:caption>FLUVO Studio — 3D Web Engineering &amp; Liquid Glass</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://fluvo.org/public/logo/Isotipo_Fluvo_Favicon.png</image:loc>
-      <image:title>FLUVO Studio Logotipo</image:title>
-      <image:caption>FLUVO — Sitios Web 3D con Vidrio Fluido Ultra-Optimizados</image:caption>
+      <image:title>FLUVO Studio Logo</image:title>
+      <image:caption>FLUVO — Ultra-Optimized 3D Liquid-Glass Websites</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://fluvo.org/public/logo/Isologo_Fluvo_Oscuro.svg</image:loc>
-      <image:title>FLUVO Isologo Edición Oscura</image:title>
-      <image:caption>FLUVO.ORG — Arquitectura Web Estática Edge y WebGL</image:caption>
+      <image:title>FLUVO Dark Edition Logo</image:title>
+      <image:caption>FLUVO.ORG — Edge Static CDN &amp; WebGL Core</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://fluvo.org/public/logo/Isologo_Fluvo_Claro.svg</image:loc>
-      <image:title>FLUVO Isologo Edición Clara</image:title>
-      <image:caption>FLUVO Studio — Diseño Web 3D y Catálogos B2B Interactivos</image:caption>
+      <image:title>FLUVO Light Edition Logo</image:title>
+      <image:caption>FLUVO Studio — B2B Interactive 3D Showcases</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://fluvo.org/public/logo/logo.gif</image:loc>
-      <image:title>FLUVO Emblema Animado</image:title>
-      <image:caption>FLUVO — Carga Sub-Segundo 0.8s y 99/100 Lighthouse Móvil</image:caption>
+      <image:title>FLUVO Animated Emblem</image:title>
+      <image:caption>FLUVO — 0.8s Sub-Second Load &amp; 99/100 Mobile Lighthouse</image:caption>
     </image:image>
+  </url>
+
+  <url>
+    <loc>https://fluvo.org/en/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-419" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-ES" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CO" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-PE" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-VE" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-PA" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-EC" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-DO" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CR" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-UY" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-AU" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://fluvo.org/de/" />
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://fluvo.org/de/" />
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://fluvo.org/de/" />
+  </url>
+
+  <url>
+    <loc>https://fluvo.org/pt/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-419" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-ES" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CO" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-PE" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-VE" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-PA" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-EC" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-DO" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CR" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-UY" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-AU" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://fluvo.org/de/" />
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://fluvo.org/de/" />
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://fluvo.org/de/" />
+  </url>
+
+  <url>
+    <loc>https://fluvo.org/fr/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-419" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-ES" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CO" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-PE" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-VE" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-PA" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-EC" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-DO" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CR" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-UY" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-AU" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://fluvo.org/de/" />
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://fluvo.org/de/" />
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://fluvo.org/de/" />
+  </url>
+
+  <url>
+    <loc>https://fluvo.org/de/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-419" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-ES" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CO" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-PE" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-VE" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-PA" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-EC" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-DO" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-CR" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="es-UY" href="https://fluvo.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="en-AU" href="https://fluvo.org/en/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://fluvo.org/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://fluvo.org/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://fluvo.org/de/" />
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://fluvo.org/de/" />
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://fluvo.org/de/" />
   </url>
 
   <url>

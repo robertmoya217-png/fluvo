@@ -266,22 +266,31 @@
   };
 
   function buildWhatsAppUrl() {
-    var name = (qName && qName.value.trim()) || "un cliente";
-    var email = (qEmail && qEmail.value.trim()) || "No indicado";
+    var tr = window.FLUVO_ACTIVE_I18N;
+    var name = (qName && qName.value.trim()) || (tr ? tr.quoteDefaultName : "un cliente");
+    var email = (qEmail && qEmail.value.trim()) || (tr ? tr.quoteNotProvided : "No indicado");
     var msg = qMessage && qMessage.value.trim();
-    var text =
-      "Hola FLUVO Studio, soy " + name + ".\n" +
-      "Me gustaría cotizar un proyecto web a medida:\n" +
-      "• Tipo de Proyecto: " + quoteState.projectType + "\n" +
-      "• Presupuesto Estimado: " + quoteState.budget + "\n" +
-      "• Correo de Contacto: " + email +
-      (msg ? "\n• Detalles: " + msg : "");
+    var pType = (tr && tr.projectTypeMap && tr.projectTypeMap[quoteState.projectType]) || quoteState.projectType;
+    var pBudget = (tr && tr.budgetMap && tr.budgetMap[quoteState.budget]) || quoteState.budget;
+    var text;
+    if (tr && typeof tr.formatWhatsApp === "function") {
+      text = tr.formatWhatsApp({ name: name, email: email, projectType: pType, budget: pBudget, msg: msg });
+    } else {
+      text =
+        "Hola FLUVO Studio, soy " + name + ".\n" +
+        "Me gustaría cotizar un proyecto web a medida:\n" +
+        "• Tipo de Proyecto: " + pType + "\n" +
+        "• Presupuesto Estimado: " + pBudget + "\n" +
+        "• Correo de Contacto: " + email +
+        (msg ? "\n• Detalles: " + msg : "");
+    }
     return "https://wa.me/584242220172?text=" + encodeURIComponent(text);
   }
 
   function refreshWhatsAppLink() {
     if (qWhatsApp) qWhatsApp.href = buildWhatsAppUrl();
   }
+  window.FLUVO_REFRESH_QUOTE = refreshWhatsAppLink;
 
   function selectChipGroup(container, value, stateKey) {
     if (!container) return;
@@ -323,8 +332,9 @@
     quoteForm.addEventListener("submit", async function (e) {
       e.preventDefault();
       if (!qName.value.trim() || !qEmail.value.trim()) return;
+      var tr = window.FLUVO_ACTIVE_I18N;
       qSubmit.disabled = true;
-      qSubmit.textContent = "Enviando...";
+      qSubmit.textContent = (tr && tr.submittingLabel) || "Enviando...";
       if (qStatus) qStatus.hidden = true;
       try {
         await fetch("https://api.web3forms.com/submit", {
@@ -332,23 +342,27 @@
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({
             access_key: "b9e7c3e5-8a21-4d7e-9f01-web3forms-fluvo",
-            subject: "Nueva Cotización FLUVO: " + quoteState.projectType + " - " + qName.value.trim(),
+            subject: ((tr && tr.subjectPrefix) || "Nueva Cotización FLUVO: ") + quoteState.projectType + " - " + qName.value.trim(),
             from_name: qName.value.trim(),
             email: qEmail.value.trim(),
             project_type: quoteState.projectType,
             budget: quoteState.budget,
-            message: qMessage.value.trim() || "Sin detalles adicionales",
+            message: qMessage.value.trim() || ((tr && tr.noDetailsLabel) || "Sin detalles adicionales"),
             to_email: "robertmoya217@gmail.com"
           })
         });
       } catch (err) {}
       qSubmit.disabled = false;
-      qSubmit.textContent = "Enviar Solicitud";
+      qSubmit.textContent = (tr && tr.submitLabel) || "Enviar Solicitud";
       if (qStatus) {
-        qStatus.innerHTML =
-          "<strong>Solicitud registrada con éxito.</strong> Responderemos a " +
-          qEmail.value.trim().replace(/</g, "&lt;") +
-          " en menos de 2 horas laborables, o continúa directamente por WhatsApp.";
+        var safeEmail = qEmail.value.trim().replace(/</g, "&lt;");
+        qStatus.innerHTML = (tr && typeof tr.statusSuccessHtml === "function")
+          ? tr.statusSuccessHtml(safeEmail)
+          : (
+            "<strong>Solicitud registrada con éxito.</strong> Responderemos a " +
+            safeEmail +
+            " en menos de 2 horas laborables, o continúa directamente por WhatsApp."
+          );
         qStatus.hidden = false;
       }
       refreshWhatsAppLink();
@@ -430,6 +444,8 @@
     }
   };
 
+  window.FLUVO_DETAILS = DETAILS;
+
   var detailModal = document.getElementById("detailModal");
   var detailKicker = document.getElementById("detailModalKicker");
   var detailTitle = document.getElementById("detailModalTitle");
@@ -440,7 +456,8 @@
   var detailOpener = null;
 
   function openDetailModal(key, openerEl) {
-    var item = DETAILS[key];
+    var tr = window.FLUVO_ACTIVE_I18N;
+    var item = (tr && tr.details && tr.details[key]) || DETAILS[key];
     if (!item || !detailModal) return;
     detailOpener = openerEl || document.activeElement;
     detailKicker.textContent = item.kicker;
